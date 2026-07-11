@@ -1,16 +1,10 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/navbar/Navbar";
+import Footer from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,11 +17,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en">
+      <body
+        className={`${inter.className} w-full min-h-screen mx-auto bg-white`}
+      >
+        <Navbar />
+        <div className="hidden sm:block w-full z-100 h-px bg-linear-to-r from-[#0C68F4]/30 via-[#0C68F4]/70 to-[#0C68F4]/30 scale-x-100" />
+        <div className="mx-auto flex min-h-screen w-full flex-col px-6 sm:px-14.5 md:px-19.5 lg:px-24 xl:px-27 sm:max-w-3xl md:max-w-5xl lg:max-w-7xl xl:max-w-360">
+          <main className="flex-1">{children}</main>
+        </div>
+        <Footer />
+      </body>
     </html>
   );
 }
