@@ -20,7 +20,7 @@ export const cellularlineElite: ProductSeed = {
 
   specifications: [
     {
-      title: "Colour",
+      title: "Color",
       value: "Black",
       sortOrder: 1,
     },

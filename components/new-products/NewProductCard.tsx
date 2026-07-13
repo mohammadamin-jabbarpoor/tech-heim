@@ -1,10 +1,10 @@
 import { getImageUrl } from "@/lib/imagekit/index";
-import { ProductCard } from "@/lib/prisma-types";
+import { ProductCardType } from "@/lib/prisma-types";
 import { Heart, Star1 } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
 
-function NewProductCard({ product }: { product: ProductCard }) {
+function NewProductCard({ product }: { product: ProductCardType }) {
   const image = product.images[0];
 
   const price = Number(product.price);

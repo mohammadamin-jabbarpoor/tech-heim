@@ -8,6 +8,7 @@ export const xiaomi17UltraScreenProtector: ProductSeed = {
   price: "15.00",
   stock: 41,
   category: "accessories",
+  isNew: true,
 
   images: [
     {
@@ -20,7 +21,7 @@ export const xiaomi17UltraScreenProtector: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Panzer",
       sortOrder: 1,
     },

@@ -151,7 +151,7 @@ export const iphone17ProMaxMagSafe: ProductSeed = {
       sortOrder: 1,
     },
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Apple",
       sortOrder: 2,
     },

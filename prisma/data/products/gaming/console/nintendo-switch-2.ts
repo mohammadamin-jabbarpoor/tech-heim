@@ -5,7 +5,8 @@ export const nintendoSwitch2: ProductSeed = {
   slug: "nintendo-switch-2",
   description:
     "Connect the Nintendo Switch 2 station to a TV and immerse yourself in high-resolution game worlds in resolutions up to 4K (TV and game must support 4K resolution.)",
-  price: "599.00",
+  price: "519.00",
+  compareAtPrice: "599.99",
   stock: 9,
   category: "gaming",
 
@@ -45,7 +46,7 @@ export const nintendoSwitch2: ProductSeed = {
 
   specifications: [
     {
-      title: "Brand Name",
+      title: "Brand",
       value: "Nintendo",
       sortOrder: 1,
     },

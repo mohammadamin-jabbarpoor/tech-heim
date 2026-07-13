@@ -3,7 +3,8 @@ import { ProductSeed } from "@/prisma/types/product-seed";
 export const xiaomiLite: ProductSeed = {
   title: "Xiaomi Power Bank 10000mAh 22.5W Lite",
   slug: "xiaomi-power-bank-10000-lite",
-  description: "One of its most popular offerings is the Xiaomi power bank, which provides a portable and reliable source of energy for smartphones and other devices.",
+  description:
+    "One of its most popular offerings is the Xiaomi power bank, which provides a portable and reliable source of energy for smartphones and other devices.",
   price: "20.00",
   stock: 17,
   category: "accessories",
@@ -24,7 +25,7 @@ export const xiaomiLite: ProductSeed = {
 
   specifications: [
     {
-      title: "Colour",
+      title: "Color",
       value: "White",
       sortOrder: 1,
     },

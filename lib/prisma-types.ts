@@ -1,4 +1,5 @@
 import { Prisma } from "@/app/generated/prisma/client";
+import { SelectedFilters } from "./filter-config";
 
 export const productCardSelect = {
   id: true,
@@ -18,11 +19,22 @@ export const productCardSelect = {
       alt: true,
     },
   },
+
+  category: true,
+  createdAt: true,
 } satisfies Prisma.ProductSelect;
 
-export type ProductCard = Prisma.ProductGetPayload<{
+export type ProductCardDb = Prisma.ProductGetPayload<{
   select: typeof productCardSelect;
 }>;
+
+export type ProductCardType = Omit<
+  ProductCardDb,
+  "price" | "compareAtPrice"
+> & {
+  price: number;
+  compareAtPrice: number | null;
+};
 
 export type SaleProduct = {
   id: string;
@@ -172,4 +184,9 @@ export type ProductDetailsDto = Omit<
 > & {
   price: number;
   compareAtPrice: number | null;
+};
+
+export type GetFilteredProductsParams = {
+  category?: string;
+  filters?: SelectedFilters;
 };

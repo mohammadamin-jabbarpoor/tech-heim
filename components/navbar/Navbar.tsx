@@ -54,47 +54,38 @@ const userItems = [
 
 const ProductMenuItems = [
   {
-    id: crypto.randomUUID(),
     icon: Mobile,
     title: "Mobile Phones",
   },
   {
-    id: crypto.randomUUID(),
     icon: Monitor,
     title: "Laptops & Computers",
   },
   {
-    id: crypto.randomUUID(),
     icon: TableDocument,
     title: "Tablets & E-reader",
   },
   {
-    id: crypto.randomUUID(),
     icon: Watch,
     title: "Wearables",
   },
   {
-    id: crypto.randomUUID(),
     icon: Headphone,
     title: "Audio",
   },
   {
-    id: crypto.randomUUID(),
     icon: Camera,
     title: "Cameras",
   },
   {
-    id: crypto.randomUUID(),
     icon: Game,
     title: "Gaming",
   },
   {
-    id: crypto.randomUUID(),
     icon: Data,
     title: "Networking",
   },
   {
-    id: crypto.randomUUID(),
     icon: Devices,
     title: "Accessories",
   },
@@ -204,7 +195,7 @@ function Navbar() {
                         {ProductMenuItems.map((item) => {
                           const Icon = item.icon;
                           return (
-                            <li key={item.id}>
+                            <li key={item.title}>
                               <Link
                                 href="/products"
                                 className="flex items-center gap-1"
@@ -246,7 +237,7 @@ function Navbar() {
           <nav>
             <ul className="flex items-center justify-center gap-12">
               {navItem.map((item) => {
-                const isActive = pathname === item.href;
+                const isActive = pathname !== "/" && pathname === item.href;
 
                 return (
                   <li key={item.title}>

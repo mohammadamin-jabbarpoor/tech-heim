@@ -3,12 +3,12 @@ import { ProductSeed } from "@/prisma/types/product-seed";
 export const universalTableStand: ProductSeed = {
   title: "Universal table stand smartphones and tablets",
   slug: "universauniversal-table-stand-smartphones-and-tablets",
-  description:
-    "Foldable table stand for smartphones and tablets.",
+  description: "Foldable table stand for smartphones and tablets.",
   price: "12.00",
   compareAtPrice: "16.99",
   stock: 54,
   category: "accessories",
+  isBestSeller: true,
 
   images: [
     {
@@ -36,7 +36,7 @@ export const universalTableStand: ProductSeed = {
 
   specifications: [
     {
-      title: "Colour",
+      title: "Color",
       value: "Gray",
       sortOrder: 1,
     },
@@ -56,7 +56,7 @@ export const universalTableStand: ProductSeed = {
       sortOrder: 4,
     },
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Cellularline",
       sortOrder: 5,
     },

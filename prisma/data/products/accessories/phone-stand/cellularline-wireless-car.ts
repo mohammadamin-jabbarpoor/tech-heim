@@ -3,8 +3,7 @@ import { ProductSeed } from "@/prisma/types/product-seed";
 export const cellularlineMagCar: ProductSeed = {
   title: "Cellularline Mag Wireless Car Charger",
   slug: "cellularline-mag-wireless-car",
-  description:
-    "Magnetic car mount compatible with MagSafe wireless charging.",
+  description: "Magnetic car mount compatible with MagSafe wireless charging.",
   price: "34.00",
   stock: 54,
   category: "accessories",

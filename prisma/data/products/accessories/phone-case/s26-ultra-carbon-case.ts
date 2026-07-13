@@ -107,7 +107,7 @@ export const s26UltraCarbonCase: ProductSeed = {
       sortOrder: 1,
     },
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Samsung",
       sortOrder: 2,
     },

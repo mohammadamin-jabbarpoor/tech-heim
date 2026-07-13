@@ -97,7 +97,7 @@ export type BlogInfo = {
     month: string;
     day: number;
   };
-  time?: number
+  time?: number;
 };
 
 export type BlogsInfo = {
@@ -129,4 +129,11 @@ export type ProductDetailType = {
   price: number;
   lastPrice: number;
   discount: number;
+};
+
+export type CategoryItemType = {
+  icon: Icon;
+  title: string;
+  slug?: string;
+  disabled?: boolean;
 };

@@ -3,7 +3,8 @@ import { ProductSeed } from "@/prisma/types/product-seed";
 export const cellularlineQi2: ProductSeed = {
   title: "Cellularline 10000 Qi2 15W Wireless Mag Stand",
   slug: "cellularline-10000-qi2",
-  description: "Power bank compatible with the Qi2 ecosystem, 10,000 mAh and 15W, with integrated stand and soft-touch finish for a complete and comfortable wireless charging experience.",
+  description:
+    "Power bank compatible with the Qi2 ecosystem, 10,000 mAh and 15W, with integrated stand and soft-touch finish for a complete and comfortable wireless charging experience.",
   price: "69.49",
   stock: 17,
   category: "accessories",
@@ -29,7 +30,7 @@ export const cellularlineQi2: ProductSeed = {
 
   specifications: [
     {
-      title: "Colour",
+      title: "Color",
       value: "Black",
       sortOrder: 1,
     },

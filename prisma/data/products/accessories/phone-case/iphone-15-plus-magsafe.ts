@@ -45,12 +45,12 @@ export const iphone15PlusMagsafe: ProductSeed = {
       sortOrder: 1,
     },
     {
-      title: "Colour",
+      title: "Color",
       value: "Transparent",
       sortOrder: 2,
     },
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Apple",
       sortOrder: 3,
     },

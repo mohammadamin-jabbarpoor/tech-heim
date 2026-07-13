@@ -40,7 +40,7 @@ export const asusRogKeris: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Asus",
       sortOrder: 1,
     },

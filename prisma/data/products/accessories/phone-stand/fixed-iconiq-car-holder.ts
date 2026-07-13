@@ -35,7 +35,7 @@ export const fixedCarHolder: ProductSeed = {
       sortOrder: 2,
     },
     {
-      title: "Frame Colour",
+      title: "Color",
       value: "Black",
       sortOrder: 3,
     },
@@ -45,7 +45,7 @@ export const fixedCarHolder: ProductSeed = {
       sortOrder: 4,
     },
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "FIXED",
       sortOrder: 5,
     },

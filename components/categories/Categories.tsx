@@ -3,7 +3,6 @@
 import { CategoriesType } from "@/app/types";
 import Category from "./Category";
 import { Swiper, SwiperSlide } from "swiper/react";
-import type { Swiper as SwiperType } from "swiper";
 import { Navigation } from "swiper/modules";
 
 const categories: CategoriesType = [
@@ -48,11 +47,7 @@ function Categories() {
         ))}
       </section>
       <section className="flex lg:hidden items-center justify-center gap-5 lg:gap-6 w-full h-25 sm:h-31 md:h-37 lg:h-43 xl:h-49 mt-6">
-        <Swiper
-          slidesPerView="auto"
-          spaceBetween={16}
-          modules={[Navigation]}
-        >
+        <Swiper slidesPerView="auto" spaceBetween={16} modules={[Navigation]}>
           {categories.map((category) => (
             <SwiperSlide className="w-auto!" key={category.id}>
               <Category category={category} />

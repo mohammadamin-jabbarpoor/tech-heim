@@ -20,7 +20,7 @@ export const iphone17ProScreenProtector: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "PanzerGlass",
       sortOrder: 1,
     },

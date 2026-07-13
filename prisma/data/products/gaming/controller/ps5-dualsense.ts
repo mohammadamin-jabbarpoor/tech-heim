@@ -5,9 +5,10 @@ export const ps5Dualsense: ProductSeed = {
   slug: "ps5-dualsense",
   description:
     "Find your voice, share your passion - Chat online through the built-in microphone. Connect a headset directly via the 3.5mm jack. Record and broadcast your epic gaming moments with the create button.",
-  price: "74.00",
+  price: "69.00",
+  compareAtPrice: "74.00",
   stock: 19,
-  category: "accessories",
+  category: "gaming",
   images: [
     {
       path: "products/gaming/controller/ps5-dualsense/black/1-sony-playstation-5-dualsense-2025-black-860.webp",
@@ -128,7 +129,7 @@ export const ps5Dualsense: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Sony",
       sortOrder: 1,
     },

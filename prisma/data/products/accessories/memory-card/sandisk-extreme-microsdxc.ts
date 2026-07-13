@@ -8,6 +8,7 @@ export const sandiskExtreme: ProductSeed = {
   price: "45.00",
   stock: 15,
   category: "accessories",
+  isBestSeller: true,
   images: [
     {
       path: "products/accessories/memory-card/sandisk-extreme-microsdxc-190mbs/128-gb/1-SanDisk-Extreme-microSDXC-128GB-860.webp",

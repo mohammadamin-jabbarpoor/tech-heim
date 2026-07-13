@@ -1,10 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import { useCountdown } from "@/app/hooks/useCountdown";
 import TimerBox from "./TimerBox";
 import Link from "next/link";
 import { ShoppingCart } from "iconsax-react";
+import { useCountdown } from "@/lib/hooks/useCountdown";
 
 function Banners() {
   const { days, hours, minutes, seconds, isExpired } = useCountdown(

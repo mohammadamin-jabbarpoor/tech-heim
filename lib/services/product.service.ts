@@ -1,14 +1,14 @@
 import { prisma } from "@/database/db";
 import {
+  GetFilteredProductsParams,
   productCardSelect,
-  ProductDetails,
-  ProductDetailsDto,
   productDetailSelect,
 } from "../prisma-types";
 import { serializeProduct } from "../serializers/product";
+import { Prisma } from "@/app/generated/prisma/client";
 
 export async function getNewProducts() {
-  return prisma.product.findMany({
+  const products = await prisma.product.findMany({
     where: {
       isActive: true,
       isNew: true,
@@ -19,6 +19,14 @@ export async function getNewProducts() {
     take: 4,
     select: productCardSelect,
   });
+
+  return products.map((product) => ({
+    ...product,
+    price: Number(product.price),
+    compareAtPrice: product.compareAtPrice
+      ? Number(product.compareAtPrice)
+      : null,
+  }));
 }
 
 export async function getSaleProducts() {
@@ -49,7 +57,7 @@ export async function getSaleProducts() {
 }
 
 export async function getBestSellerProducts() {
-  return prisma.product.findMany({
+  const products = await prisma.product.findMany({
     where: {
       isActive: true,
       isBestSeller: true,
@@ -60,6 +68,14 @@ export async function getBestSellerProducts() {
     take: 4,
     select: productCardSelect,
   });
+
+  return products.map((product) => ({
+    ...product,
+    price: Number(product.price),
+    compareAtPrice: product.compareAtPrice
+      ? Number(product.compareAtPrice)
+      : null,
+  }));
 }
 
 export async function getProductBySlug(slug: string) {
@@ -75,11 +91,74 @@ export async function getProductBySlug(slug: string) {
   return serializeProduct(product);
 }
 
-export function getDiscountPercent(
-  price: number,
-  compareAtPrice: number | null,
-) {
-  if (!compareAtPrice) return null;
+export async function getProducts() {
+  const products = await prisma.product.findMany({
+    where: {
+      isActive: true,
+    },
+    orderBy: {
+      createdAt: "desc",
+    },
+    select: productCardSelect,
+  });
 
-  return Math.round(((compareAtPrice - price) / compareAtPrice) * 100);
+  return products.map((product) => ({
+    ...product,
+    price: Number(product.price),
+    compareAtPrice: product.compareAtPrice
+      ? Number(product.compareAtPrice)
+      : null,
+  }));
+}
+
+export async function getFilteredProducts({
+  category,
+  filters = {},
+}: GetFilteredProductsParams) {
+  const where: Prisma.ProductWhereInput = {
+    isActive: true,
+  };
+
+  if (category && category !== "All") {
+    where.category = {
+      slug: category,
+    };
+  }
+
+  const andConditions: Prisma.ProductWhereInput[] = [];
+
+  for (const [title, values] of Object.entries(filters)) {
+    if (values.length === 0) continue;
+
+    andConditions.push({
+      specifications: {
+        some: {
+          title,
+          value: {
+            in: values,
+          },
+        },
+      },
+    });
+  }
+
+  if (andConditions.length > 0) {
+    where.AND = andConditions;
+  }
+
+  const products = await prisma.product.findMany({
+    where,
+    orderBy: {
+      createdAt: "desc",
+    },
+    select: productCardSelect,
+  });
+
+  return products.map((product) => ({
+    ...product,
+    price: Number(product.price),
+    compareAtPrice: product.compareAtPrice
+      ? Number(product.compareAtPrice)
+      : null,
+  }));
 }

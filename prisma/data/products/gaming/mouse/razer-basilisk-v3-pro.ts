@@ -5,9 +5,11 @@ export const razerBasilikV3Pro: ProductSeed = {
   slug: "razer-basilisk-v3-pro",
   description:
     "Choose between tactile cycling and smooth, free-spin scrolling, or auto-switch between them based on the scroll speed in Smart-Reel mode—now configurable on Synapse.",
-  price: "188.00",
+  price: "159.00",
+  compareAtPrice: "188.99",
   stock: 60,
   category: "gaming",
+  isBestSeller: true,
 
   images: [
     {
@@ -30,7 +32,7 @@ export const razerBasilikV3Pro: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Razer",
       sortOrder: 1,
     },

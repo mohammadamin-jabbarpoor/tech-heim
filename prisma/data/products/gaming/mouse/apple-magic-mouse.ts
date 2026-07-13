@@ -8,6 +8,8 @@ export const appleMagicMouse: ProductSeed = {
   price: "120.00",
   stock: 23,
   category: "gaming",
+  isNew: true,
+
   images: [
     {
       path: "products/gaming/mouse/apple-magic-mouse-multi-touch-surface/black/1-apple-magic-mouse-multi-touch-surface-black-860.webp",
@@ -80,7 +82,7 @@ export const appleMagicMouse: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Apple",
       sortOrder: 1,
     },

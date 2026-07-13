@@ -35,12 +35,12 @@ export const appleMagicKeyboard: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Apple",
       sortOrder: 1,
     },
     {
-      title: "Colour",
+      title: "Color",
       value: "White",
       sortOrder: 2,
     },

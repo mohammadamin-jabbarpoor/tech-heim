@@ -5,7 +5,8 @@ export const razerBlackWidowV4: ProductSeed = {
   slug: "razer-blackwidow-v4-pro",
   description:
     "Enjoy instant, rapid-fire smooth inputs that are just as quiet thanks to built-in sound dampeners.",
-  price: "269.00",
+  price: "231.00",
+  compareAtPrice: "269.00",
   stock: 36,
   category: "gaming",
 
@@ -35,12 +36,12 @@ export const razerBlackWidowV4: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Razer",
       sortOrder: 1,
     },
     {
-      title: "Colour",
+      title: "Color",
       value: "Black",
       sortOrder: 2,
     },

@@ -40,7 +40,7 @@ export const naconXbox: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Nacon",
       sortOrder: 1,
     },

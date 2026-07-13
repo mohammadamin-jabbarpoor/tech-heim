@@ -40,7 +40,7 @@ export const ps5Pro: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Sony",
       sortOrder: 1,
     },

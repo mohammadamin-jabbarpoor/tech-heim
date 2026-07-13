@@ -3,7 +3,7 @@ import { nintendoSwitch2 } from "./console/nintendo-switch-2";
 import { ps5Pro } from "./console/ps5-pro";
 import { logG920Driving } from "./controller/logitech-g920-driving";
 import { naconXbox } from "./controller/nacon-unlimited-xbox";
-import { nintendoCintroller } from "./controller/nintendo-joy-con-2";
+import { nintendoController } from "./controller/nintendo-joy-con-2";
 import { ps5Dualsense } from "./controller/ps5-dualsense";
 import { appleMagicKeyboard } from "./keyboard/apple-magic-keyboard";
 import { razerBlackWidowV4 } from "./keyboard/razer-blackwidow-v4-pro";
@@ -19,7 +19,7 @@ export const gamingProducts: ProductSeed[] = [
   ps5Pro,
   logG920Driving,
   naconXbox,
-  nintendoCintroller,
+  nintendoController,
   ps5Dualsense,
   appleMagicKeyboard,
   razerBlackWidowV4,

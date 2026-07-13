@@ -36,8 +36,7 @@ export const xiaomiIntegrated: ProductSeed = {
       type: "color",
       name: "blue",
       value: "#5582cf",
-      isDefault: true,
-      sortOrder: 1,
+      sortOrder: 2,
       images: [
         {
           path: "products/accessories/power-bank/xiaomi-20000-mah-33w-power-bank-with-integrated-cable/blue/xiaomi-33w-integrated-cable-20000-mah-blue-860.webp",

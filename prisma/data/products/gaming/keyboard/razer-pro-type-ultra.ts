@@ -35,12 +35,12 @@ export const razerProTypeUltra: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Razer",
       sortOrder: 1,
     },
     {
-      title: "Colour",
+      title: "Color",
       value: "White",
       sortOrder: 2,
     },

@@ -20,7 +20,7 @@ export const s26PlusScreenProtector: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Copter",
       sortOrder: 1,
     },

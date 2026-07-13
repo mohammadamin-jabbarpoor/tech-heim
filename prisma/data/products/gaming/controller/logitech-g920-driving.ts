@@ -8,6 +8,7 @@ export const logG920Driving: ProductSeed = {
   price: "299.00",
   stock: 4,
   category: "gaming",
+  isNew: true,
 
   images: [
     {
@@ -35,7 +36,7 @@ export const logG920Driving: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Logitech",
       sortOrder: 1,
     },

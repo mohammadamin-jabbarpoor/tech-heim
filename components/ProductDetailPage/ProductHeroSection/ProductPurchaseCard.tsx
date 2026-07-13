@@ -1,7 +1,7 @@
 "use client";
 
 import { ProductDetail } from "@/lib/prisma-types";
-import { getDiscountPercent } from "@/lib/services/product.service";
+import { getDiscountPercent } from "@/lib/utils/product";
 import { DiscountShape, ShoppingCart } from "iconsax-react";
 import Link from "next/link";
 import { useMemo, useState } from "react";

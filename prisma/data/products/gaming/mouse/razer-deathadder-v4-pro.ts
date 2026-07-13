@@ -50,7 +50,7 @@ export const razerDeathAdderV4Pro: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Razer",
       sortOrder: 1,
     },

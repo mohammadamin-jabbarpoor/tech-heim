@@ -8,6 +8,7 @@ export const razerHuntsmanMini: ProductSeed = {
   price: "129.00",
   stock: 26,
   category: "gaming",
+  isBestSeller: true,
 
   images: [
     {
@@ -35,12 +36,12 @@ export const razerHuntsmanMini: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Razer",
       sortOrder: 1,
     },
     {
-      title: "Colour",
+      title: "Color",
       value: "Black",
       sortOrder: 2,
     },

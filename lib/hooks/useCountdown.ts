@@ -1,5 +1,5 @@
+import { CountdownResult } from "@/app/types";
 import { useEffect, useState } from "react";
-import { CountdownResult } from "../types";
 
 const initialState: CountdownResult = {
   days: 0,

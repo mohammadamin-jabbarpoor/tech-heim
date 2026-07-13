@@ -1,4 +1,4 @@
-import { Heart, Star1 } from "iconsax-react";
+import { Heart, ShoppingCart, Star1 } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -6,7 +6,7 @@ import { getImageUrl } from "@/lib/imagekit/index";
 import { ProductCardType } from "@/lib/prisma-types";
 import { getDiscountPercent } from "@/lib/utils/product";
 
-function BestSellerCard({ product }: { product: ProductCardType }) {
+function ProductCard({ product }: { product: ProductCardType }) {
   const image = product.images.at(0);
 
   if (!image) return null;
@@ -38,12 +38,8 @@ function BestSellerCard({ product }: { product: ProductCardType }) {
   return (
     <Link href={`/products/${product.slug}`}>
       <div className="relative group flex h-46.5 w-37 flex-col items-center justify-between gap-2 rounded-lg p-2 shadow-[-2px_2px_15px_-1px_rgba(113,113,113,0.12)] transition-shadow hover:shadow-[-2px_2px_20px_-1px_rgba(113,113,113,0.2)] xs:h-54.5 xs:w-44 sm:h-62.5 sm:w-51 md:h-70.5 md:w-58 lg:h-78.5 lg:w-65 lg:gap-4 lg:p-4 xl:h-86.75 xl:w-72">
-        <div className="absolute left-4 top-4 hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:block">
-          <Heart variant="Outline" size={24} color="#063A88" />
-        </div>
-
         {discount && (
-          <div className="absolute left-0 top-4 z-10 rounded-br-lg rounded-tr-lg bg-secondary-100 px-1.5 py-1 text-xs font-light text-secondary group-hover:hidden">
+          <div className="absolute left-0 top-4 z-10 rounded-br-lg rounded-tr-lg bg-secondary-100 px-1.5 py-1 text-xs font-light text-secondary">
             -{discount}%
           </div>
         )}
@@ -68,12 +64,12 @@ function BestSellerCard({ product }: { product: ProductCardType }) {
         <div className="h-px w-full bg-linear-to-r from-gray-800/10 via-[#101010]/70 to-gray-800/10 transition-all duration-300 group-hover:from-[#428AF6]/30 group-hover:via-[#0951BE] group-hover:to-[#428AF6]/30" />
 
         <div className="flex w-full flex-col gap-2 lg:gap-4">
-          <p className="line-clamp-1 text-xs font-light transition-colors duration-300 group-hover:text-primary-500 md:line-clamp-2 md:text-sm lg:h-12 lg:text-base">
+          <p className="line-clamp-1 text-xs font-light transition-colors duration-300 group-hover:text-primary-500 md:text-sm lg:text-base">
             {title}
           </p>
 
-          <div className="flex items-end justify-between">
-            <div className="flex flex-col">
+          <div className="flex items-end justify-between group-hover:hidden transition-all duration-300">
+            <div className="flex flex-col h-12">
               {hasDiscount ? (
                 <>
                   <span className="text-[10px] text-gray-600 line-through md:text-xs lg:text-sm">
@@ -85,7 +81,7 @@ function BestSellerCard({ product }: { product: ProductCardType }) {
                   </span>
                 </>
               ) : (
-                <span className="mt-2.5 text-xs font-light md:text-sm lg:text-base xl:text-lg">
+                <span className="mt-5 text-xs font-light md:text-sm lg:text-base xl:text-lg">
                   ${formatPrice(price)}
                 </span>
               )}
@@ -103,10 +99,20 @@ function BestSellerCard({ product }: { product: ProductCardType }) {
               </span>
             </div>
           </div>
+
+          <div className="w-full items-center justify-between hidden group-hover:flex group-hover:mt-1 transition-all duration-300">
+            <button className="flex gap-2 px-4 py-2.5 border-2 border-primary-500 rounded-lg">
+              <ShoppingCart variant="Outline" size={24} color="#063A88" />
+              <span className="text-primary-500">Add to cart</span>
+            </button>
+            <span className="flex items-center justify-center gap-1">
+              <Heart variant="Outline" size={24} color="#063A88" />
+            </span>
+          </div>
         </div>
       </div>
     </Link>
   );
 }
 
-export default BestSellerCard;
+export default ProductCard;

@@ -1,6 +1,6 @@
 import { ProductSeed } from "@/prisma/types/product-seed";
 
-export const nintendoCintroller: ProductSeed = {
+export const nintendoController: ProductSeed = {
   title: "Nintendo Joy-Con 2 controllers",
   slug: "nintendo-joy-con-2",
   description:
@@ -8,6 +8,7 @@ export const nintendoCintroller: ProductSeed = {
   price: "95.99",
   stock: 14,
   category: "gaming",
+  isNew: true,
 
   images: [
     {
@@ -30,7 +31,7 @@ export const nintendoCintroller: ProductSeed = {
 
   specifications: [
     {
-      title: "Manufacturer",
+      title: "Brand",
       value: "Nintendo",
       sortOrder: 1,
     },

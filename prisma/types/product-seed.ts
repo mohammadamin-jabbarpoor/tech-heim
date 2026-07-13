@@ -10,6 +10,8 @@ export type ProductSeed = {
 
   category: string;
 
+  isNew?: boolean;
+  isBestSeller?: boolean;
 
   images?: {
     path: string;
@@ -17,7 +19,6 @@ export type ProductSeed = {
     isPrimary?: boolean;
     sortOrder: number;
   }[];
-
 
   options?: {
     type: string;
@@ -33,9 +34,7 @@ export type ProductSeed = {
       isPrimary?: boolean;
       sortOrder: number;
     }[];
-
   }[];
-
 
   specifications?: {
     title: string;
