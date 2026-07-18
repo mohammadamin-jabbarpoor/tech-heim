@@ -1,13 +1,15 @@
-import Banner from "@/components/Banner";
-import Banners from "@/components/Banners";
-import BestSellers from "@/components/best-sellers/BestSellers";
+import HeroBanner2 from "@/components/home/hero/HeroBanner1";
+import HeroBanner1 from "@/components/home/hero/HeroBanner2";
+
 import Blogs from "@/components/blog/Blogs";
 import Categories from "@/components/categories/Categories";
-import Header from "@/components/Header";
-import NewProducts from "@/components/new-products/NewProducts";
-import SaleSection from "@/components/sale/SaleSection";
-import Services from "@/components/Services";
-import TopBrands from "@/components/TopBrands";
+import Header from "@/components/layout/Header";
+
+import SaleSection from "@/components/home/sale/SaleSection";
+import Services from "@/components/home/services/Services";
+import TopBrands from "@/components/home/brands/TopBrands";
+import BestSellers from "@/components/home/products/best-sellers/BestSellers";
+import NewProducts from "@/components/home/products/new-products/NewProducts";
 
 export default function Home() {
   return (
@@ -16,10 +18,10 @@ export default function Home() {
       <Categories />
       <SaleSection />
       <NewProducts />
-      <Banners />
+      <HeroBanner1 />
       <BestSellers />
       <TopBrands />
-      <Banner />
+      <HeroBanner2 />
       <Blogs />
       <Services />
     </div>

@@ -1,12 +1,11 @@
-import SectionHeader from "../SectionHeader";
-import Line from "../Line";
+import Line from "@/components/ui/Line";
 import NewProductCard from "./NewProductCard";
 import { getNewProducts } from "@/lib/services/product.service";
-
+import SectionHeader from "@/components/ui/SectionHeader";
 
 async function NewProducts() {
   const products = await getNewProducts();
-  
+
   return (
     <div className="block mt-6 xl:mt-12">
       <SectionHeader value="New Products" />

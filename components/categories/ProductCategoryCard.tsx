@@ -19,7 +19,7 @@ function ProductCategoryCard({
       onClick={onClick}
       className={`w-20 p-2 transition-colors ${
         category.disabled ? "cursor-not-allowed" : "cursor-pointer"
-      }`}
+      } ${active ? " border-b-[3px] border-b-primary" : ""}`}
     >
       <div className="flex flex-col items-center justify-center gap-4">
         <Icon variant="Outline" size={48} color="#444444" />

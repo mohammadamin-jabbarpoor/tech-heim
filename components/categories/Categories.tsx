@@ -1,11 +1,11 @@
 "use client";
 
-import { CategoriesType } from "@/app/types";
+import { CategoryType } from "@/app/types";
 import Category from "./Category";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 
-const categories: CategoriesType = [
+const categories: CategoryType[] = [
   {
     id: crypto.randomUUID(),
     image: "/categories/case.png",

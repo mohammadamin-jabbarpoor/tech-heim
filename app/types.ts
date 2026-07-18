@@ -5,7 +5,6 @@ export type CategoryType = {
   image: string;
   name: string;
 };
-export type CategoriesType = CategoryType[];
 
 export type SaleProductType = {
   id: string;
@@ -15,7 +14,6 @@ export type SaleProductType = {
   newPrice: number;
   discount: number;
 };
-export type SaleProductsType = SaleProductType[];
 
 export type SimilarProductType = {
   id: string;
@@ -24,7 +22,6 @@ export type SimilarProductType = {
   price: number;
   star: number;
 };
-export type SimilarProductsType = SimilarProductType[];
 
 export type FrequentlyProductType = {
   id: string;
@@ -33,7 +30,6 @@ export type FrequentlyProductType = {
   price: number;
   star: number;
 };
-export type FrequentlyProductsType = FrequentlyProductType[];
 
 export type ReviewType = {
   id: string;
@@ -75,17 +71,6 @@ export type BestSellerType = {
   discount?: number;
 };
 export type BestSellersType = BestSellerType[];
-
-export type FooterItem = {
-  name: string;
-  href: string;
-  icon?: Icon;
-};
-
-export type FooterColumn = {
-  title: string;
-  items: FooterItem[];
-};
 
 export type BlogInfo = {
   id: string;

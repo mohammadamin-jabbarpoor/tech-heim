@@ -5,7 +5,7 @@ import ProductPurchaseCard from "./ProductPurchaseCard";
 import { ArrowRight2 } from "iconsax-react";
 import Link from "next/link";
 import { ProductDetail } from "@/lib/prisma-types";
-import Breadcrumb from "@/components/BreadCrumb";
+import Breadcrumb from "@/components/ui/BreadCrumb";
 
 function ProductHeroSection({ product }: { product: ProductDetail }) {
   return (

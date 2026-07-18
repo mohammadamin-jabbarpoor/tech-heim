@@ -114,6 +114,9 @@ export async function getProducts() {
 export async function getFilteredProducts({
   category,
   filters = {},
+  sale,
+  minPrice,
+  maxPrice,
 }: GetFilteredProductsParams) {
   const where: Prisma.ProductWhereInput = {
     isActive: true,
@@ -122,6 +125,24 @@ export async function getFilteredProducts({
   if (category && category !== "All") {
     where.category = {
       slug: category,
+    };
+  }
+
+  if (sale) {
+    where.compareAtPrice = {
+      not: null,
+    };
+  }
+
+  if (minPrice !== undefined || maxPrice !== undefined) {
+    where.price = {
+      ...(minPrice !== undefined && {
+        gte: minPrice,
+      }),
+
+      ...(maxPrice !== undefined && {
+        lte: maxPrice,
+      }),
     };
   }
 

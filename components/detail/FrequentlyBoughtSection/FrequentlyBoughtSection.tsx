@@ -2,66 +2,70 @@
 
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { SimilarProductsType } from "@/app/types";
+import { FrequentlyProductType } from "@/app/types";
 import { Navigation } from "swiper/modules";
 import { useRef, useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
-import SimilarProductCard from "./SimilarProductCard";
 import { ArrowCircleLeft, ArrowCircleRight } from "iconsax-react";
+import FrequentlyProductCard from "./FrequentlyProductCard";
 
-const similarProducts: SimilarProductsType = [
+const frequentlyProducts: FrequentlyProductType[] = [
   {
     id: crypto.randomUUID(),
-    image: "/similar-products/macbook-pro-2020.svg",
-    title: "Apple 2020 MacBook Pro Laptop with M2 chip 14-inch",
-    price: 1199,
-    star: 4.5,
+    image: "/frequently-products/laptop-sleeve.svg",
+    title: "Laptop sleeve for macBook pro M2 MNEJ3 LLA 13.3 inch",
+    price: 39.2,
+    star: 4.0,
   },
   {
     id: crypto.randomUUID(),
-    image: "/similar-products/macbook-air-2022.svg",
-    title: "Apple 2022 MacBook Air Laptop with M2 chip",
-    price: 1299,
-    star: 4.4,
+    image: "/frequently-products/privacy-screen.svg",
+    title:
+      "StarTech.com Laptop Privacy Screen for 13 inch MacBook Pro & MacBook Air",
+    price: 23.26,
+    star: 4.6,
   },
   {
     id: crypto.randomUUID(),
-    image: "/similar-products/macbook-pro-2022.svg",
-    title: "Apple 2022 MacBook Pro Laptop with M2 chip: 15.3-inch",
-    price: 1399,
-    star: 4.5,
+    image: "/frequently-products/laptop-case.svg",
+    title:
+      "Inateck 12.3-13 Inch Laptop Case Sleeve 360° Protection Compatible with 13 inch MacBook",
+    price: 63.5,
+    star: 4.7,
   },
   {
     id: crypto.randomUUID(),
-    image: "/similar-products/macbook-air-2020.svg",
-    title: "Apple 2020 MacBook Air Laptop with M2 chip",
-    price: 1099,
-    star: 4.2,
+    image: "/frequently-products/charge.svg",
+    title:
+      "Belkin USB C to VGA + Charge Adapter - USB C to VGA Cable for MacBook Pro",
+    price: 27,
+    star: 4.3,
   },
   {
     id: crypto.randomUUID(),
-    image: "/similar-products/macbook-pro-2020.svg",
-    title: "Apple 2020 MacBook Pro Laptop with M2 chip 14-inch",
-    price: 1199,
-    star: 4.5,
+    image: "/frequently-products/laptop-sleeve.svg",
+    title: "Laptop sleeve for macBook pro M2 MNEJ3 LLA 13.3 inch",
+    price: 39.2,
+    star: 4.0,
   },
   {
     id: crypto.randomUUID(),
-    image: "/similar-products/macbook-air-2022.svg",
-    title: "Apple 2022 MacBook Air Laptop with M2 chip",
-    price: 1299,
-    star: 4.4,
+    image: "/frequently-products/privacy-screen.svg",
+    title:
+      "StarTech.com Laptop Privacy Screen for 13 inch MacBook Pro & MacBook Air",
+    price: 23.26,
+    star: 4.6,
   },
 ];
 
-function SaleSlider() {
+function FrequentlyBoughtSection() {
   const swiperRef = useRef<SwiperType | null>(null);
 
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
   return (
     <div className="mt-12">
-      <h3 className="font-medium text-xl mb-8">Similar Products</h3>
+      <h3 className="font-medium text-xl mb-8">Frequently bought together</h3>
       <div className="relative">
         <button
           disabled={isBeginning}
@@ -86,9 +90,9 @@ function SaleSlider() {
           slidesOffsetAfter={18}
           modules={[Navigation]}
         >
-          {similarProducts.map((product) => (
+          {frequentlyProducts.map((product) => (
             <SwiperSlide key={product.id}>
-              <SimilarProductCard product={product} />
+              <FrequentlyProductCard product={product} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -104,4 +108,4 @@ function SaleSlider() {
   );
 }
 
-export default SaleSlider;
+export default FrequentlyBoughtSection;

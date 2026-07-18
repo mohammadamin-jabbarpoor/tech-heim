@@ -1,8 +1,7 @@
-import SectionHeader from "../SectionHeader";
-import Line from "../Line";
-
+import Line from "@/components/ui/Line";
 import BestSellerCard from "./BestSellerCard";
 import { getBestSellerProducts } from "@/lib/services/product.service";
+import SectionHeader from "@/components/ui/SectionHeader";
 
 async function BestSellers() {
   const products = await getBestSellerProducts();

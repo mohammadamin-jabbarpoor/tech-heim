@@ -1,5 +1,5 @@
+import Line from "@/components/ui/Line";
 import Image from "next/image";
-import Line from "./Line";
 
 const brandsImages = [
   {

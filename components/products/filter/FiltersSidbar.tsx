@@ -1,5 +1,6 @@
 import { CategoryFilter, SelectedFilters } from "@/lib/filter-config";
 import FilterSection from "./FilterSection";
+import SaleFilter from "./DiscountFilter";
 
 type FiltersSidebarProps = {
   filters: CategoryFilter[];
@@ -28,6 +29,7 @@ function FiltersSidbar({
           Clear all
         </button>
       </div>
+      <SaleFilter />
       {filters.map((filter) => (
         <FilterSection key={filter.title} filter={filter} />
       ))}

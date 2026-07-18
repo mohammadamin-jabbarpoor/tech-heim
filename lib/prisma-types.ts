@@ -189,4 +189,8 @@ export type ProductDetailsDto = Omit<
 export type GetFilteredProductsParams = {
   category?: string;
   filters?: SelectedFilters;
+
+  sale?: boolean;
+  minPrice?: number;
+  maxPrice?: number;
 };

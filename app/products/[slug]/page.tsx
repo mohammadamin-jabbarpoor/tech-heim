@@ -1,9 +1,9 @@
-import CommentsSection from "@/components/ProductDetailPage/CommentsSection/CommentsSection";
-import FrequentlyBoughtSection from "@/components/ProductDetailPage/FrequentlyBoughtSection/FrequentlyBoughtSection";
-import ProductHeroSection from "@/components/ProductDetailPage/ProductHeroSection/ProductHeroSection";
-import ProductTabsSection from "@/components/ProductDetailPage/ProductTabsSection/ProductTabsSection";
-import ReviewsSection from "@/components/ProductDetailPage/ReviewsSection/ReviewsSection";
-import SimilarProductsSection from "@/components/ProductDetailPage/SimilarProductsSection/SimilarProductsSection";
+import CommentsSection from "@/components/detail/CommentsSection/CommentsSection";
+import FrequentlyBoughtSection from "@/components/detail/FrequentlyBoughtSection/FrequentlyBoughtSection";
+import ProductHeroSection from "@/components/detail/ProductHeroSection/ProductHeroSection";
+import ProductTabsSection from "@/components/detail/ProductTabsSection/ProductTabsSection";
+import ReviewsSection from "@/components/detail/ReviewsSection/ReviewsSection";
+import SimilarProductsSection from "@/components/detail/SimilarProductsSection/SimilarProductsSection";
 import { getProductBySlug } from "@/lib/services/product.service";
 import { notFound } from "next/navigation";
 

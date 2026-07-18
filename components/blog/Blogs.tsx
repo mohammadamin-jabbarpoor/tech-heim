@@ -2,8 +2,8 @@ import BlogFeaturedCard from "./BlogFeaturedCard";
 import { BlogsInfo } from "@/app/types";
 import BlogCompactCard from "./BlogCompactCard";
 import BlogCard from "./BlogCard";
-import SectionHeader from "../SectionHeader";
-import Line from "../Line";
+import SectionHeader from "../ui/SectionHeader";
+import Line from "../ui/Line";
 
 const blogsInfo: BlogsInfo = {
   featured: {

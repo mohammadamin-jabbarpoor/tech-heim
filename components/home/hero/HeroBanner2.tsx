@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-function Banner() {
+function HeroBanner2() {
   return (
     <section className="hidden lg:block relative mt-12">
       <Image src="/banner.svg" alt="banner" width={1224} height={420} />
@@ -23,4 +23,4 @@ function Banner() {
   );
 }
 
-export default Banner;
+export default HeroBanner2;

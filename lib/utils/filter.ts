@@ -1,12 +1,15 @@
 import { SelectedFilters } from "../filter-config";
 
+const RESERVED_PARAMS = ["category", "sale", "minPrice", "maxPrice"];
+
 export function parseSelectedFilters(
   params: Record<string, string | undefined>,
 ): SelectedFilters {
   const filters: SelectedFilters = {};
 
   for (const [key, value] of Object.entries(params)) {
-    if (key === "category") continue;
+    if (RESERVED_PARAMS.includes(key)) continue;
+
     if (!value) continue;
 
     filters[key] = value.split(",");
@@ -21,7 +24,7 @@ export function getSelectedFiltersFromSearchParams(
   const filters: SelectedFilters = {};
 
   for (const [key, value] of searchParams.entries()) {
-    if (key === "category") continue;
+    if (RESERVED_PARAMS.includes(key)) continue;
 
     if (!value) continue;
 

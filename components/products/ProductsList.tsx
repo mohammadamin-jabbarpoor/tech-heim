@@ -5,18 +5,19 @@ import { ProductCardType } from "@/lib/prisma-types";
 import ProductsCategories from "../categories/ProductsCategories";
 
 import ProductsSection from "./ProductsSection";
-import FiltersSidbar from "../filter/FiltersSidbar";
+import FiltersSidbar from "./filter/FiltersSidbar";
 import { CategoryFilter, SelectedFilters } from "@/lib/filter-config";
 import { useRouter, useSearchParams } from "next/navigation";
 import { getSelectedFiltersFromSearchParams } from "@/lib/utils/filter";
 import { useProductFilters } from "@/lib/hooks/useProductFilters";
+import SelectedFilterBar from "./filter/SelectedFilterBar";
 
-type ProductsContentProps = {
+type ProductsListProps = {
   products: ProductCardType[];
   filters: CategoryFilter[];
 };
 
-function ProductsContent({ products, filters }: ProductsContentProps) {
+function ProductsList({ products, filters }: ProductsListProps) {
   const {
     searchParams,
     router,
@@ -29,6 +30,8 @@ function ProductsContent({ products, filters }: ProductsContentProps) {
   return (
     <>
       <ProductsCategories />
+
+      <SelectedFilterBar />
 
       <div className="flex gap-6">
         <FiltersSidbar
@@ -43,4 +46,4 @@ function ProductsContent({ products, filters }: ProductsContentProps) {
   );
 }
 
-export default ProductsContent;
+export default ProductsList;
