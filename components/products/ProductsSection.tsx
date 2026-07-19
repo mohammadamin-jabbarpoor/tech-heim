@@ -3,11 +3,10 @@
 import { useMemo, useState } from "react";
 import { ArrowDown2 } from "iconsax-react";
 import ProductCard from "./ProductCard";
-import { ProductCardType } from "@/lib/prisma-types";
-import { SelectedFilters } from "@/lib/filter-config";
+import { ProductCardDto } from "@/lib/prisma-types";
 
 type ProductsSectionProps = {
-  products: ProductCardType[];
+  products: ProductCardDto[];
 };
 
 const options = [

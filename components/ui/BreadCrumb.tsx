@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight2 } from "iconsax-react";
 
 type BreadcrumbItem = {
-  label: string;
+  label: string | undefined;
   href?: string;
 };
 

@@ -243,7 +243,7 @@ function Navbar() {
                   <li key={item.title}>
                     <Link
                       href={item.href}
-                      className={`group relative inline-block text-lg font-light transition-all duration-200 ${
+                      className={`group relative inline-block p-2 text-lg font-light transition-all duration-200 ${
                         isActive ? "text-primary" : "hover:text-primary"
                       }`}
                     >

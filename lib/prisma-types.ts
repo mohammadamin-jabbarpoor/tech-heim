@@ -1,6 +1,10 @@
 import { Prisma } from "@/app/generated/prisma/client";
 import { SelectedFilters } from "./filter-config";
 
+//
+// ================= PRODUCT CARD =================
+//
+
 export const productCardSelect = {
   id: true,
   title: true,
@@ -8,6 +12,17 @@ export const productCardSelect = {
 
   price: true,
   compareAtPrice: true,
+
+  isNew: true,
+  isBestSeller: true,
+
+  category: {
+    select: {
+      id: true,
+      name: true,
+      slug: true,
+    },
+  },
 
   images: {
     where: {
@@ -20,7 +35,6 @@ export const productCardSelect = {
     },
   },
 
-  category: true,
   createdAt: true,
 } satisfies Prisma.ProductSelect;
 
@@ -28,92 +42,31 @@ export type ProductCardDb = Prisma.ProductGetPayload<{
   select: typeof productCardSelect;
 }>;
 
-export type ProductCardType = Omit<
-  ProductCardDb,
-  "price" | "compareAtPrice"
-> & {
+export type ProductCardDto = Omit<ProductCardDb, "price" | "compareAtPrice"> & {
   price: number;
   compareAtPrice: number | null;
 };
 
-export type SaleProduct = {
-  id: string;
-  title: string;
-  slug: string;
-
-  images: {
-    path: string;
-    alt: string | null;
-  }[];
-
-  price: number;
-  compareAtPrice: number | null;
-  discount: number | null;
-};
-
-export type ProductDetail = {
-  id: string;
-  title: string;
-  slug: string;
-
-  description: string | null;
-
-  price: number;
-  compareAtPrice: number | null;
-
-  stock: number;
-
-  images: {
-    id: string;
-    path: string;
-    alt: string | null;
-    isPrimary: boolean;
-    sortOrder: number;
-  }[];
-
-  options: {
-    id: string;
-    type: string;
-    name: string;
-    value: string | null;
-    isDefault: boolean;
-    sortOrder: number;
-
-    images: {
-      id: string;
-      path: string;
-      alt: string | null;
-      isPrimary: boolean;
-      sortOrder: number;
-    }[];
-  }[];
-
-  specifications: {
-    id: string;
-    title: string;
-    value: string;
-    sortOrder: number;
-  }[];
-
-  category: {
-    id: string;
-    name: string;
-    slug: string;
-  };
-};
+//
+// ================= PRODUCT DETAIL =================
+//
 
 export const productDetailSelect = {
   id: true,
   title: true,
   slug: true,
+
   description: true,
 
   price: true,
   compareAtPrice: true,
+
   stock: true,
 
   isNew: true,
   isBestSeller: true,
+
+  createdAt: true,
 
   category: {
     select: {
@@ -175,22 +128,34 @@ export const productDetailSelect = {
     },
   },
 } satisfies Prisma.ProductSelect;
-export type ProductDetails = Prisma.ProductGetPayload<{
+
+export type ProductDetailDb = Prisma.ProductGetPayload<{
   select: typeof productDetailSelect;
 }>;
-export type ProductDetailsDto = Omit<
-  ProductDetails,
+
+export type ProductDetailDto = Omit<
+  ProductDetailDb,
   "price" | "compareAtPrice"
 > & {
   price: number;
   compareAtPrice: number | null;
 };
 
+//
+// ================= FILTER =================
+//
+
 export type GetFilteredProductsParams = {
   category?: string;
+
   filters?: SelectedFilters;
 
   sale?: boolean;
+
   minPrice?: number;
   maxPrice?: number;
 };
+
+// =======
+
+export type ProductOptionDto = ProductDetailDto["options"][number];

@@ -31,11 +31,6 @@ export const ps5Pro: ProductSeed = {
       alt: "4 Playstation 5 Pro",
       sortOrder: 4,
     },
-    {
-      path: "products/gaming/console/ps5-pro-2tb/5-ps5pro-rgb-withnotice-860.webp",
-      alt: "5 Playstation 5 Pro",
-      sortOrder: 5,
-    },
   ],
 
   specifications: [

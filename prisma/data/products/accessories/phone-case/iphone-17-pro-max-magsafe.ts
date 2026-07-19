@@ -100,18 +100,18 @@ export const iphone17ProMaxMagSafe: ProductSeed = {
       sortOrder: 1,
       images: [
         {
-          path: "products/accessories/phone-case/iphone-17-pro-max-techwoven-magsafe-case/violet/1-iphone-17-pro-max-techwoven-magsafe-purple-860.webp",
+          path: "products/accessories/phone-case/iphone-17-pro-max-techwoven-magsafe-case/voilet/1-iphone-17-pro-max-techwoven-magsafe-purple-860.webp",
           alt: "1 iPhone 17 Pro Max TechWoven MagSafe Case",
           isPrimary: true,
           sortOrder: 1,
         },
         {
-          path: "products/accessories/phone-case/iphone-17-pro-max-techwoven-magsafe-case/violet/2-iphone-17-pro-max-techwoven-magsafe-purple-860.webp",
+          path: "products/accessories/phone-case/iphone-17-pro-max-techwoven-magsafe-case/voilet/2-iphone-17-pro-max-techwoven-magsafe-purple-860.webp",
           alt: "2 iPhone 17 Pro Max TechWoven MagSafe Case",
           sortOrder: 2,
         },
         {
-          path: "products/accessories/phone-case/iphone-17-pro-max-techwoven-magsafe-case/violet/3-iphone-17-pro-max-techwoven-magsafe-purple-860.webp",
+          path: "products/accessories/phone-case/iphone-17-pro-max-techwoven-magsafe-case/voilet/3-iphone-17-pro-max-techwoven-magsafe-purple-860.webp",
           alt: "3 iPhone 17 Pro Max TechWoven MagSafe Case",
           sortOrder: 3,
         },

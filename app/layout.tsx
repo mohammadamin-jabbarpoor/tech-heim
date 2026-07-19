@@ -18,15 +18,18 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${inter.className} w-full min-h-screen mx-auto bg-white`}
-      >
-        <Navbar />
-        <div className="hidden sm:block w-full z-100 h-px bg-linear-to-r from-[#0C68F4]/30 via-[#0C68F4]/70 to-[#0C68F4]/30 scale-x-100" />
-        <div className="mx-auto flex min-h-screen w-full flex-col px-6 sm:px-14.5 md:px-19.5 lg:px-24 xl:px-27 sm:max-w-3xl md:max-w-5xl lg:max-w-7xl xl:max-w-360">
-          <main className="flex-1">{children}</main>
+      <body className={`${inter.className} bg-white`}>
+        <div className="mx-auto flex min-h-screen flex-col">
+          <Navbar />
+
+          <div className="hidden sm:block h-px w-full bg-linear-to-r from-[#0C68F4]/30 via-[#0C68F4]/70 to-[#0C68F4]/30" />
+
+          <main className="mx-auto flex-1 w-full px-6 sm:px-14.5 md:px-19.5 lg:px-24 xl:px-27 sm:max-w-3xl md:max-w-5xl lg:max-w-7xl xl:max-w-360">
+            {children}
+          </main>
+
+          <Footer />
         </div>
-        <Footer />
       </body>
     </html>
   );

@@ -1,10 +1,13 @@
-import CommentsSection from "@/components/detail/CommentsSection/CommentsSection";
-import FrequentlyBoughtSection from "@/components/detail/FrequentlyBoughtSection/FrequentlyBoughtSection";
-import ProductHeroSection from "@/components/detail/ProductHeroSection/ProductHeroSection";
-import ProductTabsSection from "@/components/detail/ProductTabsSection/ProductTabsSection";
-import ReviewsSection from "@/components/detail/ReviewsSection/ReviewsSection";
-import SimilarProductsSection from "@/components/detail/SimilarProductsSection/SimilarProductsSection";
-import { getProductBySlug } from "@/lib/services/product.service";
+import CommentsSection from "@/components/detail/comments-section/CommentsSection";
+import FrequentlyBoughtSection from "@/components/detail/frequentlyBought-section/FrequentlyBoughtSection";
+import ProductHeroSection from "@/components/detail/productHero-section/ProductHeroSection";
+import ProductTabsSection from "@/components/detail/productTabs-section/ProductTabsSection";
+import ReviewsSection from "@/components/detail/reviews-section/ReviewsSection";
+import SimilarProductsSection from "@/components/detail/similarProducts-section/SimilarProductsSection";
+import {
+  getProductBySlug,
+  getSimilarProducts,
+} from "@/lib/services/product.service";
 import { notFound } from "next/navigation";
 
 type Props = {
@@ -22,11 +25,16 @@ async function ProductPage({ params }: Props) {
     notFound();
   }
 
+  const similarProducts = await getSimilarProducts(
+    product.category.id,
+    product.id,
+  );
+
   return (
     <div>
       <ProductHeroSection product={product} />
       <ProductTabsSection product={product} />
-      {/* <SimilarProductsSection /> */}
+      <SimilarProductsSection products={similarProducts} />
       <CommentsSection />
       {/* <FrequentlyBoughtSection /> */}
       <ReviewsSection />

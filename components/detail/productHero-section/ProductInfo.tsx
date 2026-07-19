@@ -1,10 +1,16 @@
 "use client";
 
-import { ProductDetail } from "@/lib/prisma-types";
+import { ProductDetailDto, ProductOptionDto } from "@/lib/prisma-types";
 import { ArrowRight2, Shop, Star1, Truck, Verify } from "iconsax-react";
 import { useState } from "react";
 
-function ProductInfo({ product }: { product: ProductDetail }) {
+type Props = {
+  product: ProductDetailDto;
+  selectedOption: ProductOptionDto | null;
+  onSelectOption: (option: ProductOptionDto) => void;
+};
+
+function ProductInfo({ product, selectedOption, onSelectOption }: Props) {
   const [showMore, setShowMore] = useState(false);
   const visibleSpecifications = showMore
     ? product.specifications
@@ -56,13 +62,15 @@ function ProductInfo({ product }: { product: ProductDetail }) {
                 option.type === "color" ? (
                   <button
                     key={option.id}
-                    className="w-6 h-6 rounded-full border cursor-pointer"
+                    onClick={() => onSelectOption(option)}
+                    className={`w-6 h-6 rounded-full border cursor-pointer ${selectedOption?.id === option.id && "border-none ring-2 ring-primary"}`}
                     style={{ backgroundColor: option.value ?? "#fff" }}
                   />
                 ) : (
                   <button
                     key={option.id}
-                    className="rounded border px-3 py-1 cursor-pointer"
+                    onClick={() => onSelectOption(option)}
+                    className={`rounded border px-3 py-1 cursor-pointer ${selectedOption?.id === option.id && "border-none ring-2 ring-primary"}`}
                   >
                     {option.name}
                   </button>
@@ -78,7 +86,9 @@ function ProductInfo({ product }: { product: ProductDetail }) {
             <div className="flex items-center gap-2">
               <span>•</span>
 
-              <span className="font-medium text-sm text-gray-600">{item.title}</span>
+              <span className="font-medium text-sm text-gray-600">
+                {item.title}
+              </span>
             </div>
 
             <span className="font-medium text-sm">{item.value}</span>

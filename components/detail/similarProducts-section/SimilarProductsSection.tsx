@@ -2,59 +2,14 @@
 
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { SimilarProductType } from "@/app/types";
 import { Navigation } from "swiper/modules";
 import { useRef, useState } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import SimilarProductCard from "./SimilarProductCard";
 import { ArrowCircleLeft, ArrowCircleRight } from "iconsax-react";
+import { ProductCardDto } from "@/lib/prisma-types";
 
-const similarProducts: SimilarProductType[] = [
-  {
-    id: crypto.randomUUID(),
-    image: "/similar-products/macbook-pro-2020.svg",
-    title: "Apple 2020 MacBook Pro Laptop with M2 chip 14-inch",
-    price: 1199,
-    star: 4.5,
-  },
-  {
-    id: crypto.randomUUID(),
-    image: "/similar-products/macbook-air-2022.svg",
-    title: "Apple 2022 MacBook Air Laptop with M2 chip",
-    price: 1299,
-    star: 4.4,
-  },
-  {
-    id: crypto.randomUUID(),
-    image: "/similar-products/macbook-pro-2022.svg",
-    title: "Apple 2022 MacBook Pro Laptop with M2 chip: 15.3-inch",
-    price: 1399,
-    star: 4.5,
-  },
-  {
-    id: crypto.randomUUID(),
-    image: "/similar-products/macbook-air-2020.svg",
-    title: "Apple 2020 MacBook Air Laptop with M2 chip",
-    price: 1099,
-    star: 4.2,
-  },
-  {
-    id: crypto.randomUUID(),
-    image: "/similar-products/macbook-pro-2020.svg",
-    title: "Apple 2020 MacBook Pro Laptop with M2 chip 14-inch",
-    price: 1199,
-    star: 4.5,
-  },
-  {
-    id: crypto.randomUUID(),
-    image: "/similar-products/macbook-air-2022.svg",
-    title: "Apple 2022 MacBook Air Laptop with M2 chip",
-    price: 1299,
-    star: 4.4,
-  },
-];
-
-function SaleSlider() {
+function SaleSlider({ products }: { products: ProductCardDto[] }) {
   const swiperRef = useRef<SwiperType | null>(null);
 
   const [isBeginning, setIsBeginning] = useState(true);
@@ -86,7 +41,7 @@ function SaleSlider() {
           slidesOffsetAfter={18}
           modules={[Navigation]}
         >
-          {similarProducts.map((product) => (
+          {products.map((product) => (
             <SwiperSlide key={product.id}>
               <SimilarProductCard product={product} />
             </SwiperSlide>

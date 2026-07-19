@@ -1,16 +1,19 @@
 import { getImageUrl } from "@/lib/imagekit/index";
-import { SaleProduct } from "@/lib/prisma-types";
+import { ProductCardDto } from "@/lib/prisma-types";
+import { getDiscountPercent } from "@/lib/utils/product";
 import Image from "next/image";
 import Link from "next/link";
 
-function SaleProductCard({ product }: { product: SaleProduct }) {
+function SaleProductCard({ product }: { product: ProductCardDto }) {
   const image = product.images[0];
+
+  const discount = getDiscountPercent(product.price, product.compareAtPrice);
 
   return (
     <Link href={`/products/${product.slug}`}>
       <div className="w-full h-full relative flex flex-col items-center justify-center gap-3 p-2 cursor-pointer rounded bg-white">
         <div className="z-10 absolute top-1 md:top-2 left-0 text-xs font-light text-secondary bg-secondary-100 px-1.5 py-1 rounded-tr-lg rounded-br-lg">
-          -{product.discount}%
+          -{discount}%
         </div>
         <div className="w-21.5 h-18 sm:w-26 sm:h-22.5 md:w-31 md:h-27 lg:w-36 lg:h-31.5 xl:w-42 xl:h-36.5 relative">
           <Image

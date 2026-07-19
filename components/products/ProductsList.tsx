@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { ProductCardType } from "@/lib/prisma-types";
+import { ProductCardDto } from "@/lib/prisma-types";
 import ProductsCategories from "../categories/ProductsCategories";
 
 import ProductsSection from "./ProductsSection";
@@ -13,7 +12,7 @@ import { useProductFilters } from "@/lib/hooks/useProductFilters";
 import SelectedFilterBar from "./filter/SelectedFilterBar";
 
 type ProductsListProps = {
-  products: ProductCardType[];
+  products: ProductCardDto[];
   filters: CategoryFilter[];
 };
 

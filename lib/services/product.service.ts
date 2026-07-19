@@ -4,7 +4,10 @@ import {
   productCardSelect,
   productDetailSelect,
 } from "../prisma-types";
-import { serializeProduct } from "../serializers/product";
+import {
+  serializeProductCard,
+  serializeProductDetail,
+} from "../serializers/product";
 import { Prisma } from "@/app/generated/prisma/client";
 
 export async function getNewProducts() {
@@ -88,7 +91,7 @@ export async function getProductBySlug(slug: string) {
 
   if (!product) return null;
 
-  return serializeProduct(product);
+  return serializeProductDetail(product);
 }
 
 export async function getProducts() {
@@ -182,4 +185,25 @@ export async function getFilteredProducts({
       ? Number(product.compareAtPrice)
       : null,
   }));
+}
+
+export async function getSimilarProducts(
+  categoryId: string,
+  productId: string,
+) {
+  const products = await prisma.product.findMany({
+    where: {
+      categoryId,
+      id: {
+        not: productId,
+      },
+      isActive: true,
+    },
+
+    take: 7,
+
+    select: productCardSelect,
+  });
+
+  return products.map(serializeProductCard);
 }

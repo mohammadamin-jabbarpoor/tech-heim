@@ -1,4 +1,4 @@
-import { ArrowRight2, Link, User } from "iconsax-react";
+import { ArrowRight2, User } from "iconsax-react";
 import Image from "next/image";
 import FloatingActions from "./FloatingActions";
 import {
@@ -7,6 +7,7 @@ import {
   PaymentImagesType,
 } from "@/types/footerTypes";
 import FooterDropdownLinks from "./FooterDropdownLinks";
+import Link from "next/link";
 
 type MobileFooterProps = {
   footerLinks: FooterColumnType[];

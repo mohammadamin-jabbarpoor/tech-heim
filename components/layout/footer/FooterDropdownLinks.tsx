@@ -1,7 +1,8 @@
 "use client";
 
 import { FooterColumnType } from "@/types/footerTypes";
-import { ArrowDown2, ArrowUp2, Link } from "iconsax-react";
+import { ArrowDown2, ArrowUp2 } from "iconsax-react";
+import Link from "next/link";
 import { useState } from "react";
 
 function FooterDropdownLinks({

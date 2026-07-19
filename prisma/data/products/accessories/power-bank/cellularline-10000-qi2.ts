@@ -22,7 +22,7 @@ export const cellularlineQi2: ProductSeed = {
       sortOrder: 2,
     },
     {
-      path: "products/accessories/phone-stand/cellularline-10000-qi2-15w-wireless-mag-stand/3-cellularline-10000-qi2-15w-wireless-mag-stand-860.webp",
+      path: "products/accessories/power-bank/cellularline-10000-qi2-15w-wireless-mag-stand/3-cellularline-10000-qi2-15w-wireless-mag-stand-860.webp",
       alt: "3 Cellularline 10000 Qi2",
       sortOrder: 3,
     },

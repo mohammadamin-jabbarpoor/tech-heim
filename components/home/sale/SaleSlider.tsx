@@ -7,9 +7,9 @@ import SliderNavigation from "./SliderNavigation";
 import { useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import SaleProductCard from "./SaleProductCard";
-import { SaleProduct } from "@/lib/prisma-types";
+import { ProductCardDto } from "@/lib/prisma-types";
 
-function SaleSlider({ products }: { products: SaleProduct[] }) {
+function SaleSlider({ products }: { products: ProductCardDto[] }) {
   const swiperRef = useRef<SwiperType | null>(null);
 
   return (
@@ -32,7 +32,10 @@ function SaleSlider({ products }: { products: SaleProduct[] }) {
           modules={[Navigation]}
         >
           {products.map((product) => (
-            <SwiperSlide className="w-25.5! sm:w-31! md:w-36! lg:w-41! xl:w-46!" key={product.id}>
+            <SwiperSlide
+              className="w-25.5! sm:w-31! md:w-36! lg:w-41! xl:w-46!"
+              key={product.id}
+            >
               <SaleProductCard product={product} />
             </SwiperSlide>
           ))}

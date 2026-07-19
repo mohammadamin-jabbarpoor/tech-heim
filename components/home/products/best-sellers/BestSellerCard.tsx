@@ -3,10 +3,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { getImageUrl } from "@/lib/imagekit/index";
-import { ProductCardType } from "@/lib/prisma-types";
+import { ProductDetailDto } from "@/lib/prisma-types";
 import { getDiscountPercent } from "@/lib/utils/product";
 
-function BestSellerCard({ product }: { product: ProductCardType }) {
+function BestSellerCard({ product }: { product: ProductDetailDto }) {
   const image = product.images.at(0);
 
   if (!image) return null;

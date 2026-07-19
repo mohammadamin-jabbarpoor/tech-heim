@@ -1,9 +1,10 @@
-import { ArrowRight2, Copyright, Link, User } from "iconsax-react";
+import { ArrowRight2, Copyright, User } from "iconsax-react";
 import Image from "next/image";
 
 import { FooterColumnType, PaymentImagesType } from "@/types/footerTypes";
 import { MediaImagesType } from "@/types/footerTypes";
 import FloatingActions from "./FloatingActions";
+import Link from "next/link";
 
 type DesktopFooterProps = {
   footerLinks: FooterColumnType[];

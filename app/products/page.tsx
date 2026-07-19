@@ -33,6 +33,10 @@ async function ProductsPage({ searchParams }: ProductsPageProps) {
 
   const filters = category ? await getFiltersByCategory(category) : [];
 
+  const title = category
+    ? category.charAt(0).toUpperCase() + category.slice(1)
+    : "";
+
   return (
     <div>
       <div className="mt-6 flex">
@@ -40,6 +44,10 @@ async function ProductsPage({ searchParams }: ProductsPageProps) {
           items={[
             { label: "Home", href: "/" },
             { label: "Products", href: "/products" },
+            {
+              label: title,
+              href: `/products?category=${category}`,
+            },
           ]}
         />
       </div>
