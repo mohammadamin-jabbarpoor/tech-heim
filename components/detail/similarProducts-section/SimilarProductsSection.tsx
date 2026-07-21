@@ -9,7 +9,7 @@ import SimilarProductCard from "./SimilarProductCard";
 import { ArrowCircleLeft, ArrowCircleRight } from "iconsax-react";
 import { ProductCardDto } from "@/lib/prisma-types";
 
-function SaleSlider({ products }: { products: ProductCardDto[] }) {
+function SimilarProductsSection({ products }: { products: ProductCardDto[] }) {
   const swiperRef = useRef<SwiperType | null>(null);
 
   const [isBeginning, setIsBeginning] = useState(true);
@@ -59,4 +59,4 @@ function SaleSlider({ products }: { products: ProductCardDto[] }) {
   );
 }
 
-export default SaleSlider;
+export default SimilarProductsSection;

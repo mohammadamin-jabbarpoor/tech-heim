@@ -13,6 +13,8 @@ export const productCardSelect = {
   price: true,
   compareAtPrice: true,
 
+  stock: true,
+
   isNew: true,
   isBestSeller: true,
 
@@ -30,8 +32,39 @@ export const productCardSelect = {
     },
     take: 1,
     select: {
+      id: true,
       path: true,
       alt: true,
+      isPrimary: true,
+      sortOrder: true,
+    },
+  },
+
+  options: {
+    where: {
+      isDefault: true,
+    },
+    take: 1,
+    select: {
+      id: true,
+      type: true,
+      name: true,
+      value: true,
+      isDefault: true,
+
+      images: {
+        where: {
+          isPrimary: true,
+        },
+        take: 1,
+        select: {
+          id: true,
+          path: true,
+          alt: true,
+          isPrimary: true,
+          sortOrder: true,
+        },
+      },
     },
   },
 
@@ -141,6 +174,41 @@ export type ProductDetailDto = Omit<
   compareAtPrice: number | null;
 };
 
+export type CreateCartProduct = {
+  id: string;
+  title: string;
+  slug: string;
+
+  price: number;
+  compareAtPrice: number | null;
+
+  stock: number;
+
+  images: {
+    id: string;
+    path: string;
+    alt: string | null;
+    isPrimary: boolean;
+    sortOrder: number;
+  }[];
+
+  options: {
+    id: string;
+    type: string;
+    name: string;
+    value: string | null;
+    isDefault: boolean;
+
+    images: {
+      id: string;
+      path: string;
+      alt: string | null;
+      isPrimary: boolean;
+      sortOrder: number;
+    }[];
+  }[];
+};
+
 //
 // ================= FILTER =================
 //
@@ -159,3 +227,20 @@ export type GetFilteredProductsParams = {
 // =======
 
 export type ProductOptionDto = ProductDetailDto["options"][number];
+
+export type ProductCartItems = {
+  id: true;
+  title: true;
+  images: {
+    id: true;
+    path: true;
+    alt: true;
+  };
+  options: {
+    id: true;
+    type: true;
+    name: true;
+    value: true;
+    isDefault: true;
+  };
+};

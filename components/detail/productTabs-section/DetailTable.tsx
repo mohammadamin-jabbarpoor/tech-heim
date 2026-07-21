@@ -1,10 +1,10 @@
 "use client";
 
-import { ProductDetail } from "@/lib/prisma-types";
+import { ProductDetailDto } from "@/lib/prisma-types";
 import { ArrowDown2, ArrowUp2 } from "iconsax-react";
 import { useState } from "react";
 
-function DetailTable({product}: {product: ProductDetail}) {
+function DetailTable({ product }: { product: ProductDetailDto }) {
   const [showMore, setShowMore] = useState(false);
 
   const visibleSpecifications = showMore
@@ -35,16 +35,16 @@ function DetailTable({product}: {product: ProductDetail}) {
       </table>
       {!showMore && product.specifications.length > 4 && (
         <button
-        onClick={() => setShowMore((prev) => !prev)}
-        className="flex items-center gap-1 text-primary text-sm"
-      >
-        {showMore ? "Show Less" : "Show More"}
-        {showMore ? (
-          <ArrowUp2 variant="Outline" size={12} color="#0C68F4" />
-        ) : (
-          <ArrowDown2 variant="Outline" size={12} color="#0C68F4" />
-        )}
-      </button>
+          onClick={() => setShowMore((prev) => !prev)}
+          className="flex items-center gap-1 text-primary text-sm"
+        >
+          {showMore ? "Show Less" : "Show More"}
+          {showMore ? (
+            <ArrowUp2 variant="Outline" size={12} color="#0C68F4" />
+          ) : (
+            <ArrowDown2 variant="Outline" size={12} color="#0C68F4" />
+          )}
+        </button>
       )}
     </div>
   );

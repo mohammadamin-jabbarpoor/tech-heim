@@ -40,7 +40,10 @@ function ProductHeroSection({ product }: { product: ProductDetailDto }) {
           selectedOption={selectedOption}
           onSelectOption={setSelectedOption}
         />
-        <ProductPurchaseCard product={product} />
+        <ProductPurchaseCard
+          product={product}
+          selectedOption={selectedOption}
+        />
       </div>
     </div>
   );

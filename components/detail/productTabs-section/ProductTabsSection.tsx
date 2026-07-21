@@ -1,8 +1,8 @@
-import { ProductDetail } from "@/lib/prisma-types";
+import { ProductDetailDto } from "@/lib/prisma-types";
 import DetailTable from "./DetailTable";
 import Tabs from "./Tabs";
 
-function ProductTabsSection({product}: {product: ProductDetail}) {
+function ProductTabsSection({ product }: { product: ProductDetailDto }) {
   return (
     <div className="w-202 mt-12">
       <Tabs />

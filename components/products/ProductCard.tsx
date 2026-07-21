@@ -1,3 +1,5 @@
+"use client";
+
 import { Heart, ShoppingCart, Star1 } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -5,8 +7,26 @@ import Link from "next/link";
 import { getImageUrl } from "@/lib/imagekit/index";
 import { ProductCardDto } from "@/lib/prisma-types";
 import { getDiscountPercent } from "@/lib/utils/product";
+import { useCartStore } from "@/store/cart-store";
+import { createCartItem } from "@/lib/cart/create-cart-item";
+import { toast } from "sonner";
 
 function ProductCard({ product }: { product: ProductCardDto }) {
+  const addItem = useCartStore((state) => state.addItem);
+
+  const handleAddToCart = () => {
+    const defaultOption = product.options[0];
+
+    const cartItem = createCartItem({
+      product,
+      optionId: defaultOption?.id,
+    });
+
+    addItem(cartItem);
+
+    toast.success("Product added to cart");
+  };
+
   const image = product.images.at(0);
 
   if (!image) return null;
@@ -51,13 +71,13 @@ function ProductCard({ product }: { product: ProductCardDto }) {
             alt={image.alt ?? product.title}
             className="object-contain"
             sizes="
-              (max-width:475px) 132px,
-              (max-width:640px) 156px,
-              (max-width:768px) 180px,
-              (max-width:1024px) 204px,
-              (max-width:1280px) 228px,
-              256px
-            "
+            (max-width:475px) 132px,
+            (max-width:640px) 156px,
+            (max-width:768px) 180px,
+            (max-width:1024px) 204px,
+            (max-width:1280px) 228px,
+            256px
+          "
           />
         </div>
 
@@ -68,8 +88,8 @@ function ProductCard({ product }: { product: ProductCardDto }) {
             {title}
           </p>
 
-          <div className="flex items-end justify-between group-hover:hidden transition-all duration-300">
-            <div className="flex flex-col h-12">
+          <div className="flex items-end justify-between transition-all duration-300 group-hover:hidden">
+            <div className="flex h-12 flex-col">
               {hasDiscount ? (
                 <>
                   <span className="text-[10px] text-gray-600 line-through md:text-xs lg:text-sm">
@@ -100,11 +120,21 @@ function ProductCard({ product }: { product: ProductCardDto }) {
             </div>
           </div>
 
-          <div className="w-full items-center justify-between hidden group-hover:flex group-hover:mt-1 transition-all duration-300">
-            <button className="flex gap-2 px-4 py-2.5 border-2 border-primary-500 rounded-lg">
-              <ShoppingCart variant="Outline" size={24} color="#063A88" />
-              <span className="text-primary-500">Add to cart</span>
+          <div className="hidden w-full items-center justify-between transition-all duration-300 group-hover:mt-1 group-hover:flex">
+            <button
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                handleAddToCart();
+              }}
+              className="flex gap-2 rounded-lg border-2 border-primary-500 text-primary-500 hover:text-white hover:bg-primary-500 px-4 py-2.5 cursor-pointer transition-all duration-300"
+            >
+              <ShoppingCart variant="Outline" size={24} color="currentColor" />
+
+              <span className="">Add to cart</span>
             </button>
+
             <span className="flex items-center justify-center gap-1">
               <Heart variant="Outline" size={24} color="#063A88" />
             </span>

@@ -37,7 +37,7 @@ function Stepper() {
 
   return (
     <div
-      className="grid items-center w-100 max-w-3xl mx-auto py-8 pb-12"
+      className="grid items-center w-100 max-w-3xl mx-auto py-8 mb-12"
       style={{ gridTemplateColumns }}
     >
       {steps.map((step, index) => (

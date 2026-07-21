@@ -63,14 +63,22 @@ function ProductInfo({ product, selectedOption, onSelectOption }: Props) {
                   <button
                     key={option.id}
                     onClick={() => onSelectOption(option)}
-                    className={`w-6 h-6 rounded-full border cursor-pointer ${selectedOption?.id === option.id && "border-none ring-2 ring-primary"}`}
+                    className={`w-6 h-6 rounded-full border cursor-pointer ${
+                      selectedOption?.id === option.id
+                        ? "border-none ring-2 ring-primary"
+                        : ""
+                    }`}
                     style={{ backgroundColor: option.value ?? "#fff" }}
                   />
                 ) : (
                   <button
                     key={option.id}
                     onClick={() => onSelectOption(option)}
-                    className={`rounded border px-3 py-1 cursor-pointer ${selectedOption?.id === option.id && "border-none ring-2 ring-primary"}`}
+                    className={`w-16 h-8 border cursor-pointer rounded ${
+                      selectedOption?.id === option.id
+                        ? "border-none ring-2 ring-primary"
+                        : ""
+                    }`}
                   >
                     {option.name}
                   </button>

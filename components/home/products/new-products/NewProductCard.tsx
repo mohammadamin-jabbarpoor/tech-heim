@@ -1,13 +1,11 @@
 import { getImageUrl } from "@/lib/imagekit/index";
-import { ProductCardType } from "@/lib/prisma-types";
+import { ProductCardDto } from "@/lib/prisma-types";
 import { Heart, Star1 } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
 
-function NewProductCard({ product }: { product: ProductCardType }) {
+function NewProductCard({ product }: { product: ProductCardDto }) {
   const image = product.images[0];
-
-  const price = Number(product.price);
   const rating = (Math.random() * 2 + 3).toFixed(1);
   return (
     <Link href={`/products/${product.slug}`}>
@@ -38,7 +36,7 @@ function NewProductCard({ product }: { product: ProductCardType }) {
           <div className="flex items-center justify-between">
             <span className="font-light text-xs md:text-sm lg:text-base xl:text-lg">
               $
-              {`${price?.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+              {`${product.price?.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
             </span>
             <span className="flex items-center justify-center gap-1">
               <Star1

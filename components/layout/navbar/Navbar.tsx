@@ -28,6 +28,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { useCartStore, selectCartCount } from "@/store/cart-store";
 
 const userItems = [
   {
@@ -118,6 +119,8 @@ function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogIn, setIsLogIn] = useState(true);
+
+  const cartCount = useCartStore(selectCartCount);
 
   const pathname = usePathname();
 
@@ -270,12 +273,20 @@ function Navbar() {
             color="black"
             className="m-2 cursor-pointer"
           />
-          <Bag
-            variant="Outline"
-            size={24}
-            color="black"
-            className="m-2 cursor-pointer"
-          />
+          <Link href="/cart" className="relative">
+            <Bag
+              variant="Outline"
+              size={24}
+              color="black"
+              className="m-2 cursor-pointer"
+            />
+
+            {cartCount > 0 && (
+              <span className="absolute -bottom-1 right-0 flex h-5 w-5 items-center justify-center rounded-full bg-primary font-light text-xs text-white">
+                {cartCount}
+              </span>
+            )}
+          </Link>
 
           {isLogIn ? (
             <div

@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar/Navbar";
 import Footer from "@/components/layout/footer/Footer";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,6 +28,19 @@ export default function RootLayout({
           <main className="mx-auto flex-1 w-full px-6 sm:px-14.5 md:px-19.5 lg:px-24 xl:px-27 sm:max-w-3xl md:max-w-5xl lg:max-w-7xl xl:max-w-360">
             {children}
           </main>
+
+          <Toaster
+            position="bottom-right"
+            richColors
+            style={{
+              right: "110px",
+            }}
+            toastOptions={{
+              style: {
+                width: "312px",
+              },
+            }}
+          />
 
           <Footer />
         </div>

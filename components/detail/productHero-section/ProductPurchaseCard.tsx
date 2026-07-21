@@ -1,21 +1,28 @@
 "use client";
 
-import { ProductDetail } from "@/lib/prisma-types";
+import { createCartItem } from "@/lib/cart/create-cart-item";
+import { ProductDetailDto, ProductOptionDto } from "@/lib/prisma-types";
 import { getDiscountPercent } from "@/lib/utils/product";
+import { useCartStore } from "@/store/cart-store";
 import { DiscountShape, ShoppingCart } from "iconsax-react";
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { toast } from "sonner";
 
-function ProductPurchaseCard({ product }: { product: ProductDetail }) {
+type PurchaseCardProps = {
+  product: ProductDetailDto;
+  selectedOption: ProductOptionDto | null;
+};
+
+function ProductPurchaseCard({ product, selectedOption }: PurchaseCardProps) {
   const [paymentType, setPaymentType] = useState<"full" | "installment">(
     "full",
   );
   const [selectedMonth, setSelectedMonth] = useState<number | null>(3);
 
-  const discount = getDiscountPercent(
-    Number(product.price),
-    Number(product.compareAtPrice),
-  );
+  const addItem = useCartStore((state) => state.addItem);
+
+  const discount = getDiscountPercent(product.price, product.compareAtPrice);
 
   const months = [3, 6, 12, 18];
 
@@ -24,6 +31,17 @@ function ProductPurchaseCard({ product }: { product: ProductDetail }) {
 
     return product.price / selectedMonth;
   }, [paymentType, selectedMonth, product.price]);
+
+  const handleAddToCart = () => {
+    const cartItem = createCartItem({
+      product,
+      optionId: selectedOption?.id,
+    });
+
+    addItem(cartItem);
+
+    toast.success("Product added to cart");
+  };
 
   return (
     <div className="w-78 p-6 flex flex-col gap-4 rounded-lg shadow-[-2px_2px_15px_-1px_rgba(113,113,113,0.12)]">
@@ -125,7 +143,8 @@ function ProductPurchaseCard({ product }: { product: ProductDetail }) {
       </div>
       <div className="flex flex-col gap-2">
         <Link
-          href="/products"
+          href="/checkout"
+          onClick={handleAddToCart}
           className="group flex items-center justify-center gap-0 py-3.5 bg-primary hover:bg-primary-600 text-white rounded-lg transition-all duration-300"
         >
           <span className="translate-x-3 group-hover:translate-x-0 transition-all duration-300">
@@ -140,7 +159,8 @@ function ProductPurchaseCard({ product }: { product: ProductDetail }) {
           />
         </Link>
         <Link
-          href="/products"
+          href=""
+          onClick={handleAddToCart}
           className="group flex items-center justify-center gap-0 py-3.5 border-2 border-primary text-primary hover:border-primary-600 hover:text-primary-600 rounded-lg transition-all duration-300"
         >
           <span className="translate-x-3 group-hover:translate-x-0 transition-all duration-300">
