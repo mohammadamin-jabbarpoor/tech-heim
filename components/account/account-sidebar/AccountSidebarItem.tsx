@@ -3,7 +3,8 @@
 import { IconProps } from "iconsax-react";
 import { ComponentType } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { authClient } from "@/lib/auth/auth-client";
 
 export type SidebarItem = {
   id: string;
@@ -18,6 +19,7 @@ type SidebarItemProps = {
 
 function AccountSidebarItem({ item }: SidebarItemProps) {
   const pathname = usePathname();
+  const router = useRouter();
 
   const isActive = item.href === pathname;
 
@@ -25,10 +27,18 @@ function AccountSidebarItem({ item }: SidebarItemProps) {
 
   const logout = item.id === "logout";
 
+  const handleLogout = async () => {
+    await authClient.signOut();
+
+    router.push("/");
+    router.refresh();
+  };
+
   if (!item.href) {
     return (
       <button
         type="button"
+        onClick={logout ? handleLogout : undefined}
         className={`relative flex w-full items-center justify-start gap-4 px-3.5 py-6 font-light text-xl cursor-pointer  ${
           logout ? "text-error" : "text-black hover:text-primary"
         }`}

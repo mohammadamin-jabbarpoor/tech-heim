@@ -14,7 +14,10 @@ function AuthModal({ onClose }: AuthModalProps) {
   const [mode, setMode] = useState<AuthMode>("login");
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
+    <div
+      onClick={onClose}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
+    >
       <div className="w-150 rounded-xl bg-white py-10 px-20">
         <div className="w-full h-11 flex border-b-2 border-b-gray-300">
           <button
