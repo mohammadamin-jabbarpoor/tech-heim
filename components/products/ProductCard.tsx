@@ -1,6 +1,6 @@
 "use client";
 
-import { Heart, ShoppingCart, Star1 } from "iconsax-react";
+import { ShoppingCart, Star1 } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -10,12 +10,14 @@ import { getDiscountPercent } from "@/lib/utils/product";
 import { useCartStore } from "@/store/cart-store";
 import { createCartItem } from "@/lib/cart/create-cart-item";
 import { toast } from "sonner";
+import WishlistButton from "../ui/WishlistButton";
+import { createWishlistItem } from "@/lib/wishlist/create-wishlist-item";
 
 function ProductCard({ product }: { product: ProductCardDto }) {
   const addItem = useCartStore((state) => state.addItem);
 
   const handleAddToCart = () => {
-    const defaultOption = product.options[0];
+    const defaultOption = product.options.find((option) => option.isDefault);
 
     const cartItem = createCartItem({
       product,
@@ -136,7 +138,7 @@ function ProductCard({ product }: { product: ProductCardDto }) {
             </button>
 
             <span className="flex items-center justify-center gap-1">
-              <Heart variant="Outline" size={24} color="#063A88" />
+              <WishlistButton product={createWishlistItem(product)} />
             </span>
           </div>
         </div>

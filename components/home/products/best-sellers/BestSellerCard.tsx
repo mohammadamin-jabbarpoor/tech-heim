@@ -1,10 +1,12 @@
-import { Heart, Star1 } from "iconsax-react";
+import { Star1 } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
 
 import { getImageUrl } from "@/lib/imagekit/index";
 import { ProductDetailDto } from "@/lib/prisma-types";
 import { getDiscountPercent } from "@/lib/utils/product";
+import WishlistButton from "@/components/ui/WishlistButton";
+import { createWishlistItem } from "@/lib/wishlist/create-wishlist-item";
 
 function BestSellerCard({ product }: { product: ProductDetailDto }) {
   const image = product.images.at(0);
@@ -38,8 +40,8 @@ function BestSellerCard({ product }: { product: ProductDetailDto }) {
   return (
     <Link href={`/products/${product.slug}`}>
       <div className="relative group flex h-46.5 w-37 flex-col items-center justify-between gap-2 rounded-lg p-2 shadow-[-2px_2px_15px_-1px_rgba(113,113,113,0.12)] transition-shadow hover:shadow-[-2px_2px_20px_-1px_rgba(113,113,113,0.2)] xs:h-54.5 xs:w-44 sm:h-62.5 sm:w-51 md:h-70.5 md:w-58 lg:h-78.5 lg:w-65 lg:gap-4 lg:p-4 xl:h-86.75 xl:w-72">
-        <div className="absolute left-4 top-4 hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:block">
-          <Heart variant="Outline" size={24} color="#063A88" />
+        <div className="absolute z-10 left-4 top-4 hidden opacity-0 transition-opacity duration-300 group-hover:opacity-100 lg:block">
+          <WishlistButton product={createWishlistItem(product)} />
         </div>
 
         {discount && (

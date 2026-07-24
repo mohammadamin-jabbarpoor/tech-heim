@@ -3,18 +3,14 @@
 import {
   ArrowDown2,
   ArrowUp2,
-  Bag2,
   Camera,
   CloseCircle,
   Data,
   Devices,
-  DollarCircle,
   Game,
   HambergerMenu,
   Headphone,
-  Heart,
   LoginCurve,
-  LogoutCurve,
   Mobile,
   Monitor,
   SearchNormal1,
@@ -162,7 +158,7 @@ function MobileNavbar() {
                   <Link href="/faq">FAQ</Link>
                 </li>
                 <li>
-                  <Link href="/contact">Contact us</Link>
+                  <Link href="/contact-us">Contact us</Link>
                 </li>
               </ul>
             </div>

@@ -25,7 +25,7 @@ const navItem = [
   },
   {
     title: "Contact Us",
-    href: "/contact",
+    href: "/contact-us",
   },
 ];
 
