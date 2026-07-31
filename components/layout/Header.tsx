@@ -5,19 +5,19 @@ function Header() {
     <>
       <section className="mt-6 flex sm:hidden">
         <div className="relative">
-          <div className="absolute top-4 w-xl">
-            <h1 className="text-2xl md:text-[36px] lg:text-[48px] xl:text-[64px] font-semibold text-primary-700">
+          <div className="absolute top-4 w-max">
+            <h1 className="text-2xl font-semibold text-primary-700">
               Tech Heim
             </h1>
-            <p className="absolute top-9 text-[9px] md:text-[18px] lg:text-[24px] xl:text-[32px] font-medium text-primary-700">
+            <p className="absolute top-9 text-[9px] font-medium text-primary-700">
               "Join the{" "}
-              <span className="md:text-[18px] lg:text-[24px] xl:text-[32px] font-medium text-secondary">
+              <span className="font-medium text-secondary">
                 digital revolution
               </span>
               "
             </p>
           </div>
-          <button className="absolute w-23 top-29 text-[10px] md:text-sm lg:text-base px-3 md:px-12 lg:px-18 xl:px-23.5 py-2.5 md:py-2.5 lg:py-3.5 xl:py-4.5 bg-secondary hover:bg-secondary-500 transition-all duration-300 text-white rounded-[4.5px] cursor-pointer">
+          <button className="absolute w-23 top-29 text-[10px] px-3 py-2.5 bg-secondary text-white rounded-[4.5px]">
             Explore More
           </button>
         </div>

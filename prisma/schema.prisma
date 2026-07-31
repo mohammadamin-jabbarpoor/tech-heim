@@ -25,6 +25,7 @@ model User {
   updatedAt     DateTime  @updatedAt
   sessions      Session[]
   accounts      Account[]
+  cart          Cart?
 
   @@map("user")
 }
@@ -113,8 +114,9 @@ model Product {
   categoryId String
   category   Category @relation(fields: [categoryId], references: [id])
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  cartItems CartItem[]
 }
 
 model ProductImage {
@@ -143,7 +145,8 @@ model ProductOption {
   productId String
   product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
 
-  images ProductImage[]
+  images    ProductImage[]
+  cartItems CartItem[]
 
   createdAt DateTime @default(now())
 
@@ -161,4 +164,35 @@ model ProductSpecification {
 
   productId String
   product   Product @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
+model Cart {
+  id        String     @id @default(cuid())
+  userId    String     @unique
+  user      User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  items     CartItem[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  @@map("cart")
+}
+
+model CartItem {
+  id        String  @id @default(cuid())
+  cartId    String
+  productId String
+  optionId  String?
+  quantity  Int     @default(1)
+
+  cart    Cart           @relation(fields: [cartId], references: [id], onDelete: Cascade)
+  product Product        @relation(fields: [productId], references: [id], onDelete: Cascade)
+  option  ProductOption? @relation(fields: [optionId], references: [id], onDelete: SetNull)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([cartId, productId, optionId])
+  @@index([productId])
+  @@index([optionId])
+  @@map("cart_item")
 }

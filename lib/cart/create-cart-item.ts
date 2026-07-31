@@ -4,11 +4,17 @@ import { CartItemType } from "@/types/cart";
 type CreateCartItemParams = {
   product: CreateCartProduct;
   optionId?: string;
+  payment: {
+    type: "full" | "installment";
+    months?: number;
+    installmentPrice?: number;
+  };
 };
 
 export function createCartItem({
   product,
   optionId,
+  payment,
 }: CreateCartItemParams): CartItemType {
   const selectedOption = product.options.find(
     (option) => option.id === optionId,
@@ -40,6 +46,10 @@ export function createCartItem({
     stock: product.stock,
 
     quantity: 1,
+
+    payment,
+
+    optionId: selectedOption?.id,
 
     option: selectedOption
       ? {

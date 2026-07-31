@@ -1,3 +1,4 @@
+import { shippingMethods } from "@/data/shipping-methods";
 import { create } from "zustand";
 
 type ShippingMethod = {
@@ -14,7 +15,7 @@ type CheckoutStore = {
 };
 
 export const useCheckoutStore = create<CheckoutStore>((set) => ({
-  shippingMethod: null,
+  shippingMethod: shippingMethods.find((method) => method.id === "express")!,
 
   setShippingMethod: (method) =>
     set({

@@ -2,7 +2,6 @@ export type CartItemType = {
   cartItemId: string;
 
   id: string;
-
   title: string;
   slug: string;
 
@@ -16,6 +15,14 @@ export type CartItemType = {
 
   stock: number;
   quantity: number;
+
+  payment: {
+    type: "full" | "installment";
+    months?: number;
+    installmentPrice?: number;
+  };
+
+  optionId?: string;
 
   option?: {
     id: string;

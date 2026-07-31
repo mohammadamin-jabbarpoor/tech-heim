@@ -3,7 +3,7 @@
 import { useAddressStore } from "@/store/address-store";
 import { Edit } from "iconsax-react";
 import { useState } from "react";
-import AddressModal from "./AddressModal";
+import AddressModal from "./address-modal/AddressModal";
 
 function UserField() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +11,9 @@ function UserField() {
 
   return (
     <div className="flex flex-col gap-2">
-      <label className="font-medium text-xl">User</label>
+      <label className="font-medium text-gray-800 lg:text-black text-base md:text-lg lg:text-xl mb-2 lg:mb-3">
+        User
+      </label>
       <button
         type="button"
         onClick={() => setIsOpen(true)}
@@ -20,7 +22,7 @@ function UserField() {
         <input
           value={address?.fullName ?? "Full Name"}
           readOnly
-          className="w-150 font-light text-sm text-gray-900 outline-none pointer-events-none"
+          className="w-full pr-2.5 font-light text-sm text-gray-900 outline-none pointer-events-none"
         />
         <Edit variant="Outline" size={24} color="#0C68F4" />
       </button>

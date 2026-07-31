@@ -43,13 +43,15 @@ function ReviewsSection() {
   const [isBeginning, setIsBeginning] = useState(true);
   const [isEnd, setIsEnd] = useState(false);
   return (
-    <div className="mt-12 mb-14">
-      <h3 className="font-medium text-xl mb-8">Frequently bought together</h3>
+    <div className="mt-6 lg:mt-12 mb-6 lg:mb-14">
+      <h3 className="font-medium text-sm md:text-base lg:text-xl mb-3 md:mb-6 lg:mb-8">
+        Reviews
+      </h3>
       <div className="relative">
         <button
           disabled={isBeginning}
           onClick={() => swiperRef.current?.slidePrev()}
-          className={`absolute -left-4 top-1/2 -translate-y-1/2 z-10 cursor-pointer ${isBeginning ? "opacity-50" : "opacity-100"}`}
+          className={`hidden lg:block absolute -left-4 top-1/2 -translate-y-1/2 z-10 cursor-pointer ${isBeginning ? "opacity-50" : "opacity-100"}`}
         >
           <ArrowCircleLeft size={32} variant="Bold" color="#9E9E9E" />
         </button>
@@ -63,14 +65,21 @@ function ReviewsSection() {
             setIsBeginning(swiper.isBeginning);
             setIsEnd(swiper.isEnd);
           }}
-          slidesPerView={3}
-          spaceBetween={24}
-          className="px-12"
+          slidesPerView="auto"
+          spaceBetween={8}
+          breakpoints={{
+            640: {
+              spaceBetween: 16,
+            },
+            1024: {
+              spaceBetween: 24,
+            },
+          }}
           slidesOffsetAfter={18}
           modules={[Navigation]}
         >
           {reviewsProducts.map((product) => (
-            <SwiperSlide key={product.id}>
+            <SwiperSlide key={product.id} className="w-37! md:w-68! lg:w-98!">
               <ReviewsCard product={product} />
             </SwiperSlide>
           ))}
@@ -78,7 +87,7 @@ function ReviewsSection() {
         <button
           disabled={isEnd}
           onClick={() => swiperRef.current?.slideNext()}
-          className={`absolute -right-1 top-1/2 -translate-y-1/2 z-10 cursor-pointer ${isEnd ? "opacity-50" : "opacity-100"}`}
+          className={`hidden lg:block absolute -right-1 top-1/2 -translate-y-1/2 z-10 cursor-pointer ${isEnd ? "opacity-50" : "opacity-100"}`}
         >
           <ArrowCircleRight size={32} variant="Bold" color="#9E9E9E" />
         </button>

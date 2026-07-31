@@ -22,26 +22,27 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
               {isLast ? (
                 <Link
                   href={item.href!}
-                  className="font-light text-lg text-primary underline underline-offset-8"
+                  className="font-light text-sx md:text-sm lg:text-base xl:text-lg text-primary underline underline-offset-8"
                 >
                   {item.label}
                 </Link>
               ) : (
                 <Link
                   href={item.href!}
-                  className="font-light text-lg text-gray-600 hover:text-primary transition-colors"
+                  className="font-light text-sx md:text-sm lg:text-lg text-gray-600 hover:text-primary transition-colors"
                 >
                   {item.label}
                 </Link>
               )}
 
               {!isLast && (
-                <ArrowRight2
-                  className="mt-0.5"
-                  variant="Outline"
-                  size={24}
-                  color="#717171"
-                />
+                <div className="w-4 h-4 lg:w-6 lg:h-6 mb-1">
+                  <ArrowRight2
+                    className="mt-0.5"
+                    variant="Outline"
+                    color="#717171"
+                  />
+                </div>
               )}
             </li>
           );

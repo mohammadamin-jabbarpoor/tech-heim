@@ -1,4 +1,4 @@
-import AuthModal from "@/components/auth/AuthModal";
+import AuthModal from "@/components/auth/desktop/AuthModal";
 
 import { useState } from "react";
 import CartButton from "./CartButton";
@@ -10,7 +10,7 @@ type NavbarActionsProps = {
   session: typeof authClient.$Infer.Session | null;
 };
 
-function NavbarActions({ session }: NavbarActionsProps) {
+function DesktopNavbarActions({ session }: NavbarActionsProps) {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   return (
@@ -32,4 +32,4 @@ function NavbarActions({ session }: NavbarActionsProps) {
   );
 }
 
-export default NavbarActions;
+export default DesktopNavbarActions;

@@ -37,7 +37,7 @@ function PaymentForm() {
         </div>
       </div>
       <div className="mt-3.5">
-        <Link href="/cart" className="px-7.5 py-3.5 text-primary">
+        <Link href="/checkout" className="px-7.5 py-3.5 text-primary">
           Return to checkout
         </Link>
       </div>

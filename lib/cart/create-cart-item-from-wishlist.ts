@@ -19,6 +19,7 @@ export function createCartItemFromWishlist(item: WishlistItem): CartItemType {
 
     quantity: 1,
 
+    optionId: item.option?.id,
     option: item.option,
   };
 }

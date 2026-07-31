@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient } from "@/lib/auth/auth-client";
 import {
   RegisterFormValues,
   registerSchema,
@@ -7,16 +8,20 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Eye, EyeSlash, Facebook, Google, Key, Sms, User } from "iconsax-react";
 import Link from "next/link";
-import { useForm } from "react-hook-form";
-import { authClient } from "@/lib/auth/auth-client";
 import { useState } from "react";
+import { useForm } from "react-hook-form";
 
 type RegisterFormProps = {
   onClose: () => void;
   onSwitchToLogin: () => void;
+  onClick: () => void;
 };
 
-function RegisterForm({ onClose, onSwitchToLogin }: RegisterFormProps) {
+function MobileRegisterForm({
+  onClose,
+  onSwitchToLogin,
+  onClick,
+}: RegisterFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -267,30 +272,31 @@ function RegisterForm({ onClose, onSwitchToLogin }: RegisterFormProps) {
           {isLoading ? "Creating Account..." : "Create Account"}
         </button>
       </form>
-      <div className="flex items-center justify-between gap-2">
-        <div className="w-38 h-[0.5px] bg-gray-400" />
-        <p>Or Sign Up with</p>
-        <div className="w-38 h-[0.5px] bg-gray-400" />
+      <div className="w-full flex items-center gap-2">
+        <div className="h-[0.5px] flex-1 bg-gray-400" />
+        <p className="font-light text-sm text-gray-900">Or Log In with</p>
+        <div className="h-[0.5px] flex-1 bg-gray-400" />
       </div>
-      <div className="w-full flex items-center justify-between">
-        <Link
-          href=""
-          className="w-52 flex items-center justify-center py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-lg transition-all duration-300"
+      <div className="w-full flex items-center justify-between gap-4">
+        <button
+          type="button"
+          onClick={onClick}
+          className="w-full flex items-center justify-center py-2 border-2 border-primary text-primary text-sm rounded-lg"
         >
           <div className="flex items-center gap-2">
             <Google variant="Bold" size={24} color="currentColor" />
             <p>Google</p>
           </div>
-        </Link>
-        <Link
-          href=""
-          className="w-52 flex items-center justify-center py-3 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-lg transition-all duration-300"
+        </button>
+        <button
+          type="button"
+          className="w-full flex items-center justify-center py-2 border-2 border-primary text-primary text-sm rounded-lg"
         >
           <div className="flex items-center gap-2">
             <Facebook variant="Bold" size={24} color="currentColor" />
             <p>Facebook</p>
           </div>
-        </Link>
+        </button>
       </div>
       <div className="flex items-center gap-3">
         <p className="font-light text-gray-600">Already have an account ?</p>
@@ -306,4 +312,4 @@ function RegisterForm({ onClose, onSwitchToLogin }: RegisterFormProps) {
   );
 }
 
-export default RegisterForm;
+export default MobileRegisterForm;

@@ -13,7 +13,7 @@ import NewProducts from "@/components/home/products/new-products/NewProducts";
 
 export default function Home() {
   return (
-    <div>
+    <div className="w-full">
       <Header />
       <Categories />
       <SaleSection />

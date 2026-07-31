@@ -26,30 +26,30 @@ function ProductGallery({ product, selectedOption }: Props) {
   }, [images]);
 
   return (
-    <div>
-      <div className="relative w-110 h-110">
+    <div className="w-full sm:w-78 lg:w-110 flex items-center justify-center flex-col">
+      <div className="relative w-78 h-50 lg:w-110 lg:h-75">
         <Image
           src={getImageUrl(selectedImage.path)}
           alt={selectedImage.alt ?? product.title}
           fill
           className="object-contain"
-          sizes="440px"
+          sizes="(max-width: 768px) 200px, 440px"
           loading="eager"
         />
       </div>
-      <div className="mt-6 flex gap-3">
+      <div className="flex lg:mt-6 gap-2 lg:gap-3">
         {images.map((image) => (
           <button
             key={image.id}
             onClick={() => setSelectedImage(image)}
-            className={`relative h-18 w-18 rounded-lg border border-gray-300 overflow-hidden transition-all duration-200 cursor-pointer ${selectedImage.id === image.id ? "border-primary-500 ring-2 ring-primary-200" : "border-gray-300 hover:border-primary-300"}`}
+            className={`relative h-10 w-10 sm:h-15 sm:w-15 lg:h-18 lg:w-18 rounded-lg border border-gray-300 overflow-hidden transition-all duration-200 cursor-pointer ${selectedImage.id === image.id ? "border-primary-500 ring-2 ring-primary-200" : "border-gray-300 hover:border-primary-300"}`}
           >
             <Image
               src={getImageUrl(image.path)}
               alt={image.alt ?? product.title}
               fill
               className="object-contain p-1"
-              sizes="72px"
+              sizes="(max-width: 768px) 60px, 72px"
             />
           </button>
         ))}

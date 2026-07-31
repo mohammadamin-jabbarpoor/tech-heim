@@ -44,8 +44,6 @@ function ProductCard({ product }: { product: ProductCardDto }) {
     ? getDiscountPercent(price, compareAtPrice)
     : null;
 
-  const rating = (Math.random() * 2 + 3).toFixed(1);
-
   const title =
     product.title.length > 26
       ? `${product.title.slice(0, 26)}...`
@@ -117,7 +115,7 @@ function ProductCard({ product }: { product: ProductCardDto }) {
               />
 
               <span className="text-xs font-medium text-primary-500 md:text-sm lg:text-base">
-                {rating}
+                4.1
               </span>
             </div>
           </div>

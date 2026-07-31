@@ -6,9 +6,9 @@ export type StepLabelProps = {
 };
 
 const statusStyles = {
-  completed: "font-medium text-sm text-primary-75",
-  current: "font-medium text-sm text-primary",
-  upcoming: "font-medium text-sm text-gray-500",
+  completed: "font-medium text-xs md:text-sm text-primary-75",
+  current: "font-medium text-xs md:text-sm text-primary",
+  upcoming: "font-medium text-xs md:text-sm text-gray-500",
 } as const;
 
 function StepLabel({ title, status }: StepLabelProps) {

@@ -3,12 +3,12 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { getImageUrl } from "@/lib/imagekit/index";
-import { ProductDetailDto } from "@/lib/prisma-types";
+import { ProductCardDto } from "@/lib/prisma-types";
 import { getDiscountPercent } from "@/lib/utils/product";
 import WishlistButton from "@/components/ui/WishlistButton";
 import { createWishlistItem } from "@/lib/wishlist/create-wishlist-item";
 
-function BestSellerCard({ product }: { product: ProductDetailDto }) {
+function BestSellerCard({ product }: { product: ProductCardDto }) {
   const image = product.images.at(0);
 
   if (!image) return null;
@@ -23,8 +23,6 @@ function BestSellerCard({ product }: { product: ProductDetailDto }) {
   const discount = hasDiscount
     ? getDiscountPercent(price, compareAtPrice)
     : null;
-
-  const rating = (Math.random() * 2 + 3).toFixed(1);
 
   const title =
     product.title.length > 26
@@ -101,7 +99,7 @@ function BestSellerCard({ product }: { product: ProductDetailDto }) {
               />
 
               <span className="text-xs font-medium text-primary-500 md:text-sm lg:text-base">
-                {rating}
+                4.2
               </span>
             </div>
           </div>

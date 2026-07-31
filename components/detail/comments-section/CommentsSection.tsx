@@ -1,13 +1,17 @@
 import CommentsForm from "./CommentsForm";
 import CommentsList from "./CommentsList";
+import MobileCommentSlider from "./MobileCommentSlider";
 
 function CommentsSection() {
   return (
     <div className="mt-12">
       <h3 className="font-medium text-xl mb-6">Comments</h3>
-      <div className="flex gap-6">
+      <div className="hidden lg:flex gap-6">
         <CommentsForm />
         <CommentsList />
+      </div>
+      <div className="block lg:hidden">
+        <MobileCommentSlider />
       </div>
     </div>
   );

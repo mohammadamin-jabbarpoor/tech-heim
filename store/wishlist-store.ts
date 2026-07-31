@@ -17,6 +17,8 @@ export type WishlistItem = {
 
   stock: number;
 
+  optionId?: string;
+
   option?: {
     id: string;
     type: string;

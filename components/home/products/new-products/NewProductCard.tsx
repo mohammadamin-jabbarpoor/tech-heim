@@ -8,7 +8,7 @@ import Link from "next/link";
 
 function NewProductCard({ product }: { product: ProductCardDto }) {
   const image = product.images[0];
-  const rating = (Math.random() * 2 + 3).toFixed(1);
+
   return (
     <Link href={`/products/${product.slug}`}>
       <div className="relative group w-37 h-46.5 xs:w-44 xs:h-54.5 sm:w-51 sm:h-62.5 md:w-58 md:h-70.5 lg:w-65 lg:h-78.5 xl:w-72 xl:h-86.75 flex flex-col justify-between items-center gap-2 p-2 lg:gap-4 lg:p-4 rounded-lg cursor-pointer shadow-[-2px_2px_15px_-1px_rgba(113,113,113,0.12)] hover:shadow-[-2px_2px_20px_-1px_rgba(113,113,113,0.2)]">
@@ -47,7 +47,7 @@ function NewProductCard({ product }: { product: ProductCardDto }) {
                 color="#063A88"
               />
               <p className="font-medium text-xs md:text-sm lg:text-base text-primary-500">
-                {rating}
+                4.4
               </p>
             </span>
           </div>

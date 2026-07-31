@@ -50,12 +50,10 @@ function UserMenu({ session, onLoginClick }: UserMenuProps) {
 
     try {
       const { error } = await authClient.signOut();
-
       if (error) {
         toast.error(error.message || "Failed to log out");
         return;
       }
-
       setIsOpen(false);
 
       toast.success("You have been logged out successfully");
@@ -72,7 +70,7 @@ function UserMenu({ session, onLoginClick }: UserMenuProps) {
       <button
         type="button"
         onClick={onLoginClick}
-        className="cursor-pointer rounded-lg bg-primary px-4 py-3.5 text-white transition-all duration-300 hover:bg-primary-600"
+        className="hidden md:block cursor-pointer rounded-lg bg-primary px-2.5 py-2 lg:px-4 lg:py-3.5 text-white text-sm lg:text-base transition-all duration-300 hover:bg-primary-600"
       >
         Login / Sign Up
       </button>

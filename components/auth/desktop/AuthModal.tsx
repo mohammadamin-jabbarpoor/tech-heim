@@ -3,6 +3,8 @@
 import { useState } from "react";
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
+import { authClient } from "@/lib/auth/auth-client";
+import { toast } from "sonner";
 
 type AuthMode = "login" | "register";
 
@@ -13,12 +15,21 @@ type AuthModalProps = {
 function AuthModal({ onClose }: AuthModalProps) {
   const [mode, setMode] = useState<AuthMode>("login");
 
+  const handleGoogleLogin = async () => {
+    await authClient.signIn.social({
+      provider: "google",
+    });
+  };
+
   return (
     <div
       onClick={onClose}
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/40"
     >
-      <div className="w-150 rounded-xl bg-white py-10 px-20">
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="w-150 rounded-xl bg-white py-10 px-20"
+      >
         <div className="w-full h-11 flex border-b-2 border-b-gray-300">
           <button
             onClick={() => setMode("login")}
@@ -46,11 +57,13 @@ function AuthModal({ onClose }: AuthModalProps) {
           <LoginForm
             onClose={onClose}
             onSwitchToRegister={() => setMode("register")}
+            onClick={handleGoogleLogin}
           />
         ) : (
           <RegisterForm
             onClose={onClose}
             onSwitchToLogin={() => setMode("login")}
+            onClick={handleGoogleLogin}
           />
         )}
       </div>

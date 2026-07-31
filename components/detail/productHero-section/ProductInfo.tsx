@@ -14,18 +14,17 @@ function ProductInfo({ product, selectedOption, onSelectOption }: Props) {
   const [showMore, setShowMore] = useState(false);
   const visibleSpecifications = showMore
     ? product.specifications
-    : product.specifications.slice(0, 5);
-  const rating = (Math.random() * 2 + 3).toFixed(1);
+    : product.specifications.slice(0, 4);
 
   return (
-    <div className="w-85.75 flex flex-col gap-8 mx-6">
-      <div className="flex flex-col gap-6">
+    <div className="w-full sm:w-81.75 flex flex-col gap-4 md:gap-8 md:mx-6">
+      <div className="flex flex-col gap-3 md:gap-6">
         <div className="flex flex-col gap-2">
-          <h2 className="font-medium text-xl">{product.title}</h2>
+          <h2 className="font-medium text-lg md:text-xl">{product.title}</h2>
           <div className="flex items-center justify-start gap-4">
             <div className="flex items-center justify-center gap-0.5 p-1 bg-primary-500 rounded">
               <Star1 variant="Bold" size={16} color="white" />
-              <span className="font-medium text-xs text-white">{rating}</span>
+              <span className="font-medium text-xs text-white">4.1</span>
             </div>
             <div className="w-px h-6.25 bg-gray-600" />
             <span className="font-medium text-sm text-gray-600">
@@ -33,7 +32,7 @@ function ProductInfo({ product, selectedOption, onSelectOption }: Props) {
             </span>
           </div>
         </div>
-        <div className="w-81.75 flex items-center justify-between">
+        <div className="w-full flex items-center justify-between">
           <div className="flex items-center gap-1">
             <Shop variant="Outline" size={20} color="#0C68F4" />
             <span className="font-medium text-xs text-gray-600">
@@ -53,6 +52,7 @@ function ProductInfo({ product, selectedOption, onSelectOption }: Props) {
             </span>
           </div>
         </div>
+        <div className="block sm:hidden w-full border-b border-b-gray-200 my-3" />
         {product.options.length > 0 && (
           <div className="flex items-center justify-between">
             <span className="font-light">Select {product.options[0].type}</span>
@@ -88,18 +88,19 @@ function ProductInfo({ product, selectedOption, onSelectOption }: Props) {
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-4">
+      <div className="block sm:hidden w-full border-b border-b-gray-200 my-3" />
+      <div className="flex flex-col gap-2 md:gap-4">
         {visibleSpecifications.map((item) => (
           <div key={item.id} className="grid grid-cols-2 items-center">
             <div className="flex items-center gap-2">
               <span>•</span>
 
-              <span className="font-medium text-sm text-gray-600">
+              <span className="font-medium text-xs sm:text-sm text-gray-600">
                 {item.title}
               </span>
             </div>
 
-            <span className="font-medium text-sm">{item.value}</span>
+            <span className="font-medium text-xs sm:text-sm">{item.value}</span>
           </div>
         ))}
 

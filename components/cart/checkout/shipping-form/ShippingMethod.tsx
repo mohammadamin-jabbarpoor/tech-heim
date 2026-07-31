@@ -1,41 +1,16 @@
 "use client";
 
+import { shippingMethods } from "@/data/shipping-methods";
 import { useCheckoutStore } from "@/store/checkout-store";
-
-type ShippingMethodType = {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-};
-
-const shippingMethods: ShippingMethodType[] = [
-  {
-    id: "free",
-    name: "Free Shipping",
-    description: "7-30 business days",
-    price: 0,
-  },
-  {
-    id: "regular",
-    name: "Regular Shipping",
-    description: "3-14 business days",
-    price: 7.5,
-  },
-  {
-    id: "express",
-    name: "Express Shipping",
-    description: "1-3 business days",
-    price: 22.5,
-  },
-];
 
 function ShippingMethod() {
   const { shippingMethod, setShippingMethod } = useCheckoutStore();
 
   return (
     <div>
-      <p className="font-medium text-xl mb-3">Shipping Method</p>
+      <p className="font-medium text-gray-800 lg:text-black text-base md:text-lg lg:text-xl mb-2 lg:mb-3">
+        Shipping Method
+      </p>
 
       <div className="flex flex-col gap-2">
         {shippingMethods.map((method) => {
