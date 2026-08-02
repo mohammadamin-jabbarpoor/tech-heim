@@ -16,7 +16,9 @@ function FilterSectionHeader({
       onClick={onToggle}
       className="w-full flex items-center justify-between p-4 cursor-pointer"
     >
-      <span className="font-light text-xl">{title}</span>
+      <span className="font-light text-base md:text-lg lg:text-xl">
+        {title}
+      </span>
       <ArrowDown2
         size={18}
         color="#292D32"

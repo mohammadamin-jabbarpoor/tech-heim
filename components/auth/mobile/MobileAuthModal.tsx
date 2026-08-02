@@ -23,8 +23,8 @@ function MobileAuthModal({ onClose }: AuthModalProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-50 w-full h-dvh bg-white overflow-y-auto">
-      <div className="w-full mt-4 mb-40 px-6">
+    <div className="fixed inset-0 z-999 bg-white overflow-y-auto">
+      <div className="w-full max-w-full mx-auto mt-4 mb-40 px-6">
         <div onClick={onClose} className="flex justify-start">
           <ArrowLeft variant="Outline" size={24} color="#717171" />
         </div>

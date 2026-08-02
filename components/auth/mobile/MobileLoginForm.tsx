@@ -219,7 +219,7 @@ function MobileLoginForm({
         <button
           type="button"
           onClick={onClick}
-          className="w-full flex items-center justify-center py-2 border-2 border-primary text-primary text-sm rounded-lg"
+          className="w-1/2 flex items-center justify-center py-2 border-2 border-primary text-primary text-sm rounded-lg"
         >
           <div className="flex items-center gap-2">
             <Google variant="Bold" size={24} color="currentColor" />
@@ -228,7 +228,7 @@ function MobileLoginForm({
         </button>
         <button
           type="button"
-          className="w-full flex items-center justify-center py-2 border-2 border-primary text-primary text-sm rounded-lg"
+          className="w-1/2 flex items-center justify-center py-2 border-2 border-primary text-primary text-sm rounded-lg"
         >
           <div className="flex items-center gap-2">
             <Facebook variant="Bold" size={24} color="currentColor" />

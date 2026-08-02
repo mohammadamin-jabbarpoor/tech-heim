@@ -1,97 +1,69 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { ArrowDown2 } from "iconsax-react";
-import ProductCard from "./ProductCard";
-import { ProductCardDto } from "@/lib/prisma-types";
+
+import { CategoryFilter } from "@/lib/filter-config";
+import { PriceRange, ProductCardDto } from "@/lib/prisma-types";
+import ProductsToolbar from "./toolbar/ProductsToolbar";
+import EmptyProducts from "./grid/EmptyProducts";
+import ProductsGrid from "./grid/ProductsGrid";
+import { SortValue } from "@/data/sortOptions";
 
 type ProductsSectionProps = {
   products: ProductCardDto[];
+  filters: CategoryFilter[];
+  priceRange: PriceRange;
+  hasFilters: boolean;
+  onClear: () => void;
 };
 
-const options = [
-  "Most relevant",
-  "Price: ascending",
-  "Price: descending",
-  "New Arrivals",
-];
-
-function ProductsSection({ products }: ProductsSectionProps) {
-  const [open, setOpen] = useState(false);
-  const [selected, setSelected] = useState("Most relevant");
+export default function ProductsSection({
+  products,
+  filters,
+  priceRange,
+  hasFilters,
+  onClear,
+}: ProductsSectionProps) {
+  const [selectedSort, setSelectedSort] = useState<SortValue>("relevant");
 
   const sortedProducts = useMemo(() => {
     const sorted = [...products];
 
-    switch (selected) {
-      case "Price: ascending":
-        return sorted.sort((a, b) => Number(a.price) - Number(b.price));
+    switch (selectedSort) {
+      case "price-asc":
+        return sorted.sort((a, b) => a.price - b.price);
 
-      case "Price: descending":
-        return sorted.sort((a, b) => Number(b.price) - Number(a.price));
+      case "price-desc":
+        return sorted.sort((a, b) => b.price - a.price);
 
-      case "New Arrivals":
+      case "newest":
         return sorted.sort(
           (a, b) =>
             new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
         );
 
-      case "Most relevant":
       default:
         return sorted;
     }
-  }, [products, selected]);
+  }, [products, selectedSort]);
 
   return (
-    <div className="flex-19">
-      <div className="flex justify-end">
-        <div className="relative min-w-51">
-          <div
-            onClick={() => setOpen(!open)}
-            className="flex items-center p-2 shadow-[-2px_2px_15px_-1px_rgba(113,113,113,0.12)]"
-          >
-            <span className="font-light text-lg">Sort by:</span>
+    <>
+      <ProductsToolbar
+        productsCount={products.length}
+        filters={filters}
+        priceRange={priceRange}
+        hasFilters={hasFilters}
+        onClear={onClear}
+        selectedSort={selectedSort}
+        onSortChange={setSelectedSort}
+      />
 
-            <button className="flex items-center gap-1 font-light text-lg ml-1 whitespace-nowrap">
-              {selected}
-
-              <ArrowDown2
-                size={18}
-                color="black"
-                className={`transition-transform duration-200 ${
-                  open ? "rotate-180" : ""
-                }`}
-              />
-            </button>
-          </div>
-
-          {open && (
-            <div className="absolute left-0 top-full z-20 w-full bg-white shadow-[-2px_2px_15px_-1px_rgba(113,113,113,0.12)]">
-              {options.map((option) => (
-                <button
-                  key={option}
-                  onClick={() => {
-                    setSelected(option);
-                    setOpen(false);
-                  }}
-                  className="block w-full text-left px-2 py-3 font-light text-lg hover:bg-gray-50"
-                >
-                  {option}
-                </button>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-      <div className="mt-8">
-        <div className="grid grid-cols-3 gap-6">
-          {sortedProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-        </div>
-      </div>
-    </div>
+      {sortedProducts.length === 0 ? (
+        <EmptyProducts />
+      ) : (
+        <ProductsGrid products={sortedProducts} />
+      )}
+    </>
   );
 }
-
-export default ProductsSection;

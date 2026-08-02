@@ -11,7 +11,29 @@ export function useProductFilters() {
 
   const selectedCategory = searchParams.get("category") ?? "All";
 
-  const hasFilters = Object.keys(selectedFilters).length > 0;
+  const minPrice = searchParams.get("minPrice");
+  const maxPrice = searchParams.get("maxPrice");
+
+  const selectedMinPrice = minPrice !== null ? Number(minPrice) : null;
+
+  const selectedMaxPrice = maxPrice !== null ? Number(maxPrice) : null;
+
+  const hasPriceFilter = selectedMinPrice !== null || selectedMaxPrice !== null;
+
+  const hasSaleFilter = searchParams.get("sale") === "true";
+
+  const hasAttributeFilters = Object.keys(selectedFilters).length > 0;
+
+  const hasFilters = hasPriceFilter || hasSaleFilter || hasAttributeFilters;
+
+  const setPriceRange = (min: number, max: number) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set("minPrice", String(min));
+    params.set("maxPrice", String(max));
+
+    router.push(`/products?${params.toString()}`);
+  };
 
   const clearFilters = () => {
     const params = new URLSearchParams(searchParams);
@@ -51,6 +73,9 @@ export function useProductFilters() {
     selectedFilters,
     selectedCategory,
     hasFilters,
+    selectedMinPrice,
+    selectedMaxPrice,
+    setPriceRange,
     clearFilters,
     toggleFilter,
   };

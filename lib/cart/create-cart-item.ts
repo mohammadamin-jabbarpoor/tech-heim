@@ -4,7 +4,7 @@ import { CartItemType } from "@/types/cart";
 type CreateCartItemParams = {
   product: CreateCartProduct;
   optionId?: string;
-  payment: {
+  payment?: {
     type: "full" | "installment";
     months?: number;
     installmentPrice?: number;

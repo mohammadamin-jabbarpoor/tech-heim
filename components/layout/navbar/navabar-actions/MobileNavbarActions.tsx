@@ -3,7 +3,7 @@
 import MobileAuthModal from "@/components/auth/mobile/MobileAuthModal";
 import { authClient } from "@/lib/auth/auth-client";
 import { LoginCurve } from "iconsax-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import UserMenu from "./UserMenu";
 import CartButton from "./CartButton";
 
@@ -13,6 +13,18 @@ type NavbarActionsProps = {
 
 function MobileNavbarActions({ session }: NavbarActionsProps) {
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (isAuthModalOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isAuthModalOpen]);
 
   return (
     <>

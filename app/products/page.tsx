@@ -1,10 +1,14 @@
 import Breadcrumb from "@/components/ui/BreadCrumb";
-
 import Services from "@/components/home/services/Services";
-import { getFiltersByCategory } from "@/lib/services/filter.service";
-import { getFilteredProducts } from "@/lib/services/product.service";
-import { parseSelectedFilters } from "@/lib/utils/filter";
 import ProductsList from "@/components/products/ProductsList";
+
+import { getFiltersByCategory } from "@/lib/services/filter.service";
+import {
+  getFilteredProducts,
+  getPriceRangeByCategory,
+} from "@/lib/services/product.service";
+
+import { parseSelectedFilters } from "@/lib/utils/filter";
 
 type ProductsPageProps = {
   searchParams: Promise<{
@@ -16,22 +20,28 @@ type ProductsPageProps = {
   }>;
 };
 
-async function ProductsPage({ searchParams }: ProductsPageProps) {
+export default async function ProductsPage({
+  searchParams,
+}: ProductsPageProps) {
   const params = await searchParams;
 
   const { category, sale, minPrice, maxPrice, ...filterParams } = params;
 
   const selectedFilters = parseSelectedFilters(filterParams);
 
-  const products = await getFilteredProducts({
-    category,
-    filters: selectedFilters,
-    sale: sale === "true",
-    minPrice: minPrice ? Number(minPrice) : undefined,
-    maxPrice: maxPrice ? Number(maxPrice) : undefined,
-  });
+  const [products, priceRange, filters] = await Promise.all([
+    getFilteredProducts({
+      category,
+      filters: selectedFilters,
+      sale: sale === "true",
+      minPrice: minPrice ? Number(minPrice) : undefined,
+      maxPrice: maxPrice ? Number(maxPrice) : undefined,
+    }),
 
-  const filters = category ? await getFiltersByCategory(category) : [];
+    getPriceRangeByCategory(category),
+
+    category ? getFiltersByCategory(category) : Promise.resolve([]),
+  ]);
 
   const title = category
     ? category.charAt(0).toUpperCase() + category.slice(1)
@@ -42,8 +52,14 @@ async function ProductsPage({ searchParams }: ProductsPageProps) {
       <div className="mt-6 flex">
         <Breadcrumb
           items={[
-            { label: "Home", href: "/" },
-            { label: "Products", href: "/products" },
+            {
+              label: "Home",
+              href: "/",
+            },
+            {
+              label: "Products",
+              href: "/products",
+            },
             {
               label: title,
               href: `/products?category=${category}`,
@@ -51,10 +67,14 @@ async function ProductsPage({ searchParams }: ProductsPageProps) {
           ]}
         />
       </div>
-      <ProductsList products={products} filters={filters} />
+
+      <ProductsList
+        products={products}
+        filters={filters}
+        priceRange={priceRange}
+      />
+
       <Services />
     </div>
   );
 }
-
-export default ProductsPage;

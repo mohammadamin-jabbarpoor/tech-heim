@@ -1,6 +1,6 @@
 "use client";
 
-import { shippingMethods } from "@/data/shipping-methods";
+import { shippingMethods } from "@/data/shippingMethods";
 import { useCheckoutStore } from "@/store/checkout-store";
 
 function ShippingMethod() {

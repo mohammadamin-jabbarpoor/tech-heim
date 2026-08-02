@@ -23,7 +23,7 @@ function SelectedFilterBar() {
           <button
             key={`${title}-${value}`}
             onClick={() => toggleFilter(title, value)}
-            className="min-w-33 flex items-center justify-between gap-2 rounded-lg border-2 px-2 py-2 text-sm"
+            className="min-w-18 md:min-w-16 lg:min-w-33 flex items-center justify-between gap-2 rounded-lg border md:border-2 px-2 py-3 lg:py-2 text-xs lg:text-sm"
           >
             <span>{value}</span>
             <CloseSquare size={24} color="black" />

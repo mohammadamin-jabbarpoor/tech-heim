@@ -1,30 +1,26 @@
 "use client";
 
-import { ProductCardDto } from "@/lib/prisma-types";
 import ProductsCategories from "../categories/ProductsCategories";
-
 import ProductsSection from "./ProductsSection";
-import FiltersSidbar from "./filter/FiltersSidbar";
-import { CategoryFilter, SelectedFilters } from "@/lib/filter-config";
-import { useRouter, useSearchParams } from "next/navigation";
-import { getSelectedFiltersFromSearchParams } from "@/lib/utils/filter";
-import { useProductFilters } from "@/lib/hooks/useProductFilters";
 import SelectedFilterBar from "./filter/SelectedFilterBar";
+
+import { useProductFilters } from "@/lib/hooks/useProductFilters";
+import { CategoryFilter } from "@/lib/filter-config";
+import { ProductCardDto, PriceRange } from "@/lib/prisma-types";
+import FilterSidebar from "./filter/FilterSidebar";
 
 type ProductsListProps = {
   products: ProductCardDto[];
   filters: CategoryFilter[];
+  priceRange: PriceRange;
 };
 
-function ProductsList({ products, filters }: ProductsListProps) {
-  const {
-    searchParams,
-    router,
-    selectedCategory,
-    selectedFilters,
-    hasFilters,
-    clearFilters,
-  } = useProductFilters();
+export default function ProductsList({
+  products,
+  filters,
+  priceRange,
+}: ProductsListProps) {
+  const { hasFilters, clearFilters } = useProductFilters();
 
   return (
     <>
@@ -32,17 +28,26 @@ function ProductsList({ products, filters }: ProductsListProps) {
 
       <SelectedFilterBar />
 
-      <div className="flex gap-6">
-        <FiltersSidbar
-          filters={filters}
-          onClearFilters={clearFilters}
-          hasFilters={hasFilters}
-        />
+      <div className="mt-6 w-full flex justify-between gap-6">
+        <aside className="hidden lg:block lg:flex-6">
+          <FilterSidebar
+            filters={filters}
+            priceRange={priceRange}
+            hasFilters={hasFilters}
+            onClear={clearFilters}
+          />
+        </aside>
 
-        <ProductsSection products={products} />
+        <main className="w-full lg:flex-19">
+          <ProductsSection
+            products={products}
+            filters={filters}
+            priceRange={priceRange}
+            hasFilters={hasFilters}
+            onClear={clearFilters}
+          />
+        </main>
       </div>
     </>
   );
 }
-
-export default ProductsList;

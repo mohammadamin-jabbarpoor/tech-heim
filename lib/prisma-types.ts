@@ -244,3 +244,13 @@ export type ProductCartItems = {
     isDefault: true;
   };
 };
+
+export type PriceRange = {
+  minPrice: number;
+  maxPrice: number;
+};
+
+export type FilteredProductsResult = {
+  products: ProductCardDto[];
+  priceRange: PriceRange;
+};

@@ -12,6 +12,7 @@
     "@hookform/resolvers": "^5.4.0",
     "@prisma/adapter-neon": "^7.8.0",
     "@prisma/client": "^7.8.0",
+    "@radix-ui/react-slider": "^1.4.7",
     "better-auth": "^1.6.23",
     "dotenv": "^17.4.2",
     "iconsax-react": "^0.0.8",

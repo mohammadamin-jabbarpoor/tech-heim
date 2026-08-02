@@ -1,4 +1,4 @@
-import { shippingMethods } from "@/data/shipping-methods";
+import { shippingMethods } from "@/data/shippingMethods";
 import { create } from "zustand";
 
 type ShippingMethod = {

@@ -1,8 +1,4 @@
-import { SelectedFilters } from "@/lib/filter-config";
 import { useProductFilters } from "@/lib/hooks/useProductFilters";
-import { getSelectedFiltersFromSearchParams } from "@/lib/utils/filter";
-import { useSearchParams } from "next/navigation";
-import { useRouter } from "next/router";
 
 type FilterSectionContentProps = {
   title: string;

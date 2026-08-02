@@ -16,7 +16,7 @@ export type CartItemType = {
   stock: number;
   quantity: number;
 
-  payment: {
+  payment?: {
     type: "full" | "installment";
     months?: number;
     installmentPrice?: number;

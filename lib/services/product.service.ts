@@ -187,6 +187,35 @@ export async function getFilteredProducts({
   }));
 }
 
+export async function getPriceRangeByCategory(category?: string) {
+  const where: Prisma.ProductWhereInput = {
+    isActive: true,
+  };
+
+  if (category && category !== "All") {
+    where.category = {
+      slug: category,
+    };
+  }
+
+  const result = await prisma.product.aggregate({
+    where,
+
+    _min: {
+      price: true,
+    },
+
+    _max: {
+      price: true,
+    },
+  });
+
+  return {
+    minPrice: Number(result._min.price ?? 0),
+    maxPrice: Number(result._max.price ?? 0),
+  };
+}
+
 export async function getSimilarProducts(
   categoryId: string,
   productId: string,

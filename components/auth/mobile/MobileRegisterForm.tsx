@@ -48,9 +48,7 @@ function MobileRegisterForm({
         return;
       }
 
-      console.log(result);
-
-      // onClose();
+      onClose();
     } catch (error) {
       console.error(error);
     } finally {
