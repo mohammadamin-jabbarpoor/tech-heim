@@ -1,0 +1,55 @@
+export const razerProTypeUltra = {
+  title: "Razer Pro Type Ultra",
+  slug: "razer-pro-type-ultra",
+  description:
+    "The silent mechanical switches and sound dampening foam on this keyboard offer a quiet, distraction-free experience when at the office or WFH, while its super durable design lasts for up to 80 million clicks.Keycaps : ABS plastic - With soft touch coating.",
+  price: "194.00",
+  stock: 29,
+  category: "gaming",
+
+  images: [
+    {
+      path: "products/gaming/keyboard/razer-pro-type-ultra/1-Razer-Pro-Type-Ultra---US-Layout-860.webp",
+      alt: "1 Razer Pro Type Ultra",
+      isPrimary: true,
+      sortOrder: 1,
+    },
+    {
+      path: "products/gaming/keyboard/razer-pro-type-ultra/2-Razer-Pro-Type-Ultra---US-Layout-860.webp",
+      alt: "2 Razer Pro Type Ultra",
+      sortOrder: 2,
+    },
+    {
+      path: "products/gaming/keyboard/razer-pro-type-ultra/3-Razer-Pro-Type-Ultra---US-Layout-860.webp",
+      alt: "3 Razer Pro Type Ultra",
+      sortOrder: 3,
+    },
+    {
+      path: "products/gaming/keyboard/razer-pro-type-ultra/4-Razer-Pro-Type-Ultra---US-Layout-860.webp",
+      alt: "4 Razer Pro Type Ultra",
+      sortOrder: 4,
+    },
+  ],
+
+  attributes: {
+    brand: "razer",
+
+    "product-type": "keyboard",
+
+    platform: {
+      value: "Windows, macOS",
+    },
+
+    connectivity: {
+      value: "USB-C, Bluetooth, 2.4GHz",
+    },
+
+    "switch-type": {
+      value: "Razer Yellow Mechanical",
+    },
+
+    "form-factor": {
+      value: "Full Size",
+    },
+  },
+};
