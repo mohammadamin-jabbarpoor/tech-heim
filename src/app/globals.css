@@ -91,3 +91,7 @@ input:-webkit-autofill:active {
   );
   animation: skeleton-shimmer 1.5s infinite;
 }
+
+.swiper-wrapper {
+  transition-timing-function: linear !important;
+}

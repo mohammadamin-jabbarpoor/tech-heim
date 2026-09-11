@@ -7,7 +7,7 @@ import BlogCard from "./BlogCard";
 
 function Blogs() {
   return (
-    <section className="mt-12">
+    <section className="mt-6 xl:mt-12">
       <SectionHeader value="Our Blogs" />
       <Line />
       <div className="grid xl:grid-cols-3 xl:grid-rows-2 gap-6">

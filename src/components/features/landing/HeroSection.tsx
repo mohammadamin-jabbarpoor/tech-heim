@@ -24,11 +24,11 @@ function HeroSection() {
 
         <div className="ml-auto">
           <Image
+            priority
             src="/mobile-header-banner.svg"
             alt="banner"
             width={209}
             height={157}
-            loading="eager"
           />
         </div>
       </section>
@@ -53,19 +53,11 @@ function HeroSection() {
 
         <div className="flex-[0.6] flex justify-end">
           <Image
-            src="/mobile-header-banner.svg"
-            alt="banner"
-            width={209}
-            height={157}
-            loading="eager"
-            className="block sm:hidden"
-          />
-          <Image
+            priority
             src="/header-banner.svg"
             alt="banner"
             width={728}
             height={443}
-            loading="eager"
             className="hidden sm:block"
           />
         </div>
