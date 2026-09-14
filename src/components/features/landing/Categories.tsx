@@ -2,7 +2,7 @@
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { categoryItems } from "@/src/lib/constants/categoryItems";
+import { landingCategoryItems } from "@/src/lib/constants/landingCategoryItems";
 import Category from "./Category";
 
 import "swiper/css";
@@ -12,7 +12,7 @@ function Categories() {
   return (
     <>
       <section className="hidden lg:flex items-center justify-center gap-5 lg:gap-6 w-full md:h-37 lg:h-43 xl:h-49 mt-6 lg:mt-12">
-        {categoryItems.map((category) => (
+        {landingCategoryItems.map((category) => (
           <Category key={category.id} category={category} />
         ))}
       </section>
@@ -24,7 +24,7 @@ function Categories() {
           modules={[Navigation]}
           className="w-full"
         >
-          {categoryItems.map((category) => (
+          {landingCategoryItems.map((category) => (
             <SwiperSlide className="w-auto!" key={category.id}>
               <Category category={category} />
             </SwiperSlide>
