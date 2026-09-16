@@ -34,28 +34,11 @@ export const razerHuntsmanMini = {
 
   attributes: {
     brand: "razer",
-
     "product-type": "keyboard",
-
-    platform: {
-      value: "Windows",
-    },
-
-    connectivity: {
-      value: "USB-C",
-    },
-
-    "switch-type": {
-      value: "Razer Optical",
-    },
-
-    "form-factor": {
-      value: "60%",
-    },
-
-    "polling-rate": {
-      value: "1000",
-      unit: "Hz",
-    },
+    platform: "Windows",
+    connectivity: "USB-C",
+    "switch-type": "Razer Optical",
+    "form-factor": "60%",
+    "polling-rate": "1000 Hz",
   },
 };

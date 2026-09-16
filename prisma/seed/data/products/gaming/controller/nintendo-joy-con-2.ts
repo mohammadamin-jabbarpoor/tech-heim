@@ -29,19 +29,9 @@ export const nintendoController = {
 
   attributes: {
     brand: "nintendo",
-
     "product-type": "controller",
-
-    platform: {
-      value: "Nintendo Switch 2",
-    },
-
-    connectivity: {
-      value: "Wireless",
-    },
-
-    "switch-type": {
-      value: "Hall Effect",
-    },
+    platform: "Nintendo Switch 2",
+    connectivity: "Wireless",
+    "switch-type": "Hall Effect",
   },
 };

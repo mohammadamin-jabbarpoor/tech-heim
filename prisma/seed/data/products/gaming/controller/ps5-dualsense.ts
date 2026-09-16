@@ -127,20 +127,9 @@ export const ps5Dualsense = {
 
   attributes: {
     brand: "sony",
-
     "product-type": "controller",
-
-    platform: {
-      value: "PlayStation 5, Windows, macOS, mobile",
-    },
-
-    connectivity: {
-      value: "Bluetooth, USB-C",
-    },
-
-    weight: {
-      value: "280",
-      unit: "g",
-    },
+    platform: "PlayStation 5, Windows, macOS, mobile",
+    connectivity: "Bluetooth, USB-C",
+    weight: "280 g",
   },
 };

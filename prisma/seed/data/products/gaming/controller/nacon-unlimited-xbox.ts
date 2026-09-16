@@ -38,24 +38,10 @@ export const naconXbox = {
 
   attributes: {
     brand: "nacon",
-
     "product-type": "controller",
-
-    platform: {
-      value: "Xbox Series X|S, Xbox One, Windows",
-    },
-
-    connectivity: {
-      value: "Wireless, Bluetooth, USB",
-    },
-
-    "switch-type": {
-      value: "Hall Effect",
-    },
-
-    "battery-life": {
-      value: "10+",
-      unit: "hours",
-    },
+    platform: "Xbox Series X|S, Xbox One, Windows",
+    connectivity: "Wireless, Bluetooth, USB",
+    "switch-type": "Hall Effect",
+    "battery-life": "10+ hours",
   },
 };

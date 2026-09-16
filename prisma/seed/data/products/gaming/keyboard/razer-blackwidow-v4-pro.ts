@@ -34,28 +34,11 @@ export const razerBlackWidowV4 = {
 
   attributes: {
     brand: "razer",
-
     "product-type": "keyboard",
-
-    platform: {
-      value: "Windows",
-    },
-
-    connectivity: {
-      value: "USB",
-    },
-
-    "switch-type": {
-      value: "Razer Green / Yellow / Orange",
-    },
-
-    "form-factor": {
-      value: "Full Size",
-    },
-
-    "polling-rate": {
-      value: "8000",
-      unit: "Hz",
-    },
+    platform: "Windows",
+    connectivity: "USB",
+    "switch-type": "Razer Green / Yellow / Orange",
+    "form-factor": "Full Size",
+    "polling-rate": "8000 Hz",
   },
 };

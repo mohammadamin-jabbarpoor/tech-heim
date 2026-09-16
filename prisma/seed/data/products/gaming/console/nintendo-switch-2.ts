@@ -44,44 +44,14 @@ export const nintendoSwitch2 = {
 
   attributes: {
     brand: "nintendo",
-
     "product-type": "console",
-
-    platform: {
-      value: "Nintendo Switch 2",
-    },
-
-    connectivity: {
-      value: "Wi-Fi 6, Bluetooth, wired LAN via dock",
-    },
-
-    storage: {
-      value: "256",
-      unit: "GB",
-    },
-
-    "screen-size": {
-      value: "7.9",
-      unit: "inch",
-    },
-
-    resolution: {
-      value: "1920 × 1080",
-    },
-
-    "refresh-rate": {
-      value: "120",
-      unit: "Hz",
-    },
-
-    weight: {
-      value: "534",
-      unit: "g",
-    },
-
-    "battery-life": {
-      value: "2–6.5",
-      unit: "hours",
-    },
+    platform: "Nintendo Switch 2",
+    connectivity: "Wi-Fi 6, Bluetooth, wired LAN via dock",
+    storage: "256 GB",
+    "screen-size": "7.9 inch",
+    resolution: "1920 × 1080",
+    "refresh-rate": "120 Hz",
+    weight: "534 g",
+    "battery-life": "2–6.5 hours",
   },
 };

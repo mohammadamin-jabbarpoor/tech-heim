@@ -30,28 +30,11 @@ export const razerBasilikV3Pro = {
 
   attributes: {
     brand: "razer",
-
     "product-type": "mouse",
-
-    platform: {
-      value: "Windows",
-    },
-
-    connectivity: {
-      value: "2.4GHz, Bluetooth, USB-C",
-    },
-
-    sensor: {
-      value: "Focus Pro 30K Optical Sensor",
-    },
-
-    dpi: {
-      value: "30000",
-    },
-
-    weight: {
-      value: "112",
-      unit: "g",
-    },
+    platform: "Windows",
+    connectivity: "2.4GHz, Bluetooth, USB-C",
+    sensor: "Focus Pro 30K Optical Sensor",
+    dpi: "30000",
+    weight: "112 g",
   },
 };

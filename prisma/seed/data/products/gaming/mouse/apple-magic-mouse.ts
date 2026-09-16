@@ -80,20 +80,9 @@ export const appleMagicMouse = {
 
   attributes: {
     brand: "apple",
-
     "product-type": "mouse",
-
-    platform: {
-      value: "Mac, iPad",
-    },
-
-    connectivity: {
-      value: "Bluetooth, USB-C",
-    },
-
-    weight: {
-      value: "99",
-      unit: "g",
-    },
+    platform: "Mac, iPad",
+    connectivity: "Bluetooth, USB-C",
+    weight: "99 g",
   },
 };

@@ -33,23 +33,10 @@ export const razerProTypeUltra = {
 
   attributes: {
     brand: "razer",
-
     "product-type": "keyboard",
-
-    platform: {
-      value: "Windows, macOS",
-    },
-
-    connectivity: {
-      value: "USB-C, Bluetooth, 2.4GHz",
-    },
-
-    "switch-type": {
-      value: "Razer Yellow Mechanical",
-    },
-
-    "form-factor": {
-      value: "Full Size",
-    },
+    platform: "Windows, macOS",
+    connectivity: "USB-C, Bluetooth, 2.4GHz",
+    "switch-type": "Razer Yellow Mechanical",
+    "form-factor": "Full Size",
   },
 };

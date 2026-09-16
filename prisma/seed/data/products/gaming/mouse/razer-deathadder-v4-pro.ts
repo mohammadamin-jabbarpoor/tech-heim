@@ -48,38 +48,13 @@ export const razerDeathAdderV4Pro = {
 
   attributes: {
     brand: "razer",
-
     "product-type": "mouse",
-
-    platform: {
-      value: "Windows",
-    },
-
-    connectivity: {
-      value: "2.4GHz, USB-C",
-    },
-
-    sensor: {
-      value: "Focus Pro 45K Optical Sensor Gen-2",
-    },
-
-    dpi: {
-      value: "45000",
-    },
-
-    "polling-rate": {
-      value: "8000",
-      unit: "Hz",
-    },
-
-    weight: {
-      value: "56",
-      unit: "g",
-    },
-
-    "battery-life": {
-      value: "150",
-      unit: "hours",
-    },
+    platform: "Windows",
+    connectivity: "2.4GHz, USB-C",
+    sensor: "Focus Pro 45K Optical Sensor Gen-2",
+    dpi: "45000",
+    "polling-rate": "8000 Hz",
+    weight: "56 g",
+    "battery-life": "150 hours",
   },
 };

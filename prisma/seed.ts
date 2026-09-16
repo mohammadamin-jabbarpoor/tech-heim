@@ -9,6 +9,8 @@ import { seedProductsForCategory } from "./seed/seedProducts";
 
 import { gamingAttributes } from "./seed/data/attributes/gaming";
 import { gamingProducts } from "./seed/data/products/gaming";
+import { accessoriesProducts } from "./seed/data/products/accessories";
+import { accessoriesAttributes } from "./seed/data/attributes/accessories";
 
 const adapter = new PrismaPg({
   connectionString: process.env.DATABASE_URL!,
@@ -26,6 +28,12 @@ async function main() {
   await seedAttributesForCategory(prisma, "gaming", gamingAttributes);
 
   await seedProductsForCategory(prisma, "gaming", gamingProducts);
+
+  console.log("✅ Seed completed!");
+
+  await seedAttributesForCategory(prisma, "accessories", accessoriesAttributes);
+
+  await seedProductsForCategory(prisma, "accessories", accessoriesProducts);
 
   console.log("✅ Seed completed!");
 }

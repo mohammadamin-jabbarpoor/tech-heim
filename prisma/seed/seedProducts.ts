@@ -65,19 +65,23 @@ export async function seedProductsForCategory(
         );
       }
 
-      if (typeof attributeValue === "string") {
-        const option = await prisma.attributeOption.findUnique({
+      if (typeof attributeValue !== "string") {
+        throw new Error(
+          `Attribute "${attributeSlug}" on product "${productData.slug}" must be a string`,
+        );
+      }
+
+      if (attribute.isFilterable) {
+        const option = await prisma.attributeOption.findFirst({
           where: {
-            attributeId_slug: {
-              attributeId: attribute.id,
-              slug: attributeValue,
-            },
+            attributeId: attribute.id,
+            OR: [{ value: attributeValue }, { slug: attributeValue }],
           },
         });
 
         if (!option) {
           throw new Error(
-            `Option "${attributeValue}" not found for attribute "${attributeSlug}"`,
+            `Option "${attributeValue}" not found for filterable attribute "${attributeSlug}"`,
           );
         }
 
@@ -107,47 +111,28 @@ export async function seedProductsForCategory(
         continue;
       }
 
-      if (typeof attributeValue === "object" && attributeValue !== null) {
-        const data = attributeValue as {
-          value: string;
-          unit?: string;
-        };
-
-        if (!data.value) {
-          throw new Error(
-            `Attribute "${attributeSlug}" on product "${productData.slug}" requires a value`,
-          );
-        }
-
-        await prisma.productAttributeValue.upsert({
-          where: {
-            productId_attributeId: {
-              productId: product.id,
-              attributeId: attribute.id,
-            },
-          },
-
-          update: {
-            value: data.value,
-            unit: data.unit ?? null,
-            optionId: null,
-          },
-
-          create: {
+      await prisma.productAttributeValue.upsert({
+        where: {
+          productId_attributeId: {
             productId: product.id,
             attributeId: attribute.id,
-            value: data.value,
-            unit: data.unit ?? null,
-            optionId: null,
           },
-        });
+        },
 
-        continue;
-      }
+        update: {
+          value: attributeValue,
+          unit: null,
+          optionId: null,
+        },
 
-      throw new Error(
-        `Invalid value for attribute "${attributeSlug}" on product "${productData.slug}"`,
-      );
+        create: {
+          productId: product.id,
+          attributeId: attribute.id,
+          value: attributeValue,
+          unit: null,
+          optionId: null,
+        },
+      });
     }
 
     await prisma.productImage.deleteMany({

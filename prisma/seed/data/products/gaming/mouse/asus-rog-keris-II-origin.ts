@@ -38,29 +38,11 @@ export const asusRogKeris = {
 
   attributes: {
     brand: "asus",
-
     "product-type": "mouse",
-
-    platform: {
-      value: "Windows",
-    },
-
-    connectivity: {
-      value: "USB-C, Bluetooth 5.1, 2.4GHz",
-    },
-
-    sensor: {
-      value: "ROG AimPoint Pro",
-    },
-
-    "polling-rate": {
-      value: "8000",
-      unit: "Hz",
-    },
-
-    weight: {
-      value: "65",
-      unit: "g",
-    },
+    platform: "Windows",
+    connectivity: "USB-C, Bluetooth 5.1, 2.4GHz",
+    sensor: "ROG AimPoint Pro",
+    "polling-rate": "8000 Hz",
+    weight: "65 g",
   },
 };
