@@ -32,8 +32,9 @@ export const cellularlineMagCar = {
 
   attributes: {
     brand: "Cellularline",
+    color: "Gray",
     "product-type": "Car Charger",
-    compatibility: "iPhone",
+    compatibility: "IPhone",
     "charging-power": "Up to 7.5 W",
     "magnetic-mount": "Yes",
     "wireless-charging": "Yes",

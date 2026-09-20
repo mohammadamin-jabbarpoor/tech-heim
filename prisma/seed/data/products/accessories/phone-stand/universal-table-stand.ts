@@ -34,6 +34,7 @@ export const universalTableStand = {
 
   attributes: {
     brand: "Cellularline",
+    color: "Gray",
     "product-type": "Table Stand",
     compatibility: "Universal",
     design: "Foldable",

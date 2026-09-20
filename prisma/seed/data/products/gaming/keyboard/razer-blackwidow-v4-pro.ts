@@ -33,8 +33,9 @@ export const razerBlackWidowV4 = {
   ],
 
   attributes: {
-    brand: "razer",
-    "product-type": "keyboard",
+    brand: "Razer",
+    color: "Black",
+    "product-type": "Keyboard",
     platform: "Windows",
     connectivity: "USB",
     "switch-type": ["Razer Green", "Yellow", "Orange"],

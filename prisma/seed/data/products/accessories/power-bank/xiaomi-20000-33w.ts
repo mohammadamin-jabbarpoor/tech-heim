@@ -32,7 +32,7 @@ export const xiaomiIntegrated = {
     },
     {
       type: "color",
-      name: "blue",
+      name: "Blue",
       value: "#5582cf",
       sortOrder: 2,
       images: [
@@ -48,6 +48,7 @@ export const xiaomiIntegrated = {
 
   attributes: {
     brand: "Xiaomi",
+    color: ["Beige", "Blue"],
     "product-type": "Power Bank",
     capacity: "20,000 mAh",
     "max-output": "33 W",

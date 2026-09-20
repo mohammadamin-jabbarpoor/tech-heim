@@ -32,8 +32,9 @@ export const ps5Pro = {
   ],
 
   attributes: {
-    brand: "sony",
-    "product-type": "console",
+    brand: "Sony",
+    color: "White",
+    "product-type": "Console",
     platform: "PlayStation 5",
     connectivity: ["Wi-Fi", "Bluetooth", "Ethernet"],
     storage: "2 TB",

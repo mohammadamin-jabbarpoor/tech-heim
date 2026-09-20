@@ -100,6 +100,7 @@ export const s26UltraCarbonCase = {
 
   attributes: {
     brand: "Samsung",
+    color: ["Black", "Coralred", "Gray", "Bluevoilet"],
     "product-type": "Phone Case",
     compatibility: "Samsung Galaxy",
     material: "Carbon synthetic fiber",

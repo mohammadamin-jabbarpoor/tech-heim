@@ -23,6 +23,7 @@ export const fixedCarHolder = {
 
   attributes: {
     brand: "FIXED",
+    color: "Black",
     "product-type": "Car Phone Holder",
     compatibility: "Universal",
     "mounting-location": "Dashboard / Windshield",

@@ -18,6 +18,7 @@ export const cellularlineElite = {
 
   attributes: {
     brand: "Cellularline",
+    color: "Black",
     "product-type": "Power Bank",
     capacity: "20,000 mAh",
     "usb-c-ports": "2",

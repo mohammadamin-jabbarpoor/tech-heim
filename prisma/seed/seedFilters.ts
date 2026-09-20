@@ -7,6 +7,10 @@ export const filterDefinitions = {
       slug: "brand",
     },
     {
+      name: "Color",
+      slug: "color",
+    },
+    {
       name: "Product Type",
       slug: "product-type",
     },
@@ -19,11 +23,14 @@ export const filterDefinitions = {
       slug: "connectivity",
     },
   ],
-
   accessories: [
     {
       name: "Brand",
       slug: "brand",
+    },
+    {
+      name: "Color",
+      slug: "color",
     },
     {
       name: "Product Type",

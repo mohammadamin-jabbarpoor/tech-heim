@@ -33,8 +33,8 @@ export const razerHuntsmanMini = {
   ],
 
   attributes: {
-    brand: "razer",
-    "product-type": "keyboard",
+    brand: "Razer",
+    "product-type": "Keyboard",
     platform: "Windows",
     connectivity: "USB-C",
     "switch-type": "Razer Optical",

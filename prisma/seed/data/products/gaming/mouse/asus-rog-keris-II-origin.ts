@@ -37,8 +37,9 @@ export const asusRogKeris = {
   ],
 
   attributes: {
-    brand: "asus",
-    "product-type": "mouse",
+    brand: "Asus",
+    color: "Black",
+    "product-type": "Mouse",
     platform: "Windows",
     connectivity: ["USB-C", "Bluetooth", "2.4GHz"],
     sensor: "ROG AimPoint Pro",

@@ -65,7 +65,7 @@ export const westernDigital = {
   attributes: {
     brand: "Western Digital",
     "product-type": "Memory Card",
-    "form-factor": "microSDHC",
+    "form-factor": "MicroSDHC",
     interface: "UHS-I",
     "video-support": "Full HD / 4K UHD",
     adapter: "SD Adapter included",

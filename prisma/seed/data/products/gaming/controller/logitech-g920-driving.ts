@@ -33,8 +33,9 @@ export const logG920Driving = {
   ],
 
   attributes: {
-    brand: "logitech",
-    "product-type": "racing-wheel",
+    brand: "Logitech",
+    color: "Black",
+    "product-type": "Racing-wheel",
     platform: ["Xbox One", "Xbox Series X|S", "Windows"],
     connectivity: "USB",
     "steering-angle": "900 degrees",

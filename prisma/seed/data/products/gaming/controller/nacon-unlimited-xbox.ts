@@ -37,8 +37,9 @@ export const naconXbox = {
   ],
 
   attributes: {
-    brand: "nacon",
-    "product-type": "controller",
+    brand: "Nacon",
+    color: "Black",
+    "product-type": "Controller",
     platform: ["Xbox Series X|S", "Xbox One", "Windows"],
     connectivity: ["Wireless", "Bluetooth", "USB"],
     "switch-type": "Hall Effect",

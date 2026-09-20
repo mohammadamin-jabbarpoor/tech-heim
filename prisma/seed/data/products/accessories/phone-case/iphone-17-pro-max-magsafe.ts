@@ -17,7 +17,7 @@ export const iphone17ProMaxMagSafe = {
   options: [
     {
       type: "color",
-      name: "black",
+      name: "Black",
       value: "#0f0f0f",
       isDefault: true,
       sortOrder: 1,
@@ -42,7 +42,7 @@ export const iphone17ProMaxMagSafe = {
     },
     {
       type: "color",
-      name: "green",
+      name: "Green",
       value: "#a5e089",
       isDefault: true,
       sortOrder: 1,
@@ -67,7 +67,7 @@ export const iphone17ProMaxMagSafe = {
     },
     {
       type: "color",
-      name: "brown",
+      name: "Brown",
       value: "#613e15",
       isDefault: true,
       sortOrder: 1,
@@ -92,7 +92,7 @@ export const iphone17ProMaxMagSafe = {
     },
     {
       type: "color",
-      name: "violet",
+      name: "Violet",
       value: "#b696b8",
       isDefault: true,
       sortOrder: 1,
@@ -117,7 +117,7 @@ export const iphone17ProMaxMagSafe = {
     },
     {
       type: "color",
-      name: "blue",
+      name: "Blue",
       value: "#5582cf",
       isDefault: true,
       sortOrder: 5,
@@ -144,8 +144,9 @@ export const iphone17ProMaxMagSafe = {
 
   attributes: {
     brand: "Apple",
+    color: ["Black", "Green", "Brown", "Violet", "Blue"],
     "product-type": "Phone Case",
-    compatibility: "iPhone",
+    compatibility: "IPhone",
     material: "100% recycled polyester woven fabric",
     frame: "Textured TPU",
     "magsafe-compatible": "Yes",

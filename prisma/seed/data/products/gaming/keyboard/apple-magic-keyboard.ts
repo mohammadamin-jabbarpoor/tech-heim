@@ -32,9 +32,10 @@ export const appleMagicKeyboard = {
   ],
 
   attributes: {
-    brand: "apple",
-    "product-type": "keyboard",
-    platform: ["Mac", "iPhone", "iPad"],
+    brand: "Apple",
+    color: "White",
+    "product-type": "Keyboard",
+    platform: ["Mac", "IPhone", "IPad"],
     connectivity: ["Bluetooth", "USB"],
     "form-factor": "Compact",
     weight: "231 g",

@@ -23,6 +23,7 @@ export const xiaomiLite = {
 
   attributes: {
     brand: "Xiaomi",
+    color: "White",
     "product-type": "Power Bank",
     "max-output": "22.5 W",
     "battery-type": "Lithium-ion",

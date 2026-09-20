@@ -28,6 +28,7 @@ export const cellularlineQi2 = {
 
   attributes: {
     brand: "Cellularline",
+    color: "Black",
     "product-type": "Power Bank",
     capacity: "10,000 mAh",
     "wired-charging": "USB-C Power Delivery",

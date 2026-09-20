@@ -13,6 +13,10 @@ type RawProduct = {
   stock: number;
   category: string;
 
+  isFeatured?: boolean;
+  isNew?: boolean;
+  isBestSeller?: boolean;
+
   images?: Array<{
     path: string;
     alt?: string;
@@ -40,19 +44,6 @@ type RawProduct = {
 
 const rawProducts = products as RawProduct[];
 
-/**
- * تبدیل مقدار Attribute به آرایه
- *
- * مثال:
- *
- * "sony"
- * →
- * ["sony"]
- *
- * ["PlayStation 5", "Windows"]
- * →
- * ["PlayStation 5", "Windows"]
- */
 function normalizeAttributeValues(value: RawAttributeValue): string[] {
   if (Array.isArray(value)) {
     return value.map((item) => item.trim()).filter(Boolean);
@@ -61,9 +52,6 @@ function normalizeAttributeValues(value: RawAttributeValue): string[] {
   return [value.trim()].filter(Boolean);
 }
 
-/**
- * پیدا کردن Filterهایی که برای Category مشخص شده‌اند.
- */
 function getCategoryFilterDefinitions(categorySlug: string) {
   return (
     filterDefinitions[categorySlug as keyof typeof filterDefinitions] ?? []
@@ -76,9 +64,6 @@ export async function seedProducts(prisma: PrismaClient) {
   for (const productData of rawProducts) {
     console.log(`  → ${productData.title}`);
 
-    /**
-     * 1. پیدا کردن Category
-     */
     const category = await prisma.category.findUnique({
       where: {
         slug: productData.category,
@@ -91,10 +76,6 @@ export async function seedProducts(prisma: PrismaClient) {
       );
     }
 
-    /**
-     * 2. اگر محصول قبلاً وجود داشته باشد،
-     *    اطلاعات اصلی آن را update می‌کنیم.
-     */
     const product = await prisma.product.upsert({
       where: {
         slug: productData.slug,
@@ -106,6 +87,9 @@ export async function seedProducts(prisma: PrismaClient) {
         price: productData.price,
         compareAtPrice: productData.compareAtPrice,
         stock: productData.stock,
+        isFeatured: productData.isFeatured ?? false,
+        isNew: productData.isNew ?? false,
+        isBestSeller: productData.isBestSeller ?? false,
         categoryId: category.id,
       },
 
@@ -116,18 +100,13 @@ export async function seedProducts(prisma: PrismaClient) {
         price: productData.price,
         compareAtPrice: productData.compareAtPrice,
         stock: productData.stock,
+        isFeatured: productData.isFeatured ?? false,
+        isNew: productData.isNew ?? false,
+        isBestSeller: productData.isBestSeller ?? false,
         categoryId: category.id,
       },
     });
 
-    /**
-     * 3. اطلاعات وابسته قبلی محصول را پاک می‌کنیم
-     *
-     * چون ممکن است:
-     * - عکس‌ها تغییر کرده باشند
-     * - Optionها تغییر کرده باشند
-     * - Attributeهای محصول تغییر کرده باشند
-     */
     await prisma.productFilterOption.deleteMany({
       where: {
         productId: product.id,
@@ -146,9 +125,6 @@ export async function seedProducts(prisma: PrismaClient) {
       },
     });
 
-    /**
-     * 4. ایجاد تصاویر اصلی Product
-     */
     if (productData.images?.length) {
       await prisma.productImage.createMany({
         data: productData.images.map((image) => ({
@@ -161,18 +137,6 @@ export async function seedProducts(prisma: PrismaClient) {
       });
     }
 
-    /**
-     * 5. ایجاد Product Options
-     *
-     * مثال:
-     *
-     * Color:
-     * - Black
-     * - White
-     * - Red
-     *
-     * و تصاویر هر رنگ هم به همان Option متصل می‌شوند.
-     */
     if (productData.options?.length) {
       for (const optionData of productData.options) {
         const option = await prisma.productOption.create({
@@ -186,9 +150,6 @@ export async function seedProducts(prisma: PrismaClient) {
           },
         });
 
-        /**
-         * تصاویر مربوط به همین Option
-         */
         if (optionData.images?.length) {
           await prisma.productImage.createMany({
             data: optionData.images.map((image) => ({
@@ -204,43 +165,17 @@ export async function seedProducts(prisma: PrismaClient) {
       }
     }
 
-    /**
-     * 6. اتصال Attributes محصول به FilterOptionها
-     *
-     * مثال:
-     *
-     * attributes: {
-     *   brand: "sony",
-     *   platform: ["PlayStation 5", "Windows"],
-     *   connectivity: ["Bluetooth", "USB-C"]
-     * }
-     *
-     * تبدیل می‌شود به:
-     *
-     * Product
-     *   ↓
-     * ProductFilterOption
-     *   ↓
-     * FilterOption
-     */
     const filters = getCategoryFilterDefinitions(productData.category);
 
     for (const filterDefinition of filters) {
       const rawValue = productData.attributes[filterDefinition.slug];
 
-      /**
-       * اگر محصول این Attribute را نداشته باشد،
-       * از آن Filter عبور می‌کنیم.
-       */
       if (rawValue === undefined || rawValue === null) {
         continue;
       }
 
       const values = normalizeAttributeValues(rawValue);
 
-      /**
-       * پیدا کردن Filter مربوط به Category
-       */
       const filter = await prisma.filter.findUnique({
         where: {
           categoryId_slug: {
@@ -256,9 +191,6 @@ export async function seedProducts(prisma: PrismaClient) {
         );
       }
 
-      /**
-       * برای هر Value یک FilterOption ایجاد/پیدا می‌کنیم.
-       */
       for (const value of values) {
         const filterOption = await prisma.filterOption.upsert({
           where: {
@@ -279,9 +211,6 @@ export async function seedProducts(prisma: PrismaClient) {
           },
         });
 
-        /**
-         * اتصال Product به FilterOption
-         */
         await prisma.productFilterOption.upsert({
           where: {
             productId_filterOptionId: {

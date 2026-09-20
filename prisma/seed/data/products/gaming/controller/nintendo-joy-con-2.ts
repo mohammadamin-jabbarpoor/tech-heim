@@ -28,8 +28,9 @@ export const nintendoController = {
   ],
 
   attributes: {
-    brand: "nintendo",
-    "product-type": "controller",
+    brand: "Nintendo",
+    color: "Black",
+    "product-type": "Controller",
     platform: "Nintendo Switch 2",
     connectivity: "Wireless",
     "switch-type": "Hall Effect",

@@ -43,10 +43,11 @@ export const nintendoSwitch2 = {
   ],
 
   attributes: {
-    brand: "nintendo",
-    "product-type": "console",
+    brand: "Nintendo",
+    color: "Black",
+    "product-type": "Console",
     platform: "Nintendo Switch 2",
-    connectivity: ["Wi-Fi 6", "Bluetooth", "wired LAN via dock"],
+    connectivity: ["Wi-Fi 6", "Bluetooth", "Wired LAN via dock"],
     storage: "256 GB",
     "screen-size": "7.9 inch",
     resolution: "1920 × 1080",

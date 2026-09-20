@@ -39,7 +39,7 @@ export const iphone15PlusMagsafe = {
   attributes: {
     brand: "Apple",
     "product-type": "Phone Case",
-    compatibility: "iPhone",
+    compatibility: "IPhone",
     material: "Polycarbonate",
     color: "Clear",
     "magsafe-compatible": "Yes",

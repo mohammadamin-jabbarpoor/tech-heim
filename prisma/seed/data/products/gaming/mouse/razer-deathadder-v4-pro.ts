@@ -47,8 +47,9 @@ export const razerDeathAdderV4Pro = {
   ],
 
   attributes: {
-    brand: "razer",
-    "product-type": "mouse",
+    brand: "Razer",
+    color: ["Black", "White"],
+    "product-type": "Mouse",
     platform: "Windows",
     connectivity: ["2.4GHz", "USB-C"],
     sensor: "Focus Pro 45K Optical Sensor Gen-2",

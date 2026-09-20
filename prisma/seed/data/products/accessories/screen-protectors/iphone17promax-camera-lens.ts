@@ -17,8 +17,7 @@ export const iphone17ProMaxCameraLens = {
 
   attributes: {
     brand: "Cellularline",
-    "product-type": "Camera Lens Protector",
-    compatibility: "iPhone",
+    compatibility: "IPhone",
     material: "Tempered glass",
     color: "Transparent",
     "scratch-resistant": "Yes",

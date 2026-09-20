@@ -29,8 +29,9 @@ export const razerBasilikV3Pro = {
   ],
 
   attributes: {
-    brand: "razer",
-    "product-type": "mouse",
+    brand: "Razer",
+    color: "White",
+    "product-type": "Mouse",
     platform: "Windows",
     connectivity: ["2.4GHz", "Bluetooth", "USB-C"],
     sensor: "Focus Pro 30K Optical Sensor",

@@ -19,7 +19,7 @@ export const iphone17ProScreenProtector = {
   attributes: {
     brand: "PanzerGlass",
     "product-type": "Screen Protector",
-    compatibility: "iPhone",
+    compatibility: "IPhone",
     material: "Glass-ceramic",
     "scratch-resistant": "Yes",
     "shock-resistant": "Yes",

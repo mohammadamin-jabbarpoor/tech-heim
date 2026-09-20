@@ -61,7 +61,7 @@ export const sandiskExtreme = {
   attributes: {
     brand: "SanDisk",
     "product-type": "Memory Card",
-    "form-factor": "microSDXC",
+    "form-factor": "MicroSDXC",
     interface: "UHS-I",
     "video-support": "4K UHD",
   },
