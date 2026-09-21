@@ -1,4 +1,4 @@
-function NewProdutSkeleton() {
+function NewProductSkeleton() {
   return (
     <div className="flex gap-4">
       {Array.from({ length: 5 }).map((_, i) => (
@@ -11,4 +11,4 @@ function NewProdutSkeleton() {
   );
 }
 
-export default NewProdutSkeleton;
+export default NewProductSkeleton;

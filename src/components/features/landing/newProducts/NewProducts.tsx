@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import SectionHeader from "../SectionHeader";
 import Line from "@/src/components/shared/ui/Line";
-import NewProdutSkeleton from "./NewProdutSkeleton";
+import NewProductSkeleton from "./NewProductSkeleton";
 import NewProductsWrapper from "./NewProductsWrapper";
 
 async function NewProducts() {
@@ -10,7 +10,7 @@ async function NewProducts() {
       <SectionHeader value="New Products" />
       <Line />
 
-      <Suspense fallback={<NewProdutSkeleton />}>
+      <Suspense fallback={<NewProductSkeleton />}>
         <NewProductsWrapper />
       </Suspense>
     </div>
