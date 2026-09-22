@@ -3,7 +3,7 @@
 import { Autoplay } from "swiper/modules";
 import NewProductCard from "./NewProductCard";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { LandingProductCards } from "@/src/features/products/types/product.types";
+import { LandingProductCards } from "@/src/features/products/types/productTypes";
 
 function NewProductSlider({ products }: { products: LandingProductCards[] }) {
   return (

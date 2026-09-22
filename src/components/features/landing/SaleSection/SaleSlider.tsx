@@ -7,7 +7,7 @@ import { useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import SliderNavigation from "./SliderNavigation";
 import SaleProductCard from "./SaleProductCard";
-import { LandingProductCards } from "@/src/features/products/types/product.types";
+import { LandingProductCards } from "@/src/features/products/types/productTypes";
 
 function SaleSlider({ products }: { products: LandingProductCards[] }) {
   const swiperRef = useRef<SwiperType | null>(null);

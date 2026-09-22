@@ -1,4 +1,4 @@
-import { LandingProductCards } from "@/src/features/products/types/product.types";
+import { LandingProductCards } from "@/src/features/products/types/productTypes";
 import { getImageUrl } from "@/src/lib/imageKit";
 import { Star1 } from "iconsax-react";
 import Image from "next/image";

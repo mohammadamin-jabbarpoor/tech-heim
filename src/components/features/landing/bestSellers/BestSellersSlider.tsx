@@ -2,7 +2,7 @@
 
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { LandingProductCards } from "@/src/features/products/types/product.types";
+import { LandingProductCards } from "@/src/features/products/types/productTypes";
 import BestSellersCard from "./BestSellersCard";
 
 function BestSellersSlider({ products }: { products: LandingProductCards[] }) {

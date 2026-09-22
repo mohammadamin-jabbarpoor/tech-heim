@@ -1,4 +1,4 @@
-import { LandingProductCards } from "@/src/features/products/types/product.types";
+import { LandingProductCards } from "@/src/features/products/types/productTypes";
 import { getImageUrl } from "@/src/lib/imageKit";
 import Image from "next/image";
 import Link from "next/link";
