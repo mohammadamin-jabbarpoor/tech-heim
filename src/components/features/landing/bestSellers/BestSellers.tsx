@@ -7,7 +7,7 @@ import BestSellersWrapper from "./BestSellersWrapper";
 async function BestSellers() {
   return (
     <div className="block mt-6 xl:mt-12">
-      <SectionHeader value="New Products" />
+      <SectionHeader value="Best Sellers" />
       <Line />
 
       <Suspense fallback={<BestSellersSkeleton />}>

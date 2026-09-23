@@ -2,20 +2,30 @@ import Services from "@/src/components/features/landing/Services";
 import ProductsContent from "@/src/components/features/products/ProductsContent";
 import Breadcrumb from "@/src/components/shared/ui/Breadcrumb";
 import { getCategoryFilters } from "@/src/features/products/queries/getCategoryFilters";
-import { getProducts } from "@/src/features/products/queries/getProducts";
+import {
+  getProductPriceRange,
+  getProducts,
+} from "@/src/features/products/queries/getProducts";
+
+type SearchParams = {
+  category?: string;
+  minPrice?: string;
+  maxPrice?: string;
+  sort?: string;
+  page?: string;
+  [key: string]: string | undefined;
+};
 
 type Props = {
-  searchParams: Promise<{
-    category?: string;
-  }>;
+  searchParams: Promise<SearchParams>;
 };
 
 async function ProductsPage({ searchParams }: Props) {
   const params = await searchParams;
   const category = params.category;
-  const products = await getProducts(category);
+  const productsData = await getProducts(params);
   const filters = category ? await getCategoryFilters(category) : [];
-  console.log(category);
+  const priceRange = await getProductPriceRange(category);
 
   return (
     <>
@@ -38,7 +48,12 @@ async function ProductsPage({ searchParams }: Props) {
         />
       </div>
 
-      <ProductsContent products={products} filters={filters} />
+      <ProductsContent
+        products={productsData.products}
+        filters={filters}
+        priceRange={priceRange}
+        pagination={productsData.pagination}
+      />
 
       <Services />
     </>

@@ -1,56 +1,141 @@
 import prisma from "@/src/lib/db/prisma";
-import { unstable_cache } from "next/cache";
 
-export const getProducts = unstable_cache(
-  async (categorySlug?: string) => {
-    const products = await prisma.product.findMany({
-      where: categorySlug
-        ? {
-            category: {
-              slug: categorySlug,
+type ProductFilters = Record<string, string | undefined>;
+
+export async function getProducts(filters: ProductFilters) {
+  const { category, minPrice, maxPrice, sort, page, ...selectedFilters } =
+    filters;
+
+  const filterConditions = Object.entries(selectedFilters)
+    .filter(([, value]) => value)
+    .map(([filterSlug, value]) => {
+      const values = value!.split(",");
+
+      return {
+        productFilterOptions: {
+          some: {
+            filterOption: {
+              filter: {
+                slug: filterSlug,
+              },
+              value: {
+                in: values,
+              },
             },
-          }
-        : undefined,
-      orderBy: {
-        createdAt: "desc",
-      },
-      select: {
-        id: true,
-        title: true,
-        slug: true,
-        images: {
-          where: {
-            isPrimary: true,
           },
         },
-        price: true,
-        compareAtPrice: true,
-        createdAt: true,
-      },
+      };
     });
 
-    return products.map((product) => {
-      const price = Number(product.price);
+  const where = {
+    ...(category && {
+      category: {
+        slug: category,
+      },
+    }),
 
-      const compareAtPrice = product.compareAtPrice
-        ? Number(product.compareAtPrice)
-        : null;
+    ...(minPrice || maxPrice
+      ? {
+          price: {
+            ...(minPrice && {
+              gte: Number(minPrice),
+            }),
+            ...(maxPrice && {
+              lte: Number(maxPrice),
+            }),
+          },
+        }
+      : {}),
 
-      const discount = compareAtPrice
-        ? Math.round(((compareAtPrice - price) / compareAtPrice) * 100)
-        : null;
+    AND: filterConditions,
+  };
+
+  const orderBy =
+    sort === "price-asc"
+      ? { price: "asc" as const }
+      : sort === "price-desc"
+        ? { price: "desc" as const }
+        : { createdAt: "desc" as const };
+
+  const currentPage = Number(page) || 1;
+  const productsPerPage = 9;
+  const skip = (currentPage - 1) * productsPerPage;
+
+  const products = await prisma.product.findMany({
+    where,
+
+    orderBy,
+
+    skip,
+    take: productsPerPage,
+
+    include: {
+      images: {
+        where: {
+          isPrimary: true,
+        },
+      },
+    },
+  });
+
+  const totalProducts = await prisma.product.count({
+    where,
+  });
+
+  const totalPages = Math.ceil(totalProducts / productsPerPage);
+
+  return {
+    products: products.map((product) => {
+      let discount: number | null = null;
+
+      if (product.compareAtPrice && product.compareAtPrice > product.price) {
+        discount = Math.round(
+          ((Number(product.compareAtPrice) - Number(product.price)) /
+            Number(product.compareAtPrice)) *
+            100,
+        );
+      }
 
       return {
         ...product,
-        price,
-        compareAtPrice,
+        price: Number(product.price),
+        compareAtPrice: product.compareAtPrice
+          ? Number(product.compareAtPrice)
+          : null,
         discount,
       };
-    });
-  },
-  ["products"],
-  {
-    revalidate: 18,
-    tags: ["products"],
-  },
-);
+    }),
+
+    pagination: {
+      currentPage,
+      totalPages,
+      totalProducts,
+      productsPerPage,
+    },
+  };
+}
+
+export async function getProductPriceRange(categorySlug?: string) {
+  const result = await prisma.product.aggregate({
+    where: categorySlug
+      ? {
+          category: {
+            slug: categorySlug,
+          },
+        }
+      : undefined,
+
+    _min: {
+      price: true,
+    },
+
+    _max: {
+      price: true,
+    },
+  });
+
+  return {
+    min: result._min.price ? Number(result._min.price) : 0,
+    max: result._max.price ? Number(result._max.price) : 0,
+  };
+}

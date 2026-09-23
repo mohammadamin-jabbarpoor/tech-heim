@@ -5,26 +5,23 @@ export async function getCategoryFilters(categorySlug: string) {
     where: {
       slug: categorySlug,
     },
+
     select: {
-      attributes: {
-        where: {
-          isFilterable: true,
-        },
-        orderBy: {
-          sortOrder: "asc",
-        },
+      id: true,
+      name: true,
+      slug: true,
+
+      filters: {
         select: {
           id: true,
           name: true,
           slug: true,
+
           options: {
-            orderBy: {
-              sortOrder: "asc",
-            },
             select: {
               id: true,
+              name: true,
               value: true,
-              slug: true,
             },
           },
         },
@@ -32,5 +29,5 @@ export async function getCategoryFilters(categorySlug: string) {
     },
   });
 
-  return category?.attributes ?? [];
+  return category?.filters ?? [];
 }
