@@ -95,3 +95,8 @@ input:-webkit-autofill:active {
 .swiper-wrapper {
   transition-timing-function: linear !important;
 }
+
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}

@@ -3,8 +3,15 @@ import prisma from "@/src/lib/db/prisma";
 type ProductFilters = Record<string, string | undefined>;
 
 export async function getProducts(filters: ProductFilters) {
-  const { category, minPrice, maxPrice, sort, page, ...selectedFilters } =
-    filters;
+  const {
+    category,
+    minPrice,
+    maxPrice,
+    sort,
+    page,
+    search,
+    ...selectedFilters
+  } = filters;
 
   const filterConditions = Object.entries(selectedFilters)
     .filter(([, value]) => value)
@@ -46,6 +53,13 @@ export async function getProducts(filters: ProductFilters) {
           },
         }
       : {}),
+
+    ...(search && {
+      title: {
+        contains: search,
+        mode: "insensitive" as const,
+      },
+    }),
 
     AND: filterConditions,
   };
