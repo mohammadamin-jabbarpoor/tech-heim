@@ -5,7 +5,7 @@ import { useMemo, useState } from "react";
 
 import Link from "next/link";
 import { ProductPage } from "@/src/features/products/types/productTypes";
-import PayOption from "./PayOption";
+import PayOption from "./productHeroSection/PayOption";
 
 type PaymentOptionProps = {
   product: ProductPage;

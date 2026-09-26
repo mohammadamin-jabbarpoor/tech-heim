@@ -4,8 +4,9 @@ import { ProductPage } from "@/src/features/products/types/productTypes";
 
 import ProductGallery from "./ProductGallery";
 import ProductInfo from "./ProductInfo";
-import ProductPurchaseCard from "./ProductPurchaseCard";
+
 import Breadcrumb from "@/src/components/shared/ui/Breadcrumb";
+import ProductPurchaseCard from "./ProductPurchaseCard";
 
 type ProductHeroSectionProps = {
   product: ProductPage;

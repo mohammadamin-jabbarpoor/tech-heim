@@ -4,8 +4,8 @@ import {
   LandingProductCards,
   ProductPage,
 } from "@/src/features/products/types/productTypes";
-import ProductHeroSection from "./ProductHeroSection";
-import ProductTabsSection from "./ProductTabsSection";
+import ProductHeroSection from "./productHeroSection/ProductHeroSection";
+import ProductTabsSection from "./productSpecifications/ProductTabsSection";
 import CommentsSection from "./commentsSection/CommentsSection";
 import ReviewsSection from "./reviewsSection/ReviewsSection";
 import SimilarProducts from "./similarProducts/SimilarProducts";
