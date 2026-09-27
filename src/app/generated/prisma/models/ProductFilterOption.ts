@@ -158,15 +158,15 @@ export type ProductFilterOptionWhereInput = {
   NOT?: Prisma.ProductFilterOptionWhereInput | Prisma.ProductFilterOptionWhereInput[]
   productId?: Prisma.StringFilter<"ProductFilterOption"> | string
   filterOptionId?: Prisma.StringFilter<"ProductFilterOption"> | string
-  product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
   filterOption?: Prisma.XOR<Prisma.FilterOptionScalarRelationFilter, Prisma.FilterOptionWhereInput>
+  product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
 }
 
 export type ProductFilterOptionOrderByWithRelationInput = {
   productId?: Prisma.SortOrder
   filterOptionId?: Prisma.SortOrder
-  product?: Prisma.ProductOrderByWithRelationInput
   filterOption?: Prisma.FilterOptionOrderByWithRelationInput
+  product?: Prisma.ProductOrderByWithRelationInput
 }
 
 export type ProductFilterOptionWhereUniqueInput = Prisma.AtLeast<{
@@ -176,8 +176,8 @@ export type ProductFilterOptionWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ProductFilterOptionWhereInput | Prisma.ProductFilterOptionWhereInput[]
   productId?: Prisma.StringFilter<"ProductFilterOption"> | string
   filterOptionId?: Prisma.StringFilter<"ProductFilterOption"> | string
-  product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
   filterOption?: Prisma.XOR<Prisma.FilterOptionScalarRelationFilter, Prisma.FilterOptionWhereInput>
+  product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
 }, "productId_filterOptionId">
 
 export type ProductFilterOptionOrderByWithAggregationInput = {
@@ -197,8 +197,8 @@ export type ProductFilterOptionScalarWhereWithAggregatesInput = {
 }
 
 export type ProductFilterOptionCreateInput = {
-  product: Prisma.ProductCreateNestedOneWithoutProductFilterOptionsInput
   filterOption: Prisma.FilterOptionCreateNestedOneWithoutProductsInput
+  product: Prisma.ProductCreateNestedOneWithoutProductFilterOptionsInput
 }
 
 export type ProductFilterOptionUncheckedCreateInput = {
@@ -207,8 +207,8 @@ export type ProductFilterOptionUncheckedCreateInput = {
 }
 
 export type ProductFilterOptionUpdateInput = {
-  product?: Prisma.ProductUpdateOneRequiredWithoutProductFilterOptionsNestedInput
   filterOption?: Prisma.FilterOptionUpdateOneRequiredWithoutProductsNestedInput
+  product?: Prisma.ProductUpdateOneRequiredWithoutProductFilterOptionsNestedInput
 }
 
 export type ProductFilterOptionUncheckedUpdateInput = {
@@ -457,22 +457,22 @@ export type ProductFilterOptionUncheckedUpdateManyWithoutFilterOptionInput = {
 export type ProductFilterOptionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   productId?: boolean
   filterOptionId?: boolean
-  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   filterOption?: boolean | Prisma.FilterOptionDefaultArgs<ExtArgs>
+  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["productFilterOption"]>
 
 export type ProductFilterOptionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   productId?: boolean
   filterOptionId?: boolean
-  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   filterOption?: boolean | Prisma.FilterOptionDefaultArgs<ExtArgs>
+  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["productFilterOption"]>
 
 export type ProductFilterOptionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   productId?: boolean
   filterOptionId?: boolean
-  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   filterOption?: boolean | Prisma.FilterOptionDefaultArgs<ExtArgs>
+  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["productFilterOption"]>
 
 export type ProductFilterOptionSelectScalar = {
@@ -482,23 +482,23 @@ export type ProductFilterOptionSelectScalar = {
 
 export type ProductFilterOptionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"productId" | "filterOptionId", ExtArgs["result"]["productFilterOption"]>
 export type ProductFilterOptionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   filterOption?: boolean | Prisma.FilterOptionDefaultArgs<ExtArgs>
+  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
 }
 export type ProductFilterOptionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   filterOption?: boolean | Prisma.FilterOptionDefaultArgs<ExtArgs>
+  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
 }
 export type ProductFilterOptionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   filterOption?: boolean | Prisma.FilterOptionDefaultArgs<ExtArgs>
+  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
 }
 
 export type $ProductFilterOptionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ProductFilterOption"
   objects: {
-    product: Prisma.$ProductPayload<ExtArgs>
     filterOption: Prisma.$FilterOptionPayload<ExtArgs>
+    product: Prisma.$ProductPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     productId: string
@@ -897,8 +897,8 @@ readonly fields: ProductFilterOptionFieldRefs;
  */
 export interface Prisma__ProductFilterOptionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  product<T extends Prisma.ProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   filterOption<T extends Prisma.FilterOptionDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.FilterOptionDefaultArgs<ExtArgs>>): Prisma.Prisma__FilterOptionClient<runtime.Types.Result.GetResult<Prisma.$FilterOptionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  product<T extends Prisma.ProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.

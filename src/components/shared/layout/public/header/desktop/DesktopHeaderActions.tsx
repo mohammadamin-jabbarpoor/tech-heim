@@ -5,9 +5,16 @@ import CartButton from "../mobile/CartButton";
 import UserMenu from "../mobile/UserMenu";
 import SearchButton from "./SearchButton";
 import SearchModal from "../search/SearchModal";
+import AuthModal from "@/src/components/features/auth/desktop/AuthModal";
+import { authClient } from "@/src/lib/auth/auth-client";
 
-function DesktopHeaderActions() {
+type HeaderActionsProps = {
+  session: typeof authClient.$Infer.Session | null;
+};
+
+function DesktopHeaderActions({ session }: HeaderActionsProps) {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   return (
     <>
@@ -22,8 +29,14 @@ function DesktopHeaderActions() {
 
         <CartButton />
 
-        <UserMenu />
+        <UserMenu
+          session={session}
+          onLoginClick={() => setIsAuthModalOpen(true)}
+        />
       </div>
+      {isAuthModalOpen && (
+        <AuthModal onClose={() => setIsAuthModalOpen(false)} />
+      )}
     </>
   );
 }

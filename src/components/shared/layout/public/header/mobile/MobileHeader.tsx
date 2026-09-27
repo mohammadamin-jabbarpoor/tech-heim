@@ -6,9 +6,11 @@ import MobileHeaderActions from "./MobileHeaderActions";
 import SearchInput from "./SearchInput";
 import { useEffect, useState } from "react";
 import SearchModal from "../search/SearchModal";
+import { authClient } from "@/src/lib/auth/auth-client";
 
 function MobileHeader() {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const { data: session, isPending } = authClient.useSession();
 
   useEffect(() => {
     if (isSearchModalOpen) {
@@ -30,7 +32,7 @@ function MobileHeader() {
         <Link href="/" className="font-medium text-primary-400">
           Tech Heim
         </Link>
-        <MobileHeaderActions />
+        <MobileHeaderActions session={session} />
       </div>
       <div onClick={() => setIsSearchModalOpen(true)}>
         <SearchInput />

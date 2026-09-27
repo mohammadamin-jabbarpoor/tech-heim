@@ -240,8 +240,8 @@ export type ProductOptionWhereInput = {
   sortOrder?: Prisma.IntFilter<"ProductOption"> | number
   createdAt?: Prisma.DateTimeFilter<"ProductOption"> | Date | string
   productId?: Prisma.StringFilter<"ProductOption"> | string
-  product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
   images?: Prisma.ProductImageListRelationFilter
+  product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
 }
 
 export type ProductOptionOrderByWithRelationInput = {
@@ -253,8 +253,8 @@ export type ProductOptionOrderByWithRelationInput = {
   sortOrder?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   productId?: Prisma.SortOrder
-  product?: Prisma.ProductOrderByWithRelationInput
   images?: Prisma.ProductImageOrderByRelationAggregateInput
+  product?: Prisma.ProductOrderByWithRelationInput
 }
 
 export type ProductOptionWhereUniqueInput = Prisma.AtLeast<{
@@ -269,8 +269,8 @@ export type ProductOptionWhereUniqueInput = Prisma.AtLeast<{
   sortOrder?: Prisma.IntFilter<"ProductOption"> | number
   createdAt?: Prisma.DateTimeFilter<"ProductOption"> | Date | string
   productId?: Prisma.StringFilter<"ProductOption"> | string
-  product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
   images?: Prisma.ProductImageListRelationFilter
+  product?: Prisma.XOR<Prisma.ProductScalarRelationFilter, Prisma.ProductWhereInput>
 }, "id">
 
 export type ProductOptionOrderByWithAggregationInput = {
@@ -311,8 +311,8 @@ export type ProductOptionCreateInput = {
   isDefault?: boolean
   sortOrder?: number
   createdAt?: Date | string
-  product: Prisma.ProductCreateNestedOneWithoutOptionsInput
   images?: Prisma.ProductImageCreateNestedManyWithoutOptionInput
+  product: Prisma.ProductCreateNestedOneWithoutOptionsInput
 }
 
 export type ProductOptionUncheckedCreateInput = {
@@ -335,8 +335,8 @@ export type ProductOptionUpdateInput = {
   isDefault?: Prisma.BoolFieldUpdateOperationsInput | boolean
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  product?: Prisma.ProductUpdateOneRequiredWithoutOptionsNestedInput
   images?: Prisma.ProductImageUpdateManyWithoutOptionNestedInput
+  product?: Prisma.ProductUpdateOneRequiredWithoutOptionsNestedInput
 }
 
 export type ProductOptionUncheckedUpdateInput = {
@@ -701,8 +701,8 @@ export type ProductOptionSelect<ExtArgs extends runtime.Types.Extensions.Interna
   sortOrder?: boolean
   createdAt?: boolean
   productId?: boolean
-  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   images?: boolean | Prisma.ProductOption$imagesArgs<ExtArgs>
+  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.ProductOptionCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["productOption"]>
 
@@ -743,8 +743,8 @@ export type ProductOptionSelectScalar = {
 
 export type ProductOptionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "type" | "name" | "value" | "isDefault" | "sortOrder" | "createdAt" | "productId", ExtArgs["result"]["productOption"]>
 export type ProductOptionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   images?: boolean | Prisma.ProductOption$imagesArgs<ExtArgs>
+  product?: boolean | Prisma.ProductDefaultArgs<ExtArgs>
   _count?: boolean | Prisma.ProductOptionCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ProductOptionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -757,8 +757,8 @@ export type ProductOptionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Type
 export type $ProductOptionPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ProductOption"
   objects: {
-    product: Prisma.$ProductPayload<ExtArgs>
     images: Prisma.$ProductImagePayload<ExtArgs>[]
+    product: Prisma.$ProductPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1163,8 +1163,8 @@ readonly fields: ProductOptionFieldRefs;
  */
 export interface Prisma__ProductOptionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  product<T extends Prisma.ProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   images<T extends Prisma.ProductOption$imagesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductOption$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ProductImagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  product<T extends Prisma.ProductDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ProductDefaultArgs<ExtArgs>>): Prisma.Prisma__ProductClient<runtime.Types.Result.GetResult<Prisma.$ProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
