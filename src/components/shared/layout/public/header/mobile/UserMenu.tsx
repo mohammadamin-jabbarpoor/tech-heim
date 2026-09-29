@@ -134,7 +134,7 @@ function UserMenu({ session, onLoginClick }: UserMenuProps) {
               <ul className="flex flex-col gap-6 p-4">
                 <li>
                   <Link
-                    href="/account"
+                    href="/account/personal"
                     onClick={() => setIsOpen(false)}
                     className="block"
                   >

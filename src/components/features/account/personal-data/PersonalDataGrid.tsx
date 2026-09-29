@@ -53,7 +53,7 @@ function PersonalDataGrid({ user, onEdit }: PersonalDataGridProps) {
     {
       id: "phoneNumber",
       label: "Phone number",
-      value: user.phoneNumber ?? "",
+      value: user.phoneNumber ?? "empty",
       icon: Call,
       editable: true,
     },
@@ -67,21 +67,21 @@ function PersonalDataGrid({ user, onEdit }: PersonalDataGridProps) {
     {
       id: "address",
       label: "Address",
-      value: user.address ?? "",
+      value: user.address ?? "empty",
       icon: Location,
       editable: true,
     },
     {
       id: "postalCode",
       label: "Postal code",
-      value: user.postalCode ?? "",
+      value: user.postalCode ?? "empty",
       icon: Signpost,
       editable: true,
     },
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-x-6 gap-y-2">
+    <div className="grid grid-cols-1 md:grid-cols-2 md:gap-x-6 gap-y-2">
       {fields.map((field) => (
         <PersonalDataField
           key={field.id}

@@ -3,7 +3,7 @@ import PaymentFields from "@/src/components/features/account/payment/PaymentFiel
 
 function Payment() {
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 md:space-y-6">
       <LayoutHeader title="Cards" description="manage payment methods" />
       <PaymentFields />
     </div>

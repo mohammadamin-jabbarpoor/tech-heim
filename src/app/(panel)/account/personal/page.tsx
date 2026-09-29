@@ -1,11 +1,11 @@
-import MobileAccount from "@/src/components/features/account/MobileAccount";
 import PersonalData from "@/src/components/features/account/personal-data/PersonalData";
 import { getUserProfile } from "@/src/features/account/queries/getUserProfile";
 import { auth } from "@/src/lib/auth/auth";
+
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-async function AccountPage() {
+async function Personal() {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
@@ -13,7 +13,6 @@ async function AccountPage() {
   if (!session?.user) {
     redirect("/");
   }
-
   const user = await getUserProfile(session.user.id);
 
   if (!user) {
@@ -21,15 +20,10 @@ async function AccountPage() {
   }
 
   return (
-    <>
-      <div className="block md:hidden">
-        <MobileAccount />
-      </div>
-      <div className="hidden md:block">
-        <PersonalData user={user} />
-      </div>
-    </>
+    <div>
+      <PersonalData user={user} />
+    </div>
   );
 }
 
-export default AccountPage;
+export default Personal;

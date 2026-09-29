@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { sidebarItems } from "./account-sidebar/AccountSidebar";
+import { sidebarItems } from "@/src/lib/constants/sidebarItems";
 import { ArrowRight2 } from "iconsax-react";
 
 function AccountBreadcrumb() {
@@ -10,41 +10,33 @@ function AccountBreadcrumb() {
 
   const currentItem = sidebarItems.find((item) => item.href === pathname);
 
-  console.log(pathname, currentItem);
-
   return (
-    <div className="flex items-center mt-6 mb-10">
+    <div className="flex items-center mt-4 md:mt-5 lg:mt-6 mb-4 md:mb-7 lg:mb-10">
       <Link
         href="/"
-        className="font-light text-lg text-gray-600 hover:text-primary transition-colors"
+        className="font-light text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 hover:text-primary transition-colors"
       >
         Home
       </Link>
 
-      <ArrowRight2
-        className="mt-0.5"
-        variant="Outline"
-        size={24}
-        color="#717171"
-      />
+      <div className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6">
+        <ArrowRight2 variant="Outline" color="#717171" />
+      </div>
 
       <Link
         href="/account"
-        className="font-light text-lg text-gray-600 hover:text-primary transition-colors"
+        className="font-light text-xs sm:text-sm md:text-base lg:text-lg text-gray-600 hover:text-primary transition-colors"
       >
         Account
       </Link>
 
       {currentItem && (
         <>
-          <ArrowRight2
-            className="mt-0.5"
-            variant="Outline"
-            size={24}
-            color="#717171"
-          />
+          <div className="w-4 h-4 md:w-5 md:h-5 lg:w-6 lg:h-6">
+            <ArrowRight2 variant="Outline" color="#717171" />
+          </div>
 
-          <span className="font-light text-lg text-primary underline underline-offset-8">
+          <span className="font-light text-xs sm:text-sm md:text-base lg:text-lg text-primary underline underline-offset-8">
             {currentItem.title}
           </span>
         </>

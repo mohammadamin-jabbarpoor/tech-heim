@@ -6,14 +6,14 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { authClient } from "@/src/lib/auth/auth-client";
 
-export type SidebarItem = {
+type SidebarItem = {
   id: string;
   title: string;
   href?: string;
   icon: ComponentType<IconProps>;
 };
 
-type SidebarItemProps = {
+export type SidebarItemProps = {
   item: SidebarItem;
 };
 
@@ -39,13 +39,11 @@ function AccountSidebarItem({ item }: SidebarItemProps) {
       <button
         type="button"
         onClick={logout ? handleLogout : undefined}
-        className={`relative flex w-full items-center justify-start gap-4 px-3.5 py-6 font-light text-xl cursor-pointer  ${
-          logout ? "text-error" : "text-black hover:text-primary"
-        }`}
+        className="relative flex w-full items-center justify-start gap-4 px-3.5 py-6 cursor-pointer text-error"
       >
         <Icon variant="Outline" size={24} color="black" />
 
-        <span>{item.title}</span>
+        <span className="font-light text-xl">{item.title}</span>
       </button>
     );
   }
@@ -53,7 +51,7 @@ function AccountSidebarItem({ item }: SidebarItemProps) {
   return (
     <Link
       href={item.href}
-      className={`relative flex w-full items-center justify-start gap-4 px-3.5 py-6 font-light transition-colors text-xl ${
+      className={`relative flex w-full items-center justify-start gap-4 px-3.5 py-6 transition-colors ${
         isActive && !logout
           ? "text-primary border-l-2 border-l-primary"
           : "text-black hover:text-primary"
@@ -61,7 +59,7 @@ function AccountSidebarItem({ item }: SidebarItemProps) {
     >
       <Icon variant="Outline" size={24} color="black" />
 
-      <span>{item.title}</span>
+      <span className="font-light text-xl">{item.title}</span>
     </Link>
   );
 }

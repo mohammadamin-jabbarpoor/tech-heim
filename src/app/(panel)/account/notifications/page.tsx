@@ -43,46 +43,48 @@ function Notifications() {
     product: false,
   });
   return (
-    <div className="space-y-6">
-      <LayoutHeader
-        title="Notification"
-        description="Manage your notification settings"
-      />
-      <div className="w-full grid grid-cols-2 gap-6">
-        {notifications.map((item) => {
-          const Icon = item.icon;
-          return (
-            <div key={item.id} className="px-2">
-              <div className="flex justify-between">
-                <div className="flex items-center gap-2">
-                  <Icon variant="Outline" size={24} color="#444" />
-                  <p className="font-medium">{item.title}</p>
+    <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2">
+      {notifications.map((item) => {
+        const Icon = item.icon;
+
+        return (
+          <div key={item.id} className="w-full px-2">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex min-w-0 items-center gap-2">
+                <div className="w-5 h-5 md:w6 md:h-6">
+                  <Icon variant="Outline" color="#444" />
                 </div>
-                <button
-                  onClick={() =>
-                    setEnabled((prev) => ({
-                      ...prev,
-                      [item.id]: !prev[item.id],
-                    }))
-                  }
-                  className={`relative h-10 w-20 rounded-full transition-colors duration-300 ${
-                    enabled[item.id] ? "bg-blue-600" : "bg-gray-300"
+
+                <p className="font-medium">{item.title}</p>
+              </div>
+
+              <button
+                type="button"
+                onClick={() =>
+                  setEnabled((prev) => ({
+                    ...prev,
+                    [item.id]: !prev[item.id],
+                  }))
+                }
+                className={`relative h-8 w-14 shrink-0 rounded-full transition-colors duration-300 cursor-pointer ${
+                  enabled[item.id] ? "bg-blue-600" : "bg-gray-300"
+                }`}
+                aria-pressed={enabled[item.id]}
+              >
+                <span
+                  className={`absolute top-1 h-6 w-6 rounded-full bg-white shadow-md transition-all duration-300 ${
+                    enabled[item.id] ? "left-7" : "left-1"
                   }`}
-                >
-                  <span
-                    className={`absolute top-1 h-8 w-8 rounded-full bg-white shadow-md transition-transform duration-300 ${
-                      enabled[item.id] ? "translate-x-1" : "-translate-x-9"
-                    }`}
-                  />
-                </button>
-              </div>
-              <div className="w-72 font-light text-gray-600">
-                {item.description}
-              </div>
+                />
+              </button>
             </div>
-          );
-        })}
-      </div>
+
+            <div className="mt-2 w-full font-light text-gray-600 text-xs md:text-base">
+              {item.description}
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 }
