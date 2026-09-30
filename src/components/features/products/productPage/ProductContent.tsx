@@ -1,7 +1,7 @@
 "use client";
 
 import {
-  LandingProductCards,
+  ProductCardType,
   ProductPage,
 } from "@/src/features/products/types/productTypes";
 import ProductHeroSection from "./productHeroSection/ProductHeroSection";
@@ -15,7 +15,7 @@ import ProductBottomBar from "./ProductBottomBar";
 
 type ProductContentProps = {
   product: ProductPage;
-  similarProducts: LandingProductCards[];
+  similarProducts: ProductCardType[];
 };
 
 function ProductContent({ product, similarProducts }: ProductContentProps) {

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 import Link from "next/link";
 import { ShoppingCart } from "iconsax-react";
-import { useCountdown } from "@/src/lib/hooks/useCountdown";
+import { useCountdown } from "@/src/hooks/useCountdown";
 import TimerBox from "./TimerBox";
 
 function TwoBannerSection() {

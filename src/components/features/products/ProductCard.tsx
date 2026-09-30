@@ -1,14 +1,16 @@
 "use client";
 
-import { LandingProductCards } from "@/src/features/products/types/productTypes";
+import { createWishlistItem } from "@/src/features/account/queries/createWishlistItem";
+import { ProductCardType } from "@/src/features/products/types/productTypes";
 import { getImageUrl } from "@/src/lib/imageKit";
 import { ShoppingCart, Star1 } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
+import WishlistButton from "../../shared/ui/WishlistButton";
 
 const MAX_TITLE_LENGTH = 26;
 
-function ProductCard({ product }: { product: LandingProductCards }) {
+function ProductCard({ product }: { product: ProductCardType }) {
   const image = product.images[0];
 
   if (!image) return null;
@@ -95,7 +97,7 @@ function ProductCard({ product }: { product: LandingProductCards }) {
           Add to cart
         </button>
 
-        {/* <WishlistButton product={createWishlistItem(product)} /> */}
+        <WishlistButton product={createWishlistItem(product)} />
       </div>
     </article>
   );

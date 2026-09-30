@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import FilterSidebar from "../FilterSidebar";
-import { useProductFilters } from "@/src/lib/hooks/useProductFilters";
+import { useProductFilters } from "@/src/hooks/useProductFilters";
 
 type CategoryFiltersProps = {
   id: string;

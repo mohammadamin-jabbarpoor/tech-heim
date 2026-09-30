@@ -3,10 +3,10 @@
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
-import { LandingProductCards } from "@/src/features/products/types/productTypes";
+import { ProductCardType } from "@/src/features/products/types/productTypes";
 import SimilarProductCard from "./SimilarProductCard";
 
-function SimilarProducts({ products }: { products: LandingProductCards[] }) {
+function SimilarProducts({ products }: { products: ProductCardType[] }) {
   return (
     <div className="mt-4 md:mt-8 lg:mt-12">
       <h3 className="font-medium text-sm md:text-base lg:text-lg xl:text-xl mb-8">

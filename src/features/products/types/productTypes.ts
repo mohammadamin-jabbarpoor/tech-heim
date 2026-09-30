@@ -1,18 +1,34 @@
-export type LandingProductCards = {
+export type ProductCardType = {
   id: string;
   title: string;
   slug: string;
   price: number;
   compareAtPrice: number | null;
   discount: number | null;
+  stock: number;
+
   images: {
     id: string;
+    path: string;
     alt: string | null;
     isPrimary: boolean;
-    path: string;
     sortOrder: number;
-    optionId: string | null;
-    productId: string;
+  }[];
+
+  options: {
+    id: string;
+    type: string;
+    name: string;
+    value: string | null;
+    isDefault: boolean;
+
+    images: {
+      id: string;
+      path: string;
+      alt: string | null;
+      isPrimary: boolean;
+      sortOrder: number;
+    }[];
   }[];
 };
 

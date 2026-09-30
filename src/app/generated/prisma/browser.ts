@@ -72,3 +72,13 @@ export type FilterOption = Prisma.FilterOptionModel
  * 
  */
 export type ProductFilterOption = Prisma.ProductFilterOptionModel
+/**
+ * Model Cart
+ * 
+ */
+export type Cart = Prisma.CartModel
+/**
+ * Model CartItem
+ * 
+ */
+export type CartItem = Prisma.CartItemModel

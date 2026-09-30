@@ -2,10 +2,10 @@
 
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { LandingProductCards } from "@/src/features/products/types/productTypes";
+import { ProductCardType } from "@/src/features/products/types/productTypes";
 import BestSellersCard from "./BestSellersCard";
 
-function BestSellersSlider({ products }: { products: LandingProductCards[] }) {
+function BestSellersSlider({ products }: { products: ProductCardType[] }) {
   return (
     <div className="w-full">
       <Swiper

@@ -1,10 +1,9 @@
-import { LandingProductCards } from "@/src/features/products/types/productTypes";
+import { ProductCardType } from "@/src/features/products/types/productTypes";
 import { getImageUrl } from "@/src/lib/imageKit";
-import { Heart, ShoppingCart, Star1 } from "iconsax-react";
+import { Star1 } from "iconsax-react";
 import Image from "next/image";
-import Link from "next/link";
 
-function SimilarProductCard({ product }: { product: LandingProductCards }) {
+function SimilarProductCard({ product }: { product: ProductCardType }) {
   const image = product.images[0];
 
   return (

@@ -1,4 +1,4 @@
-import { LandingProductCards } from "@/src/features/products/types/productTypes";
+import { ProductCardType } from "@/src/features/products/types/productTypes";
 import ProductsGrid from "./ProductsGrid";
 import EmptyProducts from "./EmptyProducts";
 import SortProducts from "./SortProducts";
@@ -20,7 +20,7 @@ type PriceRange = {
 };
 
 type ProductsSectionProps = {
-  products: LandingProductCards[];
+  products: ProductCardType[];
   filters: CategoryFiltersProps[];
   priceRange: PriceRange;
 };

@@ -1,10 +1,10 @@
 "use client";
 
-import { LandingProductCards } from "@/src/features/products/types/productTypes";
+import { ProductCardType } from "@/src/features/products/types/productTypes";
 import ProductCard from "./ProductCard";
 
 type ProductsGridProps = {
-  products: LandingProductCards[];
+  products: ProductCardType[];
 };
 
 export default function ProductsGrid({ products }: ProductsGridProps) {

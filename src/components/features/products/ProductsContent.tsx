@@ -1,11 +1,11 @@
 "use client";
 
-import { LandingProductCards } from "@/src/features/products/types/productTypes";
+import { ProductCardType } from "@/src/features/products/types/productTypes";
 import ProductsCategories from "./productCategory/ProductsCategories";
 import ProductsSection from "./ProductsSection";
 import FilterSidebar from "./FilterSidebar";
 import SelectedFilterBar from "./SelectedFilterBar";
-import { useProductFilters } from "@/src/lib/hooks/useProductFilters";
+import { useProductFilters } from "@/src/hooks/useProductFilters";
 import Pagination from "./Pagination";
 
 type CategoryFiltersProps = {
@@ -32,7 +32,7 @@ type Pagination = {
 };
 
 type ProductsListProps = {
-  products: LandingProductCards[];
+  products: ProductCardType[];
   filters: CategoryFiltersProps[];
   priceRange: PriceRange;
   pagination: Pagination;

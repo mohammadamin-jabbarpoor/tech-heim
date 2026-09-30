@@ -89,6 +89,12 @@ export async function getProducts(filters: ProductFilters) {
           isPrimary: true,
         },
       },
+
+      options: {
+        include: {
+          images: true,
+        },
+      },
     },
   });
 

@@ -1,9 +1,9 @@
-import { LandingProductCards } from "@/src/features/products/types/productTypes";
+import { ProductCardType } from "@/src/features/products/types/productTypes";
 import { getImageUrl } from "@/src/lib/imageKit";
 import Image from "next/image";
 import Link from "next/link";
 
-function SaleProductCard({ product }: { product: LandingProductCards }) {
+function SaleProductCard({ product }: { product: ProductCardType }) {
   const image = product.images[0];
   return (
     <Link href={`/products/${product.slug}`}>
