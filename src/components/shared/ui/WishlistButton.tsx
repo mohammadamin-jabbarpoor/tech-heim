@@ -4,7 +4,7 @@ import { Heart } from "iconsax-react";
 
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { WishlistItem } from "@/src/features/account/queries/types/wishlistItem";
+import { WishlistItem } from "@/src/features/account/types/wishlistItem";
 import { useWishlistStore } from "@/src/stores/wishlistStore";
 
 type WishlistButtonProps = {

@@ -3,23 +3,25 @@
 import { ProductPage } from "@/src/features/products/types/productTypes";
 import { useMemo, useState } from "react";
 
-type PayOptionProp = {
-  product: ProductPage;
+type PayOptionProps = {
+  installmentPrice: number | null;
+
+  paymentType: "full" | "installment";
+
+  selectedMonth: number | null;
+
+  onPaymentType: React.Dispatch<React.SetStateAction<"full" | "installment">>;
+
+  onSelectedMonth: React.Dispatch<React.SetStateAction<number | null>>;
 };
 
-function PayOption({ product }: PayOptionProp) {
-  const [paymentType, setPaymentType] = useState<"full" | "installment">(
-    "full",
-  );
-
-  const [selectedMonth, setSelectedMonth] = useState<number | null>(3);
-
-  const installmentPrice = useMemo(() => {
-    if (paymentType !== "installment" || !selectedMonth) return null;
-
-    return product.price / selectedMonth;
-  }, [paymentType, selectedMonth, product.price]);
-
+function PayOption({
+  installmentPrice,
+  paymentType,
+  selectedMonth,
+  onPaymentType,
+  onSelectedMonth,
+}: PayOptionProps) {
   const months = [3, 6, 12, 18];
   return (
     <div className="flex flex-col gap-3.5">
@@ -40,7 +42,7 @@ function PayOption({ product }: PayOptionProp) {
             name="payment"
             value="full"
             checked={paymentType === "full"}
-            onChange={() => setPaymentType("full")}
+            onChange={() => onPaymentType("full")}
             className="sr-only"
           />
 
@@ -72,7 +74,7 @@ function PayOption({ product }: PayOptionProp) {
               name="payment"
               value="installment"
               checked={paymentType === "installment"}
-              onChange={() => setPaymentType("installment")}
+              onChange={() => onPaymentType("installment")}
               className="sr-only"
             />
 
@@ -98,7 +100,7 @@ function PayOption({ product }: PayOptionProp) {
             key={month}
             type="button"
             disabled={paymentType !== "installment"}
-            onClick={() => setSelectedMonth(month)}
+            onClick={() => onSelectedMonth(month)}
             className={`flex flex-col items-center justify-center px-2 pt-0.5 pb-1.5 rounded border transition
                 ${paymentType !== "installment" ? "cursor-not-allowed border-gray-500 text-gray-500" : ""}
 

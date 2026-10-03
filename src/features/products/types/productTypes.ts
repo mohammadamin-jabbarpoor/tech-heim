@@ -15,21 +15,23 @@ export type ProductCardType = {
     sortOrder: number;
   }[];
 
-  options: {
-    id: string;
-    type: string;
-    name: string;
-    value: string | null;
-    isDefault: boolean;
+  options?:
+    | {
+        id: string;
+        type: string;
+        name: string;
+        value: string | null;
+        isDefault: boolean;
 
-    images: {
-      id: string;
-      path: string;
-      alt: string | null;
-      isPrimary: boolean;
-      sortOrder: number;
-    }[];
-  }[];
+        images: {
+          id: string;
+          path: string;
+          alt: string | null;
+          isPrimary: boolean;
+          sortOrder: number;
+        }[];
+      }[]
+    | null;
 };
 
 export type ProductPage = {

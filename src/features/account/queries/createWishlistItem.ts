@@ -1,7 +1,7 @@
 import { ProductCardType } from "../../products/types/productTypes";
 
 export function createWishlistItem(product: ProductCardType) {
-  const defaultOption = product.options.find((option) => option.isDefault);
+  const defaultOption = product.options?.find((option) => option.isDefault);
 
   return {
     id: product.id,

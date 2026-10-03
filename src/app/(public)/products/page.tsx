@@ -23,9 +23,11 @@ type Props = {
 async function ProductsPage({ searchParams }: Props) {
   const params = await searchParams;
   const category = params.category;
-  const productsData = await getProducts(params);
-  const filters = category ? await getCategoryFilters(category) : [];
-  const priceRange = await getProductPriceRange(category);
+  const [productsData, filters, priceRange] = await Promise.all([
+    getProducts(params),
+    category ? getCategoryFilters(category) : Promise.resolve([]),
+    getProductPriceRange(category),
+  ]);
 
   return (
     <>

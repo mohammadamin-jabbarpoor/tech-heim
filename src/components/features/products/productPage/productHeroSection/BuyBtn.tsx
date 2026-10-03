@@ -1,12 +1,12 @@
 import { ShoppingCart } from "iconsax-react";
 import Link from "next/link";
-import React from "react";
 
-function BuyBtn() {
+function BuyBtn({ addToCart }: { addToCart: () => void }) {
   return (
     <div className="flex flex-col gap-2">
       <Link
         href="/checkout"
+        onClick={addToCart}
         className="group flex items-center justify-center gap-0 py-3.5 bg-primary hover:bg-primary-600 text-white rounded-lg transition-all duration-300"
       >
         <span className="translate-x-3 group-hover:translate-x-0 transition-all duration-300">
@@ -22,6 +22,7 @@ function BuyBtn() {
       </Link>
       <Link
         href=""
+        onClick={addToCart}
         className="group flex items-center justify-center gap-0 py-3.5 border-2 border-primary text-primary hover:border-primary-600 hover:text-primary-600 rounded-lg transition-all duration-300"
       >
         <span className="translate-x-3 group-hover:translate-x-0 transition-all duration-300">

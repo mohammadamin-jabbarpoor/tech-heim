@@ -7,10 +7,15 @@ import { ShoppingCart, Star1 } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
 import WishlistButton from "../../shared/ui/WishlistButton";
+import { useCartStore } from "@/src/stores/cartStore";
+import { createCartItem } from "@/src/features/cart/types/creatCartItem";
+import { toast } from "sonner";
 
 const MAX_TITLE_LENGTH = 26;
 
 function ProductCard({ product }: { product: ProductCardType }) {
+  const addItem = useCartStore((state) => state.addItem);
+
   const image = product.images[0];
 
   if (!image) return null;
@@ -22,6 +27,19 @@ function ProductCard({ product }: { product: ProductCardType }) {
 
   const hasDiscount =
     product.compareAtPrice !== null && product.compareAtPrice > product.price;
+
+  const handleAddToCart = () => {
+    const defaultOption = product.options?.find((option) => option.isDefault);
+
+    addItem(
+      createCartItem({
+        product,
+        optionId: defaultOption?.id,
+      }),
+    );
+
+    toast.success("Product added to cart");
+  };
 
   return (
     <article className="group relative flex h-46.5 w-37 flex-col items-center justify-between gap-2 rounded-lg p-2 md:p-3 lg:p-4 shadow-[-2px_2px_15px_-1px_rgba(113,113,113,0.12)] transition-shadow hover:shadow-[-2px_2px_20px_-1px_rgba(113,113,113,0.2)] xs:h-54.5 xs:w-44 sm:h-62.5 sm:w-51 md:h-70.5 md:w-58 lg:h-78.5 lg:w-65 lg:gap-4 xl:h-86.75 xl:w-72">
@@ -91,6 +109,7 @@ function ProductCard({ product }: { product: ProductCardType }) {
       <div className="absolute bottom-4 left-4 right-4 hidden h-12 items-center justify-between lg:flex opacity-0 group-hover:opacity-100">
         <button
           type="button"
+          onClick={handleAddToCart}
           className="flex cursor-pointer gap-2 rounded-lg border-2 border-primary-500 px-4 py-2.5 text-primary-500 transition-all duration-300 hover:bg-primary-500 hover:text-white"
         >
           <ShoppingCart variant="Outline" size={24} color="currentColor" />

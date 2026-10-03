@@ -25,6 +25,21 @@ export async function getSimilarProducts(
       },
       price: true,
       compareAtPrice: true,
+      stock: true,
+
+      options: {
+        orderBy: {
+          sortOrder: "asc",
+        },
+
+        include: {
+          images: {
+            orderBy: {
+              sortOrder: "asc",
+            },
+          },
+        },
+      },
     },
   });
 

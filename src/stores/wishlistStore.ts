@@ -1,4 +1,4 @@
-import { WishlistItem } from "../features/account/queries/types/wishlistItem";
+import { WishlistItem } from "../features/account/types/wishlistItem";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
