@@ -11,20 +11,21 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import AuthFormField from "../AuthFormField";
 import AuthSocialButtons from "../AuthSocialButtons";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type RegisterFormProps = {
-  onClose: () => void;
   onSwitchToLogin: () => void;
   onClick: () => void;
 };
 
-function MobileRegisterForm({
-  onClose,
-  onSwitchToLogin,
-  onClick,
-}: RegisterFormProps) {
+function MobileRegisterForm({ onSwitchToLogin, onClick }: RegisterFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   const {
     register,
@@ -52,7 +53,7 @@ function MobileRegisterForm({
 
       console.log(result);
 
-      onClose();
+      router.push(callbackUrl);
     } catch (error) {
       console.error(error);
     } finally {
@@ -62,7 +63,7 @@ function MobileRegisterForm({
 
   return (
     <div className="w-full flex flex-col items-center justify-center gap-6 mt-10">
-      <p className="font-medium text-3xl">Craete your account</p>
+      <p className="font-medium text-3xl">Create your account</p>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full flex flex-col gap-4"

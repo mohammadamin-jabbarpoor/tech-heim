@@ -13,16 +13,21 @@ import { toast } from "sonner";
 import AuthFormField from "../AuthFormField";
 import AuthSocialButtons from "../AuthSocialButtons";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type LoginFormProps = {
-  onClose: () => void;
   onSwitchToRegister: () => void;
   onClick: () => void;
 };
 
-function LoginForm({ onClose, onSwitchToRegister, onClick }: LoginFormProps) {
+function LoginForm({ onSwitchToRegister, onClick }: LoginFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   const {
     register,
@@ -48,8 +53,7 @@ function LoginForm({ onClose, onSwitchToRegister, onClick }: LoginFormProps) {
       }
 
       toast.success("You have been logged in successfully");
-
-      onClose();
+      router.push(callbackUrl);
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
     } finally {
@@ -59,7 +63,7 @@ function LoginForm({ onClose, onSwitchToRegister, onClick }: LoginFormProps) {
 
   return (
     <div className="w-full flex flex-col items-center justify-center gap-6 mt-10">
-      <p className="font-medium text-3xl">Craete your account</p>
+      <p className="font-medium text-3xl">Log in to Tech Heim</p>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full flex flex-col gap-4"

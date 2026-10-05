@@ -2,18 +2,16 @@
 
 import MobileLoginForm from "./MobileLoginForm";
 import MobileRegisterForm from "./MobileRegisterForm";
-import { useState } from "react";
 import { ArrowLeft } from "iconsax-react";
 import { authClient } from "@/src/lib/auth/auth-client";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-type AuthMode = "login" | "register";
+function MobileAuthModal() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-type AuthModalProps = {
-  onClose: () => void;
-};
-
-function MobileAuthModal({ onClose }: AuthModalProps) {
-  const [mode, setMode] = useState<AuthMode>("login");
+  const isRegisterPage = pathname === "/register";
 
   const handleGoogleLogin = async () => {
     await authClient.signIn.social({
@@ -22,49 +20,61 @@ function MobileAuthModal({ onClose }: AuthModalProps) {
     });
   };
 
+  const handleSwitchMode = (mode: "login" | "register") => {
+    const query = searchParams.toString();
+
+    router.replace(query ? `/${mode}?${query}` : `/${mode}`);
+  };
+
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
+
   return (
-    <div className="fixed inset-0 z-999 bg-white overflow-y-auto">
-      <div className="w-full max-w-full mx-auto mt-4 mb-40 px-6">
-        <div onClick={onClose} className="flex justify-start">
+    <div className="fixed inset-0 z-999 overflow-y-auto bg-white">
+      <div className="mx-auto mt-4 mb-40 w-full max-w-full px-6">
+        <div
+          onClick={() => router.push(callbackUrl)}
+          className="flex justify-start"
+        >
           <ArrowLeft variant="Outline" size={24} color="#717171" />
         </div>
-        <div className="flex justify-center mt-4 mb-6">
-          <h2 className="font-medium text-2xl text-primary-400">Tech Heim</h2>
+
+        <div className="mt-4 mb-6 flex justify-center">
+          <h2 className="text-2xl font-medium text-primary-400">Tech Heim</h2>
         </div>
-        <div className="w-full h-10 flex border-b-2 border-b-gray-300">
+
+        <div className="flex h-10 w-full border-b-2 border-b-gray-300">
           <button
-            onClick={() => setMode("login")}
-            className={`flex-1 font-light text-sm border-b-2 -mb-0.5 ${
-              mode === "login"
-                ? "text-primary border-b-primary"
-                : "text-gray-600 border-b-transparent"
+            onClick={() => handleSwitchMode("login")}
+            className={`-mb-0.5 flex-1 border-b-2 text-sm font-light ${
+              !isRegisterPage
+                ? "border-b-primary text-primary"
+                : "border-b-transparent text-gray-600"
             }`}
           >
             Log in
           </button>
 
           <button
-            onClick={() => setMode("register")}
-            className={`flex-1 font-light text-sm border-b-2 -mb-0.5 ${
-              mode === "register"
-                ? "text-primary border-b-primary"
-                : "text-gray-600 border-b-transparent"
+            onClick={() => handleSwitchMode("register")}
+            className={`-mb-0.5 flex-1 border-b-2 text-sm font-light ${
+              isRegisterPage
+                ? "border-b-primary text-primary"
+                : "border-b-transparent text-gray-600"
             }`}
           >
             Create Account
           </button>
         </div>
+
         <div>
-          {mode === "login" ? (
+          {!isRegisterPage ? (
             <MobileLoginForm
-              onClose={onClose}
-              onSwitchToRegister={() => setMode("register")}
+              onSwitchToRegister={() => handleSwitchMode("register")}
               onClick={handleGoogleLogin}
             />
           ) : (
             <MobileRegisterForm
-              onClose={onClose}
-              onSwitchToLogin={() => setMode("login")}
+              onSwitchToLogin={() => handleSwitchMode("login")}
               onClick={handleGoogleLogin}
             />
           )}

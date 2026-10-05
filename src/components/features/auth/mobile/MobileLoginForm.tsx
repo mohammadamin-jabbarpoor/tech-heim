@@ -12,20 +12,21 @@ import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 import AuthSocialButtons from "../AuthSocialButtons";
 import AuthFormField from "../AuthFormField";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type LoginFormProps = {
-  onClose: () => void;
   onSwitchToRegister: () => void;
   onClick: () => void;
 };
 
-function MobileLoginForm({
-  onClose,
-  onSwitchToRegister,
-  onClick,
-}: LoginFormProps) {
+function MobileLoginForm({ onSwitchToRegister, onClick }: LoginFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   const {
     register,
@@ -52,7 +53,7 @@ function MobileLoginForm({
 
       toast.success("You have been logged in successfully");
 
-      onClose();
+      router.push(callbackUrl);
     } catch (error) {
       toast.error("Something went wrong. Please try again.");
     } finally {
@@ -62,7 +63,7 @@ function MobileLoginForm({
 
   return (
     <div className="w-full flex flex-col items-center justify-center gap-6 mt-10">
-      <p className="font-medium text-xl">Craete your account</p>
+      <p className="font-medium text-xl">Log in to Tech Heim</p>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full flex flex-col gap-4"

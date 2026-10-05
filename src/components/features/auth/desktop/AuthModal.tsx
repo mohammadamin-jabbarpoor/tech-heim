@@ -1,18 +1,16 @@
 "use client";
 
-import { useState } from "react";
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
 import { authClient } from "@/src/lib/auth/auth-client";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
-type AuthMode = "login" | "register";
+function AuthModal() {
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-type AuthModalProps = {
-  onClose: () => void;
-};
-
-function AuthModal({ onClose }: AuthModalProps) {
-  const [mode, setMode] = useState<AuthMode>("login");
+  const isRegisterPage = pathname === "/register";
 
   const handleGoogleLogin = async () => {
     await authClient.signIn.social({
@@ -20,48 +18,47 @@ function AuthModal({ onClose }: AuthModalProps) {
     });
   };
 
+  const handleSwitchMode = (mode: "login" | "register") => {
+    const query = searchParams.toString();
+
+    router.replace(query ? `/${mode}?${query}` : `/${mode}`);
+  };
+
   return (
-    <div
-      onClick={onClose}
-      className="fixed inset-0 z-70 flex items-center justify-center bg-black/40"
-    >
-      <div
-        onClick={(e) => e.stopPropagation()}
-        className="w-150 rounded-xl bg-white py-10 px-20"
-      >
-        <div className="w-full h-11 flex border-b-2 border-b-gray-300">
+    <div className="fixed inset-0 z-70 flex items-center justify-center bg-white">
+      <div className="w-150 rounded-xl bg-white px-20 py-10 shadow-xl">
+        <div className="flex h-11 w-full border-b-2 border-b-gray-300">
           <button
-            onClick={() => setMode("login")}
-            className={`flex-1 font-light text-xl border-b-2 -mb-0.5 cursor-pointer ${
-              mode === "login"
-                ? "text-primary border-b-primary"
-                : "text-gray-600 border-b-transparent"
+            onClick={() => handleSwitchMode("login")}
+            className={`-mb-0.5 flex-1 cursor-pointer border-b-2 text-xl font-light ${
+              !isRegisterPage
+                ? "border-b-primary text-primary"
+                : "border-b-transparent text-gray-600"
             }`}
           >
             Log in
           </button>
 
           <button
-            onClick={() => setMode("register")}
-            className={`flex-1 font-light text-xl border-b-2 -mb-0.5 cursor-pointer ${
-              mode === "register"
-                ? "text-primary border-b-primary"
-                : "text-gray-600 border-b-transparent"
+            onClick={() => handleSwitchMode("register")}
+            className={`-mb-0.5 flex-1 cursor-pointer border-b-2 text-xl font-light ${
+              isRegisterPage
+                ? "border-b-primary text-primary"
+                : "border-b-transparent text-gray-600"
             }`}
           >
             Create Account
           </button>
         </div>
-        {mode === "login" ? (
+
+        {!isRegisterPage ? (
           <LoginForm
-            onClose={onClose}
-            onSwitchToRegister={() => setMode("register")}
+            onSwitchToRegister={() => handleSwitchMode("register")}
             onClick={handleGoogleLogin}
           />
         ) : (
           <RegisterForm
-            onClose={onClose}
-            onSwitchToLogin={() => setMode("login")}
+            onSwitchToLogin={() => handleSwitchMode("login")}
             onClick={handleGoogleLogin}
           />
         )}

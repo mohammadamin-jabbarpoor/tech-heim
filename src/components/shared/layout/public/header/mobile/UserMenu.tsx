@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { authClient } from "@/src/lib/auth/auth-client";
 import { toast } from "sonner";
 
@@ -40,14 +40,23 @@ const userItems = [
 
 type UserMenuProps = {
   session: typeof authClient.$Infer.Session | null;
-  onLoginClick: () => void;
 };
 
-function UserMenu({ session, onLoginClick }: UserMenuProps) {
+function UserMenu({ session }: UserMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
   const router = useRouter();
   const [isLoggingOut, setIsLoggingOut] = useState(false);
+
+  const handleLogin = () => {
+    const currentUrl = searchParams.toString()
+      ? `${pathname}?${searchParams.toString()}`
+      : pathname;
+
+    router.push(`/login?callbackUrl=${encodeURIComponent(currentUrl)}`);
+  };
 
   const handleLogout = async () => {
     setIsLoggingOut(true);
@@ -73,7 +82,7 @@ function UserMenu({ session, onLoginClick }: UserMenuProps) {
     return (
       <button
         type="button"
-        onClick={onLoginClick}
+        onClick={handleLogin}
         className="hidden md:block cursor-pointer rounded-lg bg-primary px-2.5 py-2 lg:px-4 lg:py-3.5 text-white text-sm lg:text-base transition-all duration-300 hover:bg-primary-600"
       >
         Login / Sign Up

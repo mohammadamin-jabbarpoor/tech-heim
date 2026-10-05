@@ -14,7 +14,6 @@ type HeaderActionsProps = {
 
 function DesktopHeaderActions({ session }: HeaderActionsProps) {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
   return (
     <>
@@ -29,14 +28,8 @@ function DesktopHeaderActions({ session }: HeaderActionsProps) {
 
         <CartButton />
 
-        <UserMenu
-          session={session}
-          onLoginClick={() => setIsAuthModalOpen(true)}
-        />
+        <UserMenu session={session} />
       </div>
-      {isAuthModalOpen && (
-        <AuthModal onClose={() => setIsAuthModalOpen(false)} />
-      )}
     </>
   );
 }

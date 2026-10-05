@@ -11,20 +11,21 @@ import {
 import { authClient } from "@/src/lib/auth/auth-client";
 import AuthSocialButtons from "../AuthSocialButtons";
 import AuthFormField from "../AuthFormField";
+import { useRouter, useSearchParams } from "next/navigation";
 
 type RegisterFormProps = {
-  onClose: () => void;
   onSwitchToLogin: () => void;
   onClick: () => void;
 };
 
-function RegisterForm({
-  onClose,
-  onSwitchToLogin,
-  onClick,
-}: RegisterFormProps) {
+function RegisterForm({ onSwitchToLogin, onClick }: RegisterFormProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  const callbackUrl = searchParams.get("callbackUrl") || "/";
 
   const {
     register,
@@ -53,8 +54,7 @@ function RegisterForm({
       }
 
       console.log(result);
-
-      onClose();
+      router.push(callbackUrl);
     } catch (error) {
       console.error(error);
     } finally {
@@ -64,7 +64,7 @@ function RegisterForm({
 
   return (
     <div className="w-full flex flex-col items-center justify-center gap-6 mt-10">
-      <p className="font-medium text-3xl">Craete your account</p>
+      <p className="font-medium text-3xl">Create your account</p>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full flex flex-col gap-4"

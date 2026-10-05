@@ -1,9 +1,8 @@
 "use client";
 
-import { qaInfo } from "@/src/lib/constants/qaInfo";
 import { ArrowDown2 } from "iconsax-react";
 import { useState } from "react";
-import Line from "../../shared/ui/Line";
+import { qaInfo } from "@/src/lib/constants/qaInfo";
 
 function FAQ() {
   const [openId, setOpenId] = useState<string | null>(null);
