@@ -13,6 +13,8 @@ import { toast } from "sonner";
 import AuthSocialButtons from "../AuthSocialButtons";
 import AuthFormField from "../AuthFormField";
 import { useRouter, useSearchParams } from "next/navigation";
+import { syncCartAfterAuth } from "@/src/features/cart/utils/syncCartAfterAuth";
+import { useCartStore } from "@/src/stores/cartStore";
 
 type LoginFormProps = {
   onSwitchToRegister: () => void;
@@ -27,6 +29,9 @@ function MobileLoginForm({ onSwitchToRegister, onClick }: LoginFormProps) {
   const router = useRouter();
 
   const callbackUrl = searchParams.get("callbackUrl") || "/";
+
+  const items = useCartStore((state) => state.items);
+  const setItems = useCartStore((state) => state.setItems);
 
   const {
     register,
@@ -50,6 +55,20 @@ function MobileLoginForm({ onSwitchToRegister, onClick }: LoginFormProps) {
         toast.error(error.message || "Invalid email or password");
         return;
       }
+
+      if (!result?.user) {
+        throw new Error("Login failed");
+      }
+
+      const guestItems = items.map((item) => ({
+        productId: item.id,
+        optionId: item.optionId ?? null,
+        quantity: item.quantity,
+      }));
+
+      const finalCart = await syncCartAfterAuth(guestItems);
+
+      setItems(finalCart ?? []);
 
       toast.success("You have been logged in successfully");
 

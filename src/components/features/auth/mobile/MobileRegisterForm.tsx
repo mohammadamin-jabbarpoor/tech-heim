@@ -12,6 +12,9 @@ import { useForm } from "react-hook-form";
 import AuthFormField from "../AuthFormField";
 import AuthSocialButtons from "../AuthSocialButtons";
 import { useRouter, useSearchParams } from "next/navigation";
+import { toast } from "sonner";
+import { syncCartAfterAuth } from "@/src/features/cart/utils/syncCartAfterAuth";
+import { useCartStore } from "@/src/stores/cartStore";
 
 type RegisterFormProps = {
   onSwitchToLogin: () => void;
@@ -26,6 +29,9 @@ function MobileRegisterForm({ onSwitchToLogin, onClick }: RegisterFormProps) {
   const router = useRouter();
 
   const callbackUrl = searchParams.get("callbackUrl") || "/";
+
+  const items = useCartStore((state) => state.items);
+  const setItems = useCartStore((state) => state.setItems);
 
   const {
     register,
@@ -47,15 +53,27 @@ function MobileRegisterForm({ onSwitchToLogin, onClick }: RegisterFormProps) {
       });
 
       if (error) {
-        console.error(error);
+        toast.error(error.message || "Invalid email or password");
         return;
       }
 
-      console.log(result);
+      if (!result?.user) {
+        throw new Error("Login failed");
+      }
+
+      const guestItems = items.map((item) => ({
+        productId: item.id,
+        optionId: item.optionId ?? null,
+        quantity: item.quantity,
+      }));
+
+      const finalCart = await syncCartAfterAuth(guestItems);
+
+      setItems(finalCart ?? []);
 
       router.push(callbackUrl);
     } catch (error) {
-      console.error(error);
+      toast.error("Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
     }

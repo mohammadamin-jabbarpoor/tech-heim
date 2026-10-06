@@ -5,6 +5,7 @@ import { SidebarItemProps } from "./account-sidebar/AccountSidebarItem";
 import { authClient } from "@/src/lib/auth/auth-client";
 import { ArrowRight, ArrowRight2 } from "iconsax-react";
 import Link from "next/link";
+import { useCartStore } from "@/src/stores/cartStore";
 
 function MobileAccountItem({ item }: SidebarItemProps) {
   const router = useRouter();
@@ -15,6 +16,8 @@ function MobileAccountItem({ item }: SidebarItemProps) {
 
   const handleLogout = async () => {
     await authClient.signOut();
+
+    useCartStore.getState().clearCart();
 
     router.push("/");
     router.refresh();

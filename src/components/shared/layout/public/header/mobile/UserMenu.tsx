@@ -14,6 +14,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { authClient } from "@/src/lib/auth/auth-client";
 import { toast } from "sonner";
+import { useCartStore } from "@/src/stores/cartStore";
 
 const userItems = [
   {
@@ -68,6 +69,8 @@ function UserMenu({ session }: UserMenuProps) {
         return;
       }
       setIsOpen(false);
+
+      useCartStore.getState().clearCart();
 
       toast.success("You have been logged out successfully");
     } catch (error) {

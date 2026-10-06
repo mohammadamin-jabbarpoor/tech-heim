@@ -5,6 +5,7 @@ import { ComponentType } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { authClient } from "@/src/lib/auth/auth-client";
+import { useCartStore } from "@/src/stores/cartStore";
 
 type SidebarItem = {
   id: string;
@@ -29,6 +30,8 @@ function AccountSidebarItem({ item }: SidebarItemProps) {
 
   const handleLogout = async () => {
     await authClient.signOut();
+
+    useCartStore.getState().clearCart();
 
     router.push("/");
     router.refresh();
