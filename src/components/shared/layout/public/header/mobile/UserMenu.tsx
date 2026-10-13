@@ -17,26 +17,20 @@ import { toast } from "sonner";
 import { useCartStore } from "@/src/stores/cartStore";
 
 const userItems = [
-  {
-    id: "orders",
-    icon: Bag2,
-    title: "Orders",
-  },
+  { id: "orders", icon: Bag2, title: "Orders", href: "/account/orders" },
   {
     id: "wishlist",
     icon: Heart,
     title: "Wish List",
+    href: "/account/wishlist",
   },
   {
-    id: "payments",
+    id: "payment",
     icon: DollarCircle,
     title: "Payments",
+    href: "/account/payment",
   },
-  {
-    id: "logout",
-    icon: LogoutCurve,
-    title: "Log out",
-  },
+  { id: "logout", icon: LogoutCurve, title: "Log out" },
 ];
 
 type UserMenuProps = {
@@ -173,29 +167,37 @@ function UserMenu({ session }: UserMenuProps) {
                   const isLogout = item.id === "logout";
 
                   return (
-                    <li
-                      key={item.id}
-                      onClick={isLogout ? handleLogout : undefined}
-                      className={`cursor-pointer hover:text-primary
-                        ${
-                          isLogout && isLoggingOut
-                            ? "pointer-events-none opacity-50"
-                            : ""
-                        }`}
-                    >
-                      <div className="flex items-center gap-4">
-                        <Icon
-                          variant="Outline"
-                          size={24}
-                          color="currentColor"
-                        />
-
-                        <span className="font-light">
-                          {isLogout && isLoggingOut
-                            ? "Logging out..."
-                            : item.title}
-                        </span>
-                      </div>
+                    <li key={item.id}>
+                      {isLogout ? (
+                        <button
+                          type="button"
+                          onClick={handleLogout}
+                          disabled={isLoggingOut}
+                          className="flex w-full cursor-pointer items-center gap-4 text-left hover:text-primary disabled:opacity-50"
+                        >
+                          <Icon
+                            variant="Outline"
+                            size={24}
+                            color="currentColor"
+                          />
+                          <span className="font-light">
+                            {isLoggingOut ? "Logging out..." : item.title}
+                          </span>
+                        </button>
+                      ) : (
+                        <Link
+                          href={item.href!}
+                          onClick={() => setIsOpen(false)}
+                          className="flex w-full items-center gap-4 hover:text-primary"
+                        >
+                          <Icon
+                            variant="Outline"
+                            size={24}
+                            color="currentColor"
+                          />
+                          <span className="font-light">{item.title}</span>
+                        </Link>
+                      )}
                     </li>
                   );
                 })}

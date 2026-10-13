@@ -74,7 +74,7 @@ function LoginForm({ onSwitchToRegister, onClick }: LoginFormProps) {
       toast.success("You have been logged in successfully");
 
       router.push(callbackUrl);
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
@@ -172,7 +172,7 @@ function LoginForm({ onSwitchToRegister, onClick }: LoginFormProps) {
       <AuthSocialButtons onGoogleClick={onClick} />
 
       <div className="flex items-center gap-3">
-        <p className="font-light text-gray-600">Don't have an account ?</p>
+        <p className="font-light text-gray-600">Don&apos;t have an account ?</p>
         <button
           type="button"
           onClick={onSwitchToRegister}

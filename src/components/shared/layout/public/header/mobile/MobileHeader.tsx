@@ -4,13 +4,13 @@ import Link from "next/link";
 import MobileNavigation from "./MobileNavigation";
 import MobileHeaderActions from "./MobileHeaderActions";
 import SearchInput from "./SearchInput";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import SearchModal from "../search/SearchModal";
 import { authClient } from "@/src/lib/auth/auth-client";
 
 function MobileHeader() {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
-  const { data: session, isPending } = authClient.useSession();
+  const { data: session } = authClient.useSession();
 
   useEffect(() => {
     if (isSearchModalOpen) {
@@ -32,7 +32,9 @@ function MobileHeader() {
         <Link href="/" className="font-medium text-primary-400">
           Tech Heim
         </Link>
-        <MobileHeaderActions session={session} />
+        <Suspense fallback={null}>
+          <MobileHeaderActions session={session} />
+        </Suspense>
       </div>
       <div onClick={() => setIsSearchModalOpen(true)}>
         <SearchInput />

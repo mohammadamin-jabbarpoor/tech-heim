@@ -1,10 +1,6 @@
 import Image from "next/image";
 
-type LoginErrorModalProps = {
-  onClose: () => void;
-};
-
-function DesktopLoginErrorModal({ onClose }: LoginErrorModalProps) {
+function DesktopLoginErrorModal() {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">
       <div className="w-111 bg-white rounded-lg p-8">

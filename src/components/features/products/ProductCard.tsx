@@ -1,7 +1,7 @@
 "use client";
 
 import { createWishlistItem } from "@/src/features/account/queries/createWishlistItem";
-import { ProductCardType } from "@/src/features/products/types/productTypes";
+import { ProductWithCartData } from "@/src/features/products/types/productTypes";
 import { getImageUrl } from "@/src/lib/imageKit";
 import { ShoppingCart, Star1 } from "iconsax-react";
 import Image from "next/image";
@@ -13,7 +13,7 @@ import { toast } from "sonner";
 
 const MAX_TITLE_LENGTH = 26;
 
-function ProductCard({ product }: { product: ProductCardType }) {
+function ProductCard({ product }: { product: ProductWithCartData }) {
   const addItem = useCartStore((state) => state.addItem);
 
   const image = product.images[0];

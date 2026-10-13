@@ -1,10 +1,10 @@
 "use client";
 
-import { ProductCardType } from "@/src/features/products/types/productTypes";
+import { ProductWithCartData } from "@/src/features/products/types/productTypes";
 import ProductCard from "./ProductCard";
 
 type ProductsGridProps = {
-  products: ProductCardType[];
+  products: ProductWithCartData[];
 };
 
 export default function ProductsGrid({ products }: ProductsGridProps) {

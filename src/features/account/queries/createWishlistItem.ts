@@ -12,7 +12,6 @@ export function createWishlistItem(product: ProductCardType) {
     compareAtPrice: product.compareAtPrice
       ? Number(product.compareAtPrice)
       : null,
-    stock: product.stock,
     option: defaultOption
       ? {
           id: defaultOption.id,

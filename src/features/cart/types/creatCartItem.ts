@@ -1,8 +1,8 @@
-import { ProductCardType } from "../../products/types/productTypes";
+import { ProductWithCartData } from "../../products/types/productTypes";
 import { CartItemType } from "./cartItem";
 
 type CreateCartItemParams = {
-  product: ProductCardType;
+  product: ProductWithCartData;
   optionId?: string;
   payment?: {
     type: "full" | "installment";
@@ -16,7 +16,7 @@ export function createCartItem({
   optionId,
   payment,
 }: CreateCartItemParams): CartItemType {
-  const selectedOption = product.options.find(
+  const selectedOption = product.options?.find(
     (option) => option.id === optionId,
   );
 

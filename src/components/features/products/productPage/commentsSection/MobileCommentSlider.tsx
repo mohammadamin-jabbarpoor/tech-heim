@@ -3,7 +3,7 @@
 import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import type { Swiper as SwiperType } from "swiper";
 import { commentsInfo } from "@/src/lib/constants/commentsInfo";
 import MobileCommentCard from "./MobileCommentCard";

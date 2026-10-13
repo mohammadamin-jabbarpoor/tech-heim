@@ -1,6 +1,6 @@
 "use client";
 
-import { ProductCardType } from "@/src/features/products/types/productTypes";
+import { ProductWithCartData } from "@/src/features/products/types/productTypes";
 import ProductsCategories from "./productCategory/ProductsCategories";
 import ProductsSection from "./ProductsSection";
 import FilterSidebar from "./FilterSidebar";
@@ -32,7 +32,7 @@ type Pagination = {
 };
 
 type ProductsListProps = {
-  products: ProductCardType[];
+  products: ProductWithCartData[];
   filters: CategoryFiltersProps[];
   priceRange: PriceRange;
   pagination: Pagination;

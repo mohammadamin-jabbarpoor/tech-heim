@@ -9,7 +9,7 @@ export const productReviews: ReviewsType = [
   {
     id: 1,
     image: "/reviews/video-1.svg",
-    title: "MacBook Pro 2022 Review: Apple's M2 Revs Up",
+    title: "MacBook Pro 2022 Review: Apple&apos;s M2 Revs Up",
   },
   {
     id: 2,
@@ -19,12 +19,12 @@ export const productReviews: ReviewsType = [
   {
     id: 3,
     image: "/reviews/video-3.svg",
-    title: "M2 MacBook Pro 13 Review - Don't Choose Wrong!",
+    title: "M2 MacBook Pro 13 Review - Don&apos;t Choose Wrong!",
   },
   {
     id: 4,
     image: "/reviews/video-1.svg",
-    title: "MacBook Pro 2022 Review: Apple's M2 Revs Up",
+    title: "MacBook Pro 2022 Review: Apple&apos;s M2 Revs Up",
   },
   {
     id: 5,

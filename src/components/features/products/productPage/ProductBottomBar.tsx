@@ -4,10 +4,9 @@ import PaymentOptionBtn from "./PaymentOptionBtn";
 
 type BottomBarProps = {
   product: ProductPage;
-  selectedOption: ProductPage["options"][number] | null;
 };
 
-function ProductBottomBar({ product, selectedOption }: BottomBarProps) {
+function ProductBottomBar({ product }: BottomBarProps) {
   return (
     <div className="block xl:hidden w-full relative mt-6">
       <div className="fixed inset-x-0 bottom-0 z-5 w-full flex items-center justify-between h-20 px-6 py-3.5 bg-gray-100">

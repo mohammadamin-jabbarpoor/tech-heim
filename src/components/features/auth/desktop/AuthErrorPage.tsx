@@ -9,7 +9,7 @@ function getErrorMessage(error: string | null) {
       return {
         title: "Login Cancelled",
         description:
-          "Google sign in was cancelled. You can try again whenever you're ready.",
+          "Google sign in was cancelled. You can try again whenever you&apos;re ready.",
       };
 
     case "account_not_linked":

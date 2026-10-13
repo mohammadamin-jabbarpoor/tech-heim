@@ -58,7 +58,13 @@ function PaymentOptionBtn({ product }: PaymentOptionProps) {
               )}
             </div>
             <div className="xs:flex xs:justify-start">
-              <PayOption product={product} />
+              <PayOption
+                installmentPrice={installmentPrice}
+                paymentType={paymentType}
+                onPaymentType={setPaymentType}
+                selectedMonth={selectedMonth}
+                onSelectedMonth={setSelectedMonth}
+              />
             </div>
             <div className="flex justify-between gap-4">
               <Link

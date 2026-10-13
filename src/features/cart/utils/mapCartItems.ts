@@ -1,36 +1,22 @@
-import { CartItemType } from "../types/cartItem";
+import type { Prisma } from "@/src/app/generated/prisma/client";
+import type { CartItemType } from "../types/cartItem";
 
-export function mapCartItems(
-  items: Array<{
-    id: string;
-    quantity: number;
-    optionId: string | null;
+type CartItemWithRelations = Prisma.CartItemGetPayload<{
+  include: {
     product: {
-      id: string;
-      title: string;
-      slug: string;
-      price: any;
-      compareAtPrice: any;
-      stock: number;
-      images: Array<{
-        path: string;
-        alt: string | null;
-      }>;
+      include: {
+        images: true;
+      };
     };
     option: {
-      id: string;
-      type: string;
-      name: string;
-      value: string | null;
-      images: Array<{
-        path: string;
-        alt: string | null;
-        isPrimary: boolean;
-        sortOrder: number;
-      }>;
-    } | null;
-  }>,
-): CartItemType[] {
+      include: {
+        images: true;
+      };
+    };
+  };
+}>;
+
+export function mapCartItems(items: CartItemWithRelations[]): CartItemType[] {
   return items.map((item) => {
     const primaryProductImage = item.product.images[0];
 
@@ -52,9 +38,10 @@ export function mapCartItems(
 
       price: Number(item.product.price),
 
-      compareAtPrice: item.product.compareAtPrice
-        ? Number(item.product.compareAtPrice)
-        : null,
+      compareAtPrice:
+        item.product.compareAtPrice !== null
+          ? Number(item.product.compareAtPrice)
+          : null,
 
       stock: item.product.stock,
       quantity: item.quantity,

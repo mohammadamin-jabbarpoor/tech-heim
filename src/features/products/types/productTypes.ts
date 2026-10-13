@@ -5,7 +5,6 @@ export type ProductCardType = {
   price: number;
   compareAtPrice: number | null;
   discount: number | null;
-  stock: number;
 
   images: {
     id: string;
@@ -86,4 +85,8 @@ export type ProductPage = {
       };
     };
   }[];
+};
+
+export type ProductWithCartData = ProductCardType & {
+  stock: number;
 };

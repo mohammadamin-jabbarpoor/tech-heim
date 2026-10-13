@@ -1,8 +1,5 @@
 "use client";
 
-import { ProductPage } from "@/src/features/products/types/productTypes";
-import { useMemo, useState } from "react";
-
 type PayOptionProps = {
   installmentPrice: number | null;
 

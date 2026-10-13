@@ -5,7 +5,7 @@ import Stepper from "@/src/components/features/cart/cart/stepper/Stepper";
 import PaymentLayout from "@/src/components/features/cart/payment/PaymentLayout";
 import { useCartStore } from "@/src/stores/cartStore";
 
-function page() {
+function PaymentPage() {
   const items = useCartStore((state) => state.items);
 
   if (items.length === 0) {
@@ -20,4 +20,4 @@ function page() {
   );
 }
 
-export default page;
+export default PaymentPage;

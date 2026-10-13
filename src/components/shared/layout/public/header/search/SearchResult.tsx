@@ -14,7 +14,7 @@ function SearchResult({ query, results, onClose }: SearchResultProps) {
       <div className="w-full h-full flex items-start justify-between gap-7">
         <div className="space-y-12">
           <p className="font-light text-gray-700">
-            Found results for "{query}"
+            Found results for &quot;{query}&quot;
           </p>
 
           <div className="space-y-6">

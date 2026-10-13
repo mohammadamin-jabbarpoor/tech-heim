@@ -4,7 +4,7 @@ import { CartItemType } from "@/src/features/cart/types/cartItem";
 import { useAddressStore } from "@/src/stores/addressStore";
 import { useCartStore } from "@/src/stores/cartStore";
 import { useCheckoutStore } from "@/src/stores/checkoutStore";
-import { CloseCircle, TickCircle } from "iconsax-react";
+import { CloseCircle } from "iconsax-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -15,13 +15,13 @@ type SuccessfulPayProps = {
 };
 
 function SuccessfulPay({ open, onClose, items }: SuccessfulPayProps) {
-  if (!open) return null;
-
   const { clearCart } = useCartStore();
 
   const { address } = useAddressStore();
 
   const shippingMethod = useCheckoutStore((state) => state.shippingMethod);
+
+  if (!open) return null;
 
   const subTotal = items.reduce(
     (total, item) =>
@@ -48,7 +48,7 @@ function SuccessfulPay({ open, onClose, items }: SuccessfulPayProps) {
     { title: "Email", value: `${address?.fullName ?? "example"}@gmail.com` },
     {
       title: "Transaction id",
-      value: Math.floor(1000000000 + Math.random() * 9000000000),
+      value: 123456789,
     },
     { title: "Amount Paid", value: `$${grandTotal.toFixed(2)}` },
   ];

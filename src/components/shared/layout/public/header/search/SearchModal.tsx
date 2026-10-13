@@ -18,13 +18,26 @@ export type SearchResultProp = {
   }[];
 };
 
+type SearchResultsState = {
+  query: string;
+  items: SearchResultProp[];
+};
+
 function SearchModal({ onClose }: { onClose: () => void }) {
   const [query, setQuery] = useState("");
-  const [results, setResults] = useState<SearchResultProp[]>([]);
+  const [searchState, setSearchState] = useState<SearchResultsState | null>(
+    null,
+  );
+
+  const normalizedQuery = query.trim();
+
+  const results =
+    searchState?.query === normalizedQuery ? searchState.items : [];
 
   useEffect(() => {
-    if (!query.trim()) {
-      setResults([]);
+    const searchQuery = query.trim();
+
+    if (!searchQuery) {
       return;
     }
 
@@ -33,7 +46,7 @@ function SearchModal({ onClose }: { onClose: () => void }) {
     const timer = setTimeout(async () => {
       try {
         const response = await fetch(
-          `/api/products/search?q=${encodeURIComponent(query)}`,
+          `/api/products/search?q=${encodeURIComponent(searchQuery)}`,
           {
             signal: controller.signal,
           },
@@ -45,7 +58,10 @@ function SearchModal({ onClose }: { onClose: () => void }) {
 
         const data: SearchResultProp[] = await response.json();
 
-        setResults(data);
+        setSearchState({
+          query: searchQuery,
+          items: data,
+        });
       } catch (error) {
         if (error instanceof DOMException && error.name === "AbortError") {
           return;
@@ -86,27 +102,29 @@ function SearchModal({ onClose }: { onClose: () => void }) {
   }, []);
 
   return (
-    <div className="fixed left-0 right-0 top-29 bottom-0 z-50 md:inset-0 md:bg-black/50">
+    <div className="fixed bottom-0 left-0 right-0 top-29 z-50 md:inset-0 md:bg-black/50">
       <div
         className="
           absolute
+          h-full
+          w-full
           bg-white
           px-6
-          w-full h-full
-
-          md:top-1/2
+          
           md:left-1/2
           md:right-auto
+          md:top-1/2
           md:bottom-auto
+          md:max-h-161
+          md:w-254
           md:-translate-x-1/2
           md:-translate-y-1/2
-          md:w-254
-          md:max-h-161
           md:rounded-lg
           md:px-12 md:py-8
         "
       >
         <SearchHeader onClose={onClose} query={query} setQuery={setQuery} />
+
         {results.length > 0 ? (
           <SearchResult onClose={onClose} query={query} results={results} />
         ) : (

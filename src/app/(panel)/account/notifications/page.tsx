@@ -1,6 +1,5 @@
 "use client";
 
-import LayoutHeader from "@/src/components/features/account/LayoutHeader";
 import { Direct, Sms, Story, Truck } from "iconsax-react";
 import { useState } from "react";
 
@@ -9,7 +8,7 @@ const notifications = [
     id: "email",
     title: "Emails",
     description:
-      "We write emails to let you know what's important, like: new order, confirmations ",
+      "We write emails to let you know what&apos;s important, like: new order, confirmations ",
     icon: Direct,
   },
   {
@@ -27,7 +26,7 @@ const notifications = [
   },
   {
     id: "product",
-    title: "Product's availibilty",
+    title: "Product&apos;s availibilty",
     description: "You will be noticed when product gets available",
     icon: Story,
   },

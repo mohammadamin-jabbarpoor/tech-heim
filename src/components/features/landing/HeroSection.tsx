@@ -10,11 +10,11 @@ function HeroSection() {
               Tech Heim
             </h1>
             <p className="absolute top-9 text-[9px] font-medium text-primary-700">
-              "Join the{" "}
-              <span className="font-medium text-secondary">
+              &ldquo;Join the{" "}
+              <span className="sm:text-[14px] md:text-[18px] lg:text-[24px] xl:text-[32px] font-medium text-secondary">
                 digital revolution
               </span>
-              "
+              &rdquo;
             </p>
           </div>
           <button className="absolute w-23 top-29 text-[10px] px-3 py-2.5 bg-secondary text-white rounded-[4.5px]">
@@ -39,11 +39,11 @@ function HeroSection() {
               Tech Heim
             </h1>
             <p className="sm:text-[14px] md:text-[18px] lg:text-[24px] xl:text-[32px] font-medium text-primary-700">
-              "Join the{" "}
+              &ldquo;Join the{" "}
               <span className="sm:text-[14px] md:text-[18px] lg:text-[24px] xl:text-[32px] font-medium text-secondary">
                 digital revolution
               </span>
-              "
+              &rdquo;
             </p>
           </div>
           <button className="self-start sm:text-xs md:text-sm lg:text-base sm:px-8 md:px-12 lg:px-18 xl:px-23.5 sm:py-2 md:py-2.5 lg:py-3.5 xl:py-4.5 bg-secondary hover:bg-secondary-500 transition-all duration-300 text-white rounded-[5px] md:rounded-lg cursor-pointer">

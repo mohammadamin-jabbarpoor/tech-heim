@@ -20,7 +20,7 @@ type ProductContentProps = {
 
 function ProductContent({ product, similarProducts }: ProductContentProps) {
   const defaultOption =
-    product.options.find((option) => option.isDefault) ?? null;
+    product.options?.find((option) => option.isDefault) ?? null;
   const [selectedOption, setSelectedOption] = useState(defaultOption);
 
   return (
@@ -39,7 +39,7 @@ function ProductContent({ product, similarProducts }: ProductContentProps) {
         <ReviewsSection />
       </div>
 
-      <ProductBottomBar product={product} selectedOption={selectedOption} />
+      <ProductBottomBar product={product} />
     </>
   );
 }

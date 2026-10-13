@@ -8,7 +8,7 @@ function EmptyCart() {
       <div className="flex flex-col items-center justify-center gap-2 text-center">
         <p className="font-medium text-2xl">Your cart is empty!</p>
         <p className="font-light">
-          Looks like you haven't added anything to your cart yet
+          Looks like you haven&apos;t added anything to your cart yet
         </p>
       </div>
       <div>

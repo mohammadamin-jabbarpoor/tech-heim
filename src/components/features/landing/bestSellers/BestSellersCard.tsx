@@ -1,5 +1,6 @@
 import WishlistButton from "@/src/components/shared/ui/WishlistButton";
 import { createWishlistItem } from "@/src/features/account/queries/createWishlistItem";
+
 import { ProductCardType } from "@/src/features/products/types/productTypes";
 import { getImageUrl } from "@/src/lib/imageKit";
 import { Star1 } from "iconsax-react";

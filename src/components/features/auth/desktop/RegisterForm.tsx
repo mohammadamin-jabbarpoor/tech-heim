@@ -72,7 +72,7 @@ function RegisterForm({ onSwitchToLogin, onClick }: RegisterFormProps) {
       setItems(finalCart ?? []);
 
       router.push(callbackUrl);
-    } catch (error) {
+    } catch {
       toast.error("Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);

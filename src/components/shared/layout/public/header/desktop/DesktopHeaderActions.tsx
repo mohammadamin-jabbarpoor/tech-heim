@@ -1,11 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import CartButton from "../mobile/CartButton";
 import UserMenu from "../mobile/UserMenu";
 import SearchButton from "./SearchButton";
 import SearchModal from "../search/SearchModal";
-import AuthModal from "@/src/components/features/auth/desktop/AuthModal";
 import { authClient } from "@/src/lib/auth/auth-client";
 
 type HeaderActionsProps = {
@@ -28,7 +27,9 @@ function DesktopHeaderActions({ session }: HeaderActionsProps) {
 
         <CartButton />
 
-        <UserMenu session={session} />
+        <Suspense fallback={null}>
+          <UserMenu session={session} />
+        </Suspense>
       </div>
     </>
   );
