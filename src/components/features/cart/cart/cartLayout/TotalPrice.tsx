@@ -1,8 +1,11 @@
 "use client";
 
 import { CartItemType } from "@/src/features/cart/types/cartItem";
+import { useCheckoutStore } from "@/src/stores/checkoutStore";
 
 function TotalPrice({ items }: { items: CartItemType[] }) {
+  const shippingMethod = useCheckoutStore((state) => state.shippingMethod);
+
   const productsTotal = items.reduce(
     (total, item) => total + item.price * item.quantity,
     0,
@@ -74,7 +77,9 @@ function TotalPrice({ items }: { items: CartItemType[] }) {
 
       <div className="flex items-center justify-between font-light text-xs text-gray-600">
         <span>Shipment cost</span>
-        <span className="text-gray-800">$50</span>
+        <span className="text-gray-800">
+          ${shippingMethod?.price.toFixed(2) ?? (25).toFixed(2)}
+        </span>
       </div>
 
       <div className="w-full border-b-2 border-b-gray-300 py-1" />

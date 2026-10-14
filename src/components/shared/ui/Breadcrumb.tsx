@@ -22,7 +22,7 @@ export default function Breadcrumb({ items }: BreadcrumbProps) {
               {isLast ? (
                 <Link
                   href={item.href!}
-                  className="font-light text-sx md:text-sm lg:text-base xl:text-lg text-primary underline underline-offset-8"
+                  className="font-light text-sx md:text-sm lg:text-base xl:text-lg text-primary underline underline-offset-4 lg:underline-offset-8"
                 >
                   {item.label}
                 </Link>

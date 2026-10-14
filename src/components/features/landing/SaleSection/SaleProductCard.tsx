@@ -31,12 +31,10 @@ function SaleProductCard({ product }: { product: ProductCardType }) {
           </p>
           <div className="w-full flex items-center justify-between">
             <p className="text-[9px] sm:text-xs xl:text-sm font-light text-gray-600 line-through">
-              $
-              {`${product.compareAtPrice?.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+              ${product.compareAtPrice?.toFixed(2)}
             </p>
             <p className="text-[9px] sm:text-xs xl:text-sm font-light">
-              $
-              {`${product.price?.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+              ${product.price?.toFixed(2)}
             </p>
           </div>
         </div>

@@ -37,8 +37,7 @@ function NewProductCard({ product }: { product: ProductCardType }) {
           </p>
           <div className="flex items-center justify-between">
             <span className="font-light text-xs md:text-sm lg:text-base xl:text-lg">
-              $
-              {`${product.price?.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`}
+              ${product.price?.toFixed(2)}
             </span>
             <span className="flex items-center justify-center gap-1">
               <Star1
