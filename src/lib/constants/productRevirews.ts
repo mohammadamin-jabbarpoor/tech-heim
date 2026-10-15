@@ -9,26 +9,33 @@ export const productReviews: ReviewsType = [
   {
     id: 1,
     image: "/reviews/video-1.svg",
-    title: "MacBook Pro 2022 Review: Apple&apos;s M2 Revs Up",
+    title: "How to connect your iPhone to a laptop?",
   },
   {
     id: 2,
     image: "/reviews/video-2.svg",
-    title: "M2 MacBook Pro 13 Unboxing, Comparison and First Look",
+    title:
+      "How to fix Green Screen of Death (GSoD) error in Windows 10 and 11?",
   },
   {
     id: 3,
     image: "/reviews/video-3.svg",
-    title: "M2 MacBook Pro 13 Review - Don&apos;t Choose Wrong!",
+    title: "Iphone 14Promax review,Still powerful and flagship",
   },
   {
     id: 4,
-    image: "/reviews/video-1.svg",
-    title: "MacBook Pro 2022 Review: Apple&apos;s M2 Revs Up",
+    image: "/reviews/video-4.svg",
+    title: "10 things you should never store in your smartphone!",
   },
   {
     id: 5,
-    image: "/reviews/video-2.svg",
-    title: "M2 MacBook Pro 13 Unboxing, Comparison and First Look",
+    image: "/reviews/video-5.svg",
+    title: "How to prevent the laptop from turning off after closing the door?",
+  },
+  {
+    id: 6,
+    image: "/reviews/video-6.svg",
+    title:
+      "5 quick and easy ways to check the health of the graphics card in Windows 11",
   },
 ];

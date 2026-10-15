@@ -1,25 +1,23 @@
 import Line from "@/src/components/shared/ui/Line";
 import SectionHeader from "@/src/components/shared/ui/SectionHeader";
-import { blogsInfo, moBlogsInfo } from "@/src/lib/constants/blosInfo";
-import BlogFeaturedCard from "./BlogFeaturedCard";
-import BlogCompactCard from "./BlogCompactCard";
-import BlogCard from "./BlogCard";
+import SmallBlogCard from "./SmallBlogCard";
+import LargeBlogCard from "./LargeBlogCard";
+import { largeBlogsInfo, smallBlogsInfo } from "@/src/lib/constants/blosInfo";
 
 function Blogs() {
   return (
     <section className="mt-6 xl:mt-12">
       <SectionHeader value="Our Blogs" />
       <Line />
-      <div className="grid xl:grid-cols-3 xl:grid-rows-2 gap-6">
-        <BlogFeaturedCard blogsInfo={blogsInfo} />
-        {blogsInfo.blogs.map((blog) => (
-          <BlogCompactCard key={blog.id} blog={blog} />
-        ))}
-      </div>
-      <div className="flex sm:hidden flex-col gap-4">
-        {moBlogsInfo.map((info) => (
-          <BlogCard key={info.id} info={info} />
-        ))}
+      <div className="flex gap-6">
+        <div className="hidden lg:block w-full">
+          <LargeBlogCard info={largeBlogsInfo[0]} />
+        </div>
+        <div className="space-y-6">
+          {smallBlogsInfo.slice(0, 2).map((info) => (
+            <SmallBlogCard key={info.id} info={info} />
+          ))}
+        </div>
       </div>
     </section>
   );

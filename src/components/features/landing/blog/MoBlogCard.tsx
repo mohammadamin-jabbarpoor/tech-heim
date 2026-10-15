@@ -14,7 +14,7 @@ type BlogInfo = {
   time?: number;
 };
 
-function BlogCard({ info }: { info: BlogInfo }) {
+function MoBlogCard({ info }: { info: BlogInfo }) {
   return (
     <div className="w-full bg-white rounded shadow-[-2px_2px_15px_-1px_rgba(113,113,113,0.12)]">
       <div className="relative w-full aspect-312/140">
@@ -53,4 +53,4 @@ function BlogCard({ info }: { info: BlogInfo }) {
   );
 }
 
-export default BlogCard;
+export default MoBlogCard;
